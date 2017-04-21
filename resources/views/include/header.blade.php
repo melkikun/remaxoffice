@@ -1,7 +1,7 @@
 <header>
 	<div class="container-fluid">
 		<div class="navigation clearfix">
-			<div class="logo">
+			<div class="logo" style="float: left;">
 				<a href="{{ url('/') }}">
 					@if ($office['data'][0]['links']['frofFileId'] != null)
 					@foreach ($office['linked']['frofFileId'] as $element)
@@ -22,9 +22,15 @@
 					<div id="navbar" class="navbar-collapse collapse pull-right">
 						<ul class="nav navbar-nav">
 							@foreach ($header['data'] as $key => $value)
+							@if (Request::segment(1) == $value['wbmnAPI'])
+							<li class="active">
+								<a href="{{url($value['wbmnAPI'])}}">{{$value['wbmlName']}}</a>
+							</li>
+							@else
 							<li>
 								<a href="{{url($value['wbmnAPI'])}}">{{$value['wbmlName']}}</a>
 							</li>
+							@endif
 							@endforeach
 						</ul>
 					</div>

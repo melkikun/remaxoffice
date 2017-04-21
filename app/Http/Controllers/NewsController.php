@@ -22,12 +22,14 @@ class NewsController extends Controller
         $id = $this->api->getOfficeInfo($account);
         if($id != ""){
              try {
+                $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
             $newsDetailApi = $this->client->get("webnews/$param");
             $newsApi = $this->client->get("webnews");
             if($newsDetailApi->getStatusCode()== 200 && $newsApi->getStatusCode()== 200 ){
+                 $office = json_decode($officeApi->getBody()->getContents(), true);
                 $detail = json_decode($newsDetailApi ->getBody()->getContents(), true);
                 $news = json_decode($newsApi ->getBody()->getContents(), true);
-                return view("news_detail", compact('id', 'detail', 'news'));
+                return view("news_detail", compact('id', 'detail', 'news', 'office'));
             }else{
                 echo "Not Found";
             }

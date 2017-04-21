@@ -37,7 +37,7 @@
         background-repeat: no-repeat;
         background-image: url('{{ asset('/') }}images/background.jpg');
         position: absolute;
-        top: 10%;
+        top: 55px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -157,6 +157,7 @@
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
         outline: 0 none;
     }
+   
 </style>
 @stop
 @section('javascript')
@@ -202,7 +203,7 @@ RE/MAX HOME
                     <a href="{{ url('properties') }}" class="adv-search">Advanced Search</a>
                 </div>
                 <div class="search-wrap">
-                    {!! Form::open(["method"=>"get", "url"=>"search/ "]) !!}
+                    {!! Form::open(["method"=>"get", "url"=>"property/search/ "]) !!}
                     <div class="row m0">
                         <input type="text" placeholder="Find Your Dream Home" class="form-control pull-left"
                                name="location">

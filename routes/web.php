@@ -34,7 +34,7 @@ Route::group(['domain' => '{account}.localhost'], function () {
 	//agent detail
 	Route::get('/agents/{id}', 'AgentController@listAgent')->name('property.detail');
 
-	Route::get("/search/", 'PropertyController@search')->name('property.filter');
+	Route::get("/property/search/", 'PropertyController@search')->name('property.filter');
 
 	Route::get('/{id}', 'AgentController@listAgent')->name('property.detail');
 });
