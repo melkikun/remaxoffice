@@ -59,10 +59,10 @@ RE/MAX AGENT LIST
 								<li class="contact-info"><a href="#">NULL</a></li>
 							</ul>
 							<ul class="social-profile">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								{{-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-								<li><a href="#"><i class="fa fa-google"></i></a></li>
+								<li><a href="#"><i class="fa fa-google"></i></a></li> --}}
 							</ul>
 							<div class="full-profile-btn"> <a href="{{ url("$value[mmbsUrl]") }}" class="see-more">see full profile</a> </div>
 						</div>
@@ -71,7 +71,7 @@ RE/MAX AGENT LIST
 				@endforeach
 			</div>
 		</div>
-		<div class="agents-list">
+		{{-- <div class="agents-list">
 			<div class="numbering mrgb3x">
 				<ul class="pagination">
 					<li class="active"><a href="#">01</a></li>
@@ -81,6 +81,6 @@ RE/MAX AGENT LIST
 					<li><a href="#">05</a></li>
 				</ul>
 			</div>
-		</div>
+		</div> --}}
 	</section>
 	@stop

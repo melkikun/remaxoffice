@@ -20,7 +20,9 @@
 {{-- @if (count($office['data']) > 0) --}}
 @include('include.header')
 @yield('content')
+@if (Request::path() != "/")
 @include('include.footer')
+@endif
 {{-- @endif --}}
 <script src="{{ asset('/') }}js/jquery.js"></script>
 <script src="{{ asset('/') }}js/bootstrap.js"></script>

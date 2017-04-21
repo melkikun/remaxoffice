@@ -2,55 +2,160 @@
 @section('css')
 <link href="{{ asset('/') }}css/owl.carousel.css" rel="stylesheet" type="text/css">
 <style type="text/css" media="screen">
-    .search-form label{
-        margin-bottom: 0px;
+    .page-homepage body {
+        height: 100%;
+        overflow: hidden;
     }
-    .search-form .form-section {
-        margin-bottom: 10px;
+    .bank-partner {
+        font-size: 24px;
+        padding-top: 20px;
+        padding-bottom: 50px;
+        text-align: center;
+        top: 60%;
+        left: 50%;
     }
-    .inner-text{
-        padding: 0px;
+    .advSearch-wrap img {
+        margin: 0 auto;
+        height: 50px;
     }
-    .hprp-caption{
-        color: orange;
-        font-size: 35px;
+    .wrapper-icon {
+        position: absolute;
+        bottom: 0%;
+        background: white;
+        width: 100%;
+        padding:0 5px;
     }
-    .inner-text p{
-        font-size: 18px;
+    .slick-slide .slick-active{
+        width: 150px !important;
+        display: inline-block;
     }
-    .mrgb4x{
-        margin: 20px auto 0px auto;
-    }
-    .mrgb8x {
-        margin-bottom: 20px;
-    }
-    .mrgt7x {
-        margin-top: 20px;
-    }
-    .owl-item {
-        width: 200px !important;
-    }
-    .mrgb9x{
-        margin-bottom:20px;
-        margin-top:20px;
-    }
-    #tulisan {
-        bottom: 0;
-        color: #fff;
-        height: 70%;
+
+    .home-section{
+        display: block;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('{{ asset('/') }}images/background.jpg');
+        position: absolute;
+        top: 10%;
         left: 0;
-        margin: auto;
+        right: 0;
+        bottom: 0;
+    }
+    .tabs-wrap ul li a{
+        font-size: 15px;
+    }
+    .home-section .home-center{
+        width: 100%;
+        max-width: 700px;
+        padding: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform:translate(-50%,-50%);
+        -moz-transform:translate(-50%,-50%);
+        -webkit-transform:translate(-50%,-50%);
+        transform:translate(-50%,-50%);
+    }
+    .home-section .home-center object{
+        width: 139px;
+        height: 30px;
+        margin-bottom: 5px;
+    }
+    .home-section .home-center .tabs-wrap{
+        width: 100%;
+        text-align: left;
+    }
+    .home-section .home-center .tabs-wrap ul{
+        margin:0px;
+        padding:0px;
+        list-style: none;
+    }
+    .home-section .home-center .tabs-wrap li{
+        list-style: none;
+        display: inline-block;
+        float: left;
+    }
+    .home-section .home-center .tabs-wrap li a{
+        display:block;
+        padding: 8px 16px;
+        color:#fff;
+        background-color:green;
+    }
+    .home-section .home-center .tabs-wrap li a.active{
+        position: relative;
+    }
+    .home-section .home-center .tabs-wrap li a.active::before{
+        content: "";
+        position: absolute;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #fff;
+        -ms-transform:translateX(-50%);
+        -webkit-transform:translateX(-50%);
+        -moz-transform:translateX(-50%);
+        transform:translateX(-50%);
+        left: 50%;
+        bottom:-1px;
+    }
+    .home-section .home-center .tabs-wrap li a.buy{
+        background-color: rgba(226, 26, 34, 1);
+        border-radius:2px;
+    }
+    .home-section .home-center .tabs-wrap li a.rent{
+        background-color: rgba(58, 125, 227, 1);
+        border-radius: 2px;
+    }
+
+    .home-section .home-center .search-wrap input{
+        width: 80%;
+        height: 48px;
+        padding: 8px;
+        border-radius:4px;
+    }
+
+    .home-section .home-center .search-wrap button{
+        width: 20%;
+        padding:0px;
+        height: 48px;
+        line-height: 40px;
+    }
+    .adv-search {
+        background-color: #f2f2f2;
+        border-radius: 100px;
+        color: #777;
+        display: inline-block;
+        font-size: 13px;
+        padding: 4px 8px;
         position: absolute;
         right: 0;
-        text-align: center;
-        top: 0;
-        width: 50%;
+        top: 40%;
+        transform: translateY(-50%);
     }
-    .top-tabs .tab-content{
-        padding-top: 20px;
+    .adv-search:hover {
+        box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
+        color: #444;
     }
-    .office-info{
-        color: white;
+    .adv-search:active, .adv-search:focus {
+        color: #444;
+    }
+    .adv-search img {
+        display: inline-block;
+        margin-left: 8px;
+        width: 8px;
+    }
+    .adv-search img.active {
+        transform: rotate(180deg);
+    }
+    .form-control {
+        border: 1px solid white;
+        border-radius: 0;
+        min-height: 44px;
+    }
+    .form-control:focus {
+        border-color: transparent;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+        outline: 0 none;
     }
 </style>
 @stop
@@ -58,38 +163,16 @@
 <script src="{{ asset('/') }}js/owl.carousel.min.js"></script> 
 <script src="{{ asset('/') }}assets/bower_components/jquery_lazyload/jquery.lazyload.js"></script>
 <script type="text/javascript">
-    var myIndex = 0;
-
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length) {
-            myIndex = 1
-        }
-        x[myIndex - 1].style.display = "block";
-        x[myIndex - 1].style.width = "100%";
-        x[myIndex - 1].style.height = "450px";
-    setTimeout(carousel, 15000); // Change image every 2 seconds
-}
-
-jQuery(document).ready(function($) {
-   $('.partner-carousel').owlCarousel({
-    items: 5,
-    navigation: true,
-    navigationText: true,
-    pagination: false,
-    autoPlay: true,
-    itemsCustom: [[1300, 5], [768, 3], [600, 3], [480, 2], [320, 1]],
-    slideSpeed: 1000
-}); 
-   carousel();
-   $("img").lazyload();
+jQuery(document).ready(function ($) {
+    $('.partner-carousel').owlCarousel({
+        items: 7,
+        navigation: true,
+        navigationText: true,
+        pagination: false,
+        autoPlay: true,
+        slideSpeed: 1000,
+    });
 });
-
 </script>
 @stop
 @section('title')
@@ -97,182 +180,49 @@ RE/MAX HOME
 @stop
 @section('content')
 <section id="slider">
-    <div id="mainslider">
-        <div class="slider">
-            <div class="fullscreen-container">
-                <div class="fullscreenbanner">
-                    <li data-transition="slide" data-slotamount="10" v-for="slider in sliders"> 
-                        <img class="img-responsive mySlides" alt="#" src="{{ asset('/') }}images/backgroundhome-v2.jpg"/>
-                        <img class="img-responsive mySlides" alt="#" src="{{ asset('/') }}images/sliderimg-2.png"/>
-                        <img class="img-responsive mySlides" alt="#" src="{{ asset('/') }}images/sliderimg-3.png"/>
-                    </li>
-                    <div class="slider-text clearfix"  id="tulisan">
-                        <div class="text-box">
-                            <p class="office-info">Ruko Taman Palem Lestari Blok B18 No.7,</p>
-                            <p class="office-info"> Jl. Kamal Raya Outer Ring Road,</p>
-                            <p class="office-info"> Cengkareng Jakarta Barat</p>
-                            <p>Telp Office : +62 21 5596 1288</p>
-                            <p>Fax Office : +62 21 5595 8857</p>
-                            <p></p>
 
-                        </div>
-                        <div class="slider-button">
-                            <div class="view-btn"> <a href="">VIEW PROPERTIES</a> </div>
-                            <div class="signup-btn"> <a href="#">VIEW AGENT</a> </div>
-                        </div>
+    <div>
+        <div class="home-section">
+            <div class="home-center">
+                <div class="tabs-wrap pos-relative">
+                    <ul class="row m0">
+                        @if ($office['data'][0]['links']['frofFileId'] != null)
+                        @foreach ($office['linked']['frofFileId'] as $element)
+                        @if ($element['fileId'] == $office['data'][0]['links']['frofFileId'])
+                        <li><img src="https://www.remax.co.id/prodigy/papi/{{ $element['filePreview'] }}" alt="" style="width: 100px;"></li>
+                        @endif
+                        @endforeach
+                        @else
+                        <li>
+                            <img src="{{ asset('/') }}images/logo.png" alt="" style="width: 100px;">
+                        </li>
+                        @endif
+
+                    </ul>
+                    <a href="{{ url('properties') }}" class="adv-search">Advanced Search</a>
+                </div>
+                <div class="search-wrap">
+                    {!! Form::open(["method"=>"get", "url"=>"search/ "]) !!}
+                    <div class="row m0">
+                        <input type="text" placeholder="Find Your Dream Home" class="form-control pull-left"
+                               name="location">
+                        <button type="submit" class="btn btn-small btn-primary pull-left">Go!</button>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+            <div class="wrapper-icon" style="background: white;">
+                <div class="bankpartner-slide js-bankpartner-slide">
+                    <div class="partner-carousel owl-carousel">
+                        @if (count($bank['linked']['mbnkFileId'])>0)
+                        @foreach ($bank['linked']['mbnkFileId'] as $element)
+                        <div class="item"> <a href="#"> <img src="https://www.remax.co.id/prodigy/papi/{{$element['filePreview']}}?size=151,53" class="img-responsive" alt="#"/> </a> </div>
+                        @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 </section>
-<section id="search">
-    <div class="top-tabs">
-        <div class="container">
-            <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#properties" aria-expanded="true"><i class="icon-home10"></i> Properties</a></li>
-            </ul>
-            <div class="tab-content clearfix">
-                <div id="properties" class="tab-pane fade in active">
-                    <div class="search-options">
-                        <div class="search-form">
-                            {!! Form::open([
-                                "method"=>"get",
-                                "url"=>"search"
-                                ]) !!}
-                                <div class="form-inner">
-                                    <div class="left-options col-md-12">
-                                        <div class="form-section col-md-3">
-                                            <label>Keyword</label>
-                                            <input class="form-control" placeholder="Rumah, Apartemen" id="keyword" name="keyword">
-                                        </div>
-                                        <div class="form-section col-md-3">
-                                            <label>Location</label>
-                                            <input class="form-control" placeholder="Location, City" id="location" name="location">
-                                        </div>
-                                        <div class="form-section col-md-3">
-                                            <label>Property Type</label>
-                                            <div class="select-box">
-                                                <select class="form-control" name="type" id="type">
-                                                    <option value="">All</option>
-                                                    @if (count($propertytype['data'] > 0))
-                                                    @foreach ($propertytype['data'] as $element)
-                                                    <option value="{{$element['id']}}">{{$element['prtlName']}}</option>
-                                                    @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-section col-md-3">
-                                            <label>Sale Type</label>
-                                            <div class="select-box">
-                                                <select class="form-control" name="sale" id="sale">
-                                                    <option value="">All</option>
-                                                    @if (count($listingcategory['data'] > 0))
-                                                    @foreach ($listingcategory['data'] as $element)
-                                                    <option value="{{$element['id']}}">{{$element['lsclName']}}</option>
-                                                    @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="left-options col-md-12">
-                                        <div class="form-section col-md-3">
-                                            <label>Bathrooms</label>
-                                            <div class="select-box">
-                                                <select class="form-control" name="bath" id="bath">
-                                                    <option value="">-</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-section col-md-3">
-                                            <label>Bedrooms</label>
-                                            <div class="select-box">
-                                                <select class="form-control" name="bed" id="bed">
-                                                    <option value="">-</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-section col-md-3">
-                                            <label>Land Size M<sup>2</sup></label>
-                                            <input class="form-control" placeholder="Eg : 100000" id="land" name="land">
-                                        </div>
-                                        <div class="form-section col-md-3">
-                                            <label>Building Size M<sup>2</sup></label>
-                                            <input class="form-control" placeholder="Eg : 100000" id="building" name="building">
-                                        </div>
-                                    </div>
-                                    <div class="left-options col-md-12">
-                                        <div class="form-section col-md-3">
-                                            <label>Facility</label>
-                                            <div class="select-box">
-                                                <select class="form-control" name="facility" id="facility">
-                                                    <option value="">All</option>
-                                                    @if (count($facility['data'] > 0))
-                                                    @foreach ($facility['data'] as $element)
-                                                    <option value="{{$element['id']}}">{{$element['fctlName']}}</option>
-                                                    @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-section col-md-3">
-                                            <label>Price Range (Rp)</label>
-                                            <input class="form-control" placeholder="Harga minimun" id="min" name="min">
-                                        </div>
-                                        <div class="form-section col-md-3">
-                                            <label>&nbsp;</label>
-                                            <input class="form-control" placeholder="Harga maximum" id="max" name="max">
-                                        </div>
-
-                                        <div class="form-section col-md-3">
-                                            <label>&nbsp;</label>
-                                            <input class="form-control btn btn-danger" id="search" name="search" type="submit" value="Search Property">
-                                        </div>
-                                    </div>
-                                    {!! Form::close() !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="bg-dark parallex mrgb4x">
-        <div class="container">
-            <div class="inner-text">
-                <div>
-                    @if ($content['data'][0]['wbhlVideoDescription'] != "" || $content['data'][0]['wbhlVideoDescription'] != null)
-                    {!!$content['data'][0]['wbhlVideoDescription']!!}
-                    @endif
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <div class="partners mrgt9x mrgb9x animated out" data-delay="0" data-animation="fadeInUp">
-                <div class="partner-carousel owl-carousel">
-                    @if (count($bank['linked']['mbnkFileId'])>0)
-                    @foreach ($bank['linked']['mbnkFileId'] as $element)
-                    <div class="item"> <a href="#"> <img src="https://www.remax.co.id/prodigy/papi/{{$element['filePreview']}}?size=151,53" class="img-responsive" alt="#"/> </a> </div>
-                    @endforeach
-                    @endif
-                </div>
-            </div>
-        </section>
-        @stop
+@stop

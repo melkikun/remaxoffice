@@ -26,18 +26,10 @@ class IndexController extends Controller {
             try {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
                 $bankApi = $this->client->get("bank");
-                $contentApi = $this->client->get("webhome", ["query" => ['wbhmFrofId' => $id]]);
-                $listingCategoryApi = $this->client->get("listingcategory");
-                $propertytypeApi = $this->client->get("propertytype");
-                $facilityApi = $this->client->get("facility");
-                if ($bankApi->getStatusCode() == 200 && $contentApi->getStatusCode() == 200 && $officeApi->getStatusCode() == 200 && $listingCategoryApi->getStatusCode() == 200 && $propertytypeApi->getStatusCode() == 200 && $facilityApi->getStatusCode() == 200) {
+                if ($bankApi->getStatusCode() == 200  && $officeApi->getStatusCode() == 200) {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $bank = json_decode($bankApi->getBody()->getContents(), true);
-                    $content = json_decode($contentApi->getBody()->getContents(), true);
-                    $listingcategory = json_decode($listingCategoryApi->getBody()->getContents(), true);
-                    $propertytype = json_decode($propertytypeApi->getBody()->getContents(), true);
-                    $facility = json_decode($facilityApi->getBody()->getContents(), true);
-                    return view("home", compact('office', 'bank', 'content', 'listingcategory', 'propertytype', 'facility'));
+                    return view("home", compact('office', 'bank'));
                 } else {
                     echo "Not Found";
                 }

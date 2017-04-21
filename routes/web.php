@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['domain' => '{account}.localhost.com'], function () {
+Route::group(['domain' => '{account}.localhost'], function () {
 
 	/*route menu utama*/
 	Route::get('/', 'IndexController@index')->name("homepage");
@@ -34,7 +34,7 @@ Route::group(['domain' => '{account}.localhost.com'], function () {
 	//agent detail
 	Route::get('/agents/{id}', 'AgentController@listAgent')->name('property.detail');
 
-	Route::get("/search", 'PropertyController@search')->name('property.filter');
+	Route::get("/search/", 'PropertyController@search')->name('property.filter');
 
 	Route::get('/{id}', 'AgentController@listAgent')->name('property.detail');
 });
