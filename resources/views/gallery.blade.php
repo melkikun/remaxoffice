@@ -43,7 +43,7 @@ RE/MAX GALLERY
     <div class="container-fluid">
         <div class="row services mrgb6x clearfix">
         @foreach ($gallery['data'] as $key => $value)
-            <div class="col-md-4 col-sm-6 animated in" data-delay="0" data-animation="fadeInUp">
+            <div class="col-md-3 col-sm-6 animated in" data-delay="0" data-animation="fadeInUp">
             <a href="{{ url("albums/$value[id]") }}">
                 <div class="service-image"> 
                 @foreach ($gallery['linked']['wbgyFileId'] as $key1 => $value1)

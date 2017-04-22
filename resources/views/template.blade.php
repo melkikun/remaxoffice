@@ -24,7 +24,7 @@
 @include('include.footer')
 @endif
 {{-- @endif --}}
-<script src="{{ asset('/') }}js/jquery.js"></script>
+<script src="{{ asset('/') }}js/jquery-3.2.1.min.js"></script>
 <script src="{{ asset('/') }}js/bootstrap.js"></script>
 <script src="{{ asset('/') }}js/jquery.appear.js"></script> 
 <script src="{{ asset('/') }}js/jquery.mixitup.min.js"></script> 

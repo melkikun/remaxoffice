@@ -1,18 +1,47 @@
 @extends('template')
 
 @section('css')
-<style type="text/css" media="screen">
+<link href="{{ asset('/') }}assets/bower_components/jquery-ui/jquery-ui.min.js" rel="Stylesheet"></link>
+<style type="text/css">
+	.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front{
+		border: none;
+	}
 </style>
 @stop
 
 @section('javascript')
-{{-- vue js --}}
-<script src="{{ asset('/') }}js/vue.min.js"></script>
-<script src="{{ asset('/') }}js/vue-resource.min.js"></script>
-@stop
-
-@section('js')
-
+<script src="{{ asset('/') }}assets/bower_components/jquery-ui/jquery-ui.min.js" ></script>
+<script type="text/javascript">
+	$( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+</script>
 @stop
 
 @section('title')
@@ -34,6 +63,17 @@ RE/MAX AGENT LIST
 </section>
 <section>
 	<div class="container" id="agent-list-page">
+		<div class="filter-type mrgb6x clearfix">
+			<div class="row">
+				<ul class="filter-values col-md-12 col-sm-3">
+					<li>
+						<div class="form-section col-md-12 col-sm-8">
+							<input class="form-control" name="nama" id="tags" placeholder="NAMA AGENT">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
 		<div class="agents-list">
 			@foreach ($agent['data'] as $key => $value)
 			{{-- expr --}}
