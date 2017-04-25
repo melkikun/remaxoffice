@@ -6,7 +6,7 @@
 <title>@yield('title')</title>
 <link rel="shortcut icon" href="{{ asset('/') }}images/ico.png">
 {{-- bootsrap --}}
-<link href="{{ asset('/') }}css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/') }}css/bootstrap.css" rel="stylesheet" type="text/css">
 {{-- jquery animate --}}
 <link href="{{ asset('/') }}css/animate.css" rel="stylesheet" type="text/css">
 {{-- font awesome --}}

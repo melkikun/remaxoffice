@@ -90,10 +90,10 @@ span{
 	margin-bottom: 50px;
 }
 .mrgt6x {
-	margin-top: 60px;
+	margin-top: 25px;
 }
 .mrgb6x {
-	margin-bottom: 60px;
+	margin-bottom: 25px;
 }
 .mrgt7x {
 	margin-top:75px;
@@ -301,7 +301,7 @@ span{
 }
 /*................................header..........................*/
 .navigation {
-	margin:44px 0;
+	/*margin:44px 0;*/
 }
 .logo{
 	float:left;
@@ -342,7 +342,7 @@ span{
     margin-top: 13px;
 }	
 .nav.navbar-nav > li {
-    padding:8px 20px;
+    padding:8px 15px;
 }
 .nav.navbar-nav > li:last-child {
     padding: 8px 0;
