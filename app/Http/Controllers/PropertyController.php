@@ -95,7 +95,7 @@ class PropertyController extends Controller
                     $filterSale = "";
                 }
                 if($keyword != ""){
-                    $filterKeyword  = "&filter[listTitle]='%$keyword%'";
+                    $filterKeyword  = "&filter[listTitle]=%27%25$keyword%25%27";
                 }else{
                     $filterKeyword = "";
                 }
@@ -110,12 +110,12 @@ class PropertyController extends Controller
                     $filterBuilding = "";
                 }
                 if($location != ""){
-                    $filterLocation  = "&filter[mctyDescription]='%$location%'";
+                    $filterLocation  = "&filter[mctyDescription]=%27%25$location%25%27";
                 }else{
                     $filterLocation = "";
                 }
                 if($facility != ""){
-                    $filterLocation  = "&filter[listFacility]='%$facility%'";
+                    $facility  = "&filter[listFacility]=%27%25$facility%25%27";
                 }else{
                     $facility = "";
                 }

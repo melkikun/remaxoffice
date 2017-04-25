@@ -83,7 +83,7 @@ RE/MAX PROPERTY
                     <div class="row">
                         <div class="search-options">
                             <div class="search-form">
-                                {!! Form::open(["method"=>"get","url"=>"search"]) !!}
+                                {!! Form::open(["method"=>"get","url"=>"properties/search/"]) !!}
                                 <div class="form-horizontal">
                                 <div class="row">
                                      <div class="form-section col-md-3">
@@ -216,20 +216,39 @@ RE/MAX PROPERTY
                                         <div class="appartment-name">
                                             <h4></h4>
                                             <h3 class="price">
-                                                {{-- @if ($element['listListingPrice'] >= 100000000000)
+                                                @if ($element['listListingPrice'] >= 100000000000)
                                                 Rp. {{$element['listListingPrice']/1000000000000}} T
                                                 @elseif($element['listListingPrice'] >= 1000000000)
                                                 Rp. {{$element['listListingPrice']/1000000000}} M
                                                 @else
                                                 Rp. {{$element['listListingPrice']/1000000}} JT
-                                                @endif --}}
+                                                @endif
                                             </h3>
                                             <p class="one-line">{{$element['listDescription']}}</p>
                                         </div>
                                         <div>
-                                            <i class="fa fa-bed"></i><span>{{ $element['listBedroom'] }}</span>&nbsp;&nbsp;
-                                            <i class="fa fa-shower"></i><span>{{ $element['listBedroom'] }}</span>&nbsp;&nbsp;
-                                            <i class="fa fa fa-area-chart"></i>{{ $element['listBuildingSize'] }}m<sup>2</sup>
+                                            <i class="fa fa-bed"></i>
+                                            <span>
+                                            @if ($element['listBedroom'] != null)
+                                                {{ $element['listBedroom'] }}
+                                            @else
+                                                {{ "-" }}
+                                            @endif
+                                            </span>&nbsp;&nbsp;
+                                            <i class="fa fa-shower"></i>
+                                            <span>
+                                             @if ($element['listBathroom'] != null)
+                                                 {{ $element['listBathroom'] }}
+                                            @else
+                                                {{ "-" }}
+                                                @endif
+                                            </span>&nbsp;&nbsp;
+                                            <i class="fa fa fa-area-chart"></i>
+                                             @if ($element['listBuildingSize'] != null)
+                                                 {{ $element['listBuildingSize'] }}m<sup>2</sup>
+                                            @else
+                                                {{ "-" }}
+                                                @endif
                                             <a href="{{ url('property/') }}/{{$element['id']}}" class="btn btn-default btn-xs pull-right btn-outline">More Info</a>
                                         </div>
                                         <div class="clearfix"><hr/></div>

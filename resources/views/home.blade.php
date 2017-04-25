@@ -75,12 +75,14 @@ RE/MAX HOME
                    <img src="{{ asset('/') }}images/logo.png" alt="" style="width: 100px;">
                </li>
                @endif
-               <span class="input-group-addon" style="border: none; background: transparent;"><a href="{{ url('properties') }}" id="adv-search">Advance Search</a></span>
+               <span class="input-group-addon" style="border: none; background: transparent;"><a href="{{ url('properties') }}" id="adv-search">Advanced Search</a></span>
            </div>
+           {!! Form::open(["url"=>"properties/search/", "method"=>"get"]) !!}
            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Where Do You Live" aria-describedby="basic-addon2" id="search-input">
-              <span class="input-group-addon" id="btn-search">GO!!</span>
+              <input type="text" class="form-control" placeholder="Where Do You Live" aria-describedby="basic-addon2" id="search-input" name="location">
+              <span class="input-group-addon" id="btn-search">GO!!!</span>
           </div>
+          {!! Form::close() !!}
       </div>
   </div>
 </section>
