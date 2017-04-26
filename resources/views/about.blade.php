@@ -52,7 +52,7 @@ RE/MAX ABOUT
                         @foreach ($about['data'] as $key => $value)
                         @if ($key == 0)
                         <li class="active">
-                            <a data-toggle="tab" href="#booking" aria-expanded="true">
+                            <a data-toggle="tab" href="#link{{$key}}" aria-expanded="true">
                                 <span class="tab-border">
                                     {{$value['wbalTitle']}}
                                 </span>
@@ -60,7 +60,7 @@ RE/MAX ABOUT
                         </li>
                         @else
                         <li>
-                            <a data-toggle="tab" href="#guidance">
+                            <a data-toggle="tab" href="#link{{$key}}">
                                 <span class="tab-border">
                                     {{$value['wbalTitle']}}
                                 </span>
@@ -77,11 +77,11 @@ RE/MAX ABOUT
             <div class="tab-content mrgb7x animated out" data-delay="0" data-animation="fadeInUp">
                 @foreach ($about['data'] as $key => $value)
                 @if ($key == 0)
-                <div id="booking" class="tab-pane fade in active">
+                <div id="link{{$key}}" class="tab-pane fade in active">
                     {!!$value['wbalContent']!!}
                 </div>
                 @else
-                <div id="guidance" class="tab-pane fade">
+                <div id="link{{$key}}" class="tab-pane fade">
                     {!!$value['wbalContent']!!}
                 </div>
                 @endif

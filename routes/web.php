@@ -32,9 +32,9 @@ Route::group(['domain' => '{account}.localhost'], function () {
 	//news detail
 	Route::get('/news/{id}', 'NewsController@listNews')->name('property.detail');
 	//agent detail
-	Route::get('/agents/{id}', 'AgentController@listAgent')->name('property.detail');
+	Route::get('/agents/{id}', 'AgentController@alphabethAgent')->name('property.detail');
 
 	Route::get("properties/search/", 'PropertyController@search')->name('property.filter');
 
-	Route::get('/{id}', 'AgentController@listAgent')->name('property.detail');
+	Route::get('/{id}', 'AgentController@listAgent')->name('property.detail');	
 });

@@ -134,7 +134,7 @@ span{
 	border-radius:50%;
 }
 .testi-carousel .owl-pagination .owl-page.active {
-	background-color:#09b9e5;
+	background-color:#004480;
 }
 .testi-carousel .item {
 	padding-top:12%;
@@ -319,7 +319,7 @@ span{
 	transition: all 0.2s ease-out 0s;
 }
 .navbar-nav > li a::before {
-    border-bottom:2px solid #09b9e5;
+    border-bottom:2px solid #004480;
     top:28px;
     content: "";
     left: 0;
@@ -327,7 +327,7 @@ span{
     width:0px;
 }
 .navbar-nav > li a:hover::before {
-    border-bottom: 2px solid #09b9e5;
+    border-bottom: 2px solid #004480;
     top:28px;
     content: "";
     left: 0;
@@ -336,7 +336,7 @@ span{
 	transition:all 0.4s ease-in 0s;
 }
 .navbar-nav > li.active a {
-	border-bottom: 2px solid #09b9e5;
+	border-bottom: 2px solid #004480;
 }
 .navbar-nav {
     margin-top: 13px;
@@ -360,7 +360,7 @@ span{
 /*............................sub-menu...................*/
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 	background-color:#fff;
-	color:#09b9e5;
+	color:#004480;
 }
 .dropdown-menu li {
     padding: 8px 10px;
@@ -374,7 +374,7 @@ span{
 }
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
 	background-color:#fff;
-	color:#09b9e5;
+	color:#004480;
 }
 .dropdown-menu > li a:hover::before {
 	border-bottom:none;
@@ -389,7 +389,7 @@ span{
 	
 /*..............................revolution-slider.......................*/
 .fullscreenbanner li{
-    border-bottom: 4px solid #09b9e5;
+    border-bottom: 4px solid #004480;
 }
 #mainslider ,
 #mainslider2{
@@ -402,7 +402,7 @@ span{
   
 }
 .slider-button .signup-btn a{
-	background-color:#09b9e5;
+	background-color:#004480;
 	color:#fff;
   
 }
@@ -467,7 +467,7 @@ span{
 	font-size:14px !important;
 	font-family: 'Open Sans', sans-serif;
 	color:#fff !important;
-	background-color:#09b9e5;  
+	background-color:#004480;  
 }
 .vacation-bg {
 	background:url(../images/vacation-bg-1.jpg) no-repeat;
@@ -524,7 +524,7 @@ span{
 	font-size:16px;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-	background-color:#09b9e5;
+	background-color:#004480;
 	color:#fff;
 	border:none;
 }
@@ -535,7 +535,7 @@ span{
 	padding-top:34px;
 }
 .nav-tabs .active > a {
-    border-bottom: 2px solid #09b9e5 !important;
+    border-bottom: 2px solid #004480 !important;
 }
 .nav-tabs a i {
 	font-size:18px;
@@ -596,7 +596,7 @@ span{
 	transition: all 0.3s ease 0s;
 }
 .search-btn a {
-	background-color:#09b9e5;
+	background-color:#004480;
 	color:#fff;
 	padding:16px 45px;
 	border-radius:5px;
@@ -774,7 +774,7 @@ span{
 	position:relative;
 }
 .more-detail {
-	background-color:#09b9e5;
+	background-color:#004480;
 	border-radius:0;
 	padding: 12px 40px 12px 20px;
 	border:none;
@@ -788,7 +788,7 @@ span{
     position: relative;
 }	
 .property-box.border-hover .appartment-img::after {
-    border-bottom: 4px solid #09b9e5;
+    border-bottom: 4px solid #004480;
     bottom: -3px;
     content: "";
     height: 2px;
@@ -798,7 +798,7 @@ span{
 	transition:all 0.4s ease-in 0s;
 }
 .property-box.border-hover:hover > .appartment-img::after {
-    border-bottom: 4px solid #09b9e5;
+    border-bottom: 4px solid #004480;
     bottom: -3px;
     content: "";
     height: 2px;
@@ -958,7 +958,7 @@ span{
 	color:#f65280;
 }
 .like-btn a{
-	background-color: #09b9e5;
+	background-color: #004480;
     border-radius: 50px;
     color: #fff;
     padding: 9px 12px;
@@ -974,8 +974,8 @@ span{
 }
 .home2 .more-detail:hover {
     background-color: transparent;
-    border: 2px solid #09b9e5;
-	color:#09b9e5;
+    border: 2px solid #004480;
+	color:#004480;
 }
 .resort-name {
     display: inline;
@@ -1058,7 +1058,7 @@ span{
 	transition: all 0.4s ease 0s;
 }
 .zoom-img:hover {
-	background-color:#09b9e5;
+	background-color:#004480;
 }
 	
 .zoom-img i {
@@ -1096,7 +1096,7 @@ span{
 }
 .property-detail li a {
 	float:right;
-	background-color:#09b9e5;
+	background-color:#004480;
 	margin-top: 7px;
     padding: 6px 16px;
 	transition: all 0.8s ease 0s;
@@ -1292,7 +1292,7 @@ footer {
 	margin-bottom:13px;
 }
 .widget-heading::after {
-	border-bottom:2px solid #09b9e5;
+	border-bottom:2px solid #004480;
 	width:118px;
 	display:block;
 	content:"";
@@ -1314,7 +1314,7 @@ footer {
 	color:#fff;
 }
 .service-list li a:hover {
-	color:#09b9e5;
+	color:#004480;
 }
 .widget-area.tweet li i{
 	color:#43d6d1;
@@ -1345,8 +1345,8 @@ footer .contact li {
     margin-top: 4px;
 }
 .widget-area.contact .link-style {
-	color:#09b9e5;
-	border-bottom: 1px solid #09b9e5;
+	color:#004480;
+	border-bottom: 1px solid #004480;
 }
 .footer-social-media li {
 	display:inline-block;
@@ -1390,7 +1390,7 @@ footer .contact li {
 	margin:0;
 }
 .page-title h4::after{
-	/*background-color:#09b9e5;*/
+	/*background-color:#004480;*/
 	background-color:#1274bd;
 	height:2px;
     content: " ";
@@ -1433,7 +1433,7 @@ footer .contact li {
 	font-family: 'Open Sans', sans-serif;
 }
 .breadcrumb .active a {
-    color: #09b9e5;
+    color: #004480;
 }
 .agent-img img {
 	margin-bottom:30px;
@@ -1519,7 +1519,7 @@ footer .contact li {
 	margin-left:10px;
 }
 .estate {
-	color:#09b9e5;
+	color:#004480;
 	margin-left:10px;
 }
 .financial {
@@ -1578,8 +1578,8 @@ footer .contact li {
   	border-radius: 50%; 
 }
 .full-profile-btn .see-more{
-	color:#09b9e5;
-	border-bottom:1px solid #09b9e5;
+	color:#004480;
+	border-bottom:1px solid #004480;
 	font-family: 'Open Sans', sans-serif;
 	 transition: all 0.4s ease 0s;
 }
@@ -1610,11 +1610,11 @@ footer .contact li {
 	 transition: all 0.4s ease-in-out 0s;
 }
 .pagination li a:hover {
-	background-color:#09b9e5;
+	background-color:#004480;
 	color:#fff;
 }
 .pagination .active a {
-	background-color:#09b9e5;
+	background-color:#004480;
 	color:#fff;
 }
 	
@@ -1646,18 +1646,18 @@ footer .contact li {
 	margin-left:20px;
 }
 .filter-bar .filter.active > a {
-	background-color:#09b9e5;
+	background-color:#004480;
 	color:#fff;
 }
 .filter-bar li:hover {
-	background-color:#09b9e5;
+	background-color:#004480;
 	color:#fff;
 }
 .filter-btn {
 	margin-top:11px;
 }
 .filter-btn a {
-	background-color:#09b9e5;
+	background-color:#004480;
 	padding:10px 15px;
 	color:#fff;
 	border:2px solid transparent;
@@ -1666,8 +1666,8 @@ footer .contact li {
 }
 .filter-property:hover {
     background-color: transparent;
-    border: 2px solid #09b9e5;
-	color:#09b9e5;
+    border: 2px solid #004480;
+	color:#004480;
 }
 .filter-form .select-box:before {
     right:15px;
@@ -1685,7 +1685,7 @@ footer .contact li {
 	 padding: 30px 18px;
 }
 .filter-list .property-box .appartment-img::after {
-	border-bottom: 4px solid #09b9e5;
+	border-bottom: 4px solid #004480;
     bottom: -3px;
     content: "";
     height: 2px;
@@ -1711,7 +1711,7 @@ footer .contact li {
 	right:-9%;
 }
 .property-box .detail-btn .sale {
-	background-color:#09b9e5;
+	background-color:#004480;
 	padding:10px 20px;
 	transition:all 0.8s ease 0s;
 }
@@ -1766,13 +1766,13 @@ footer .contact li {
 }
 /*..............................property-right-side-bar...................*/
 .rightbar-heading h4 {
-	color:#09b9e5;
+	color:#004480;
 }
 .rightbar-heading h4 {
 	margin-top:0px;
 }
 .rightbar-heading h4::after {
-    background-color: #09b9e5;
+    background-color: #004480;
     content: " ";
     display: block;
     height: 2px;
@@ -1956,14 +1956,14 @@ input[type="checkbox"] {
 	width:100%;
 }
 .property-heading h4 {
-	color:#09b9e5;
+	color:#004480;
 	margin-top:0;
 	position:relative;
 	border-bottom:1px solid #d5d5d5;
 	padding-bottom:18px;
 }
 .property-heading h4 > span::after {
-    background-color: #09b9e5;
+    background-color: #004480;
     content: " ";
     display: block;
     height: 6px;
@@ -1981,7 +1981,7 @@ input[type="checkbox"] {
     margin-top: 35px;
 }
 .booking-btn {
-    background-color: #09b9e5;
+    background-color: #004480;
     float: right;
    padding: 12px 26px 12px 18px;
 	margin-top:13%;
@@ -2071,7 +2071,7 @@ input[type="checkbox"] {
 	transition:all 0.4s ease-in 0s;
 }
 .reply-btn a::before {
-    background: #09b9e5;
+    background: #004480;
     bottom: 0;
     content: "";
     left: 0;
@@ -2118,7 +2118,7 @@ input[type="checkbox"] {
     margin-left: 6%;
 }
 .send-msg{
-    background-color: #09b9e5;
+    background-color: #004480;
     float: right;
     padding: 12px 18px;
 	margin-top:10px;
@@ -2206,7 +2206,7 @@ input[type="checkbox"] {
 	font-family: 'Montserrat', sans-serif;
 }
 .best-place {
-	color:#09b9e5;
+	color:#004480;
 }
 .book-holiday {
 	color:#43d6d1;
@@ -2286,7 +2286,7 @@ input[type="checkbox"] {
 	color:#079bc0;	
 }
 .blog-text .read-btn .read-more {
-	background-color:#09b9e5;
+	background-color:#004480;
 	padding: 10px 36px;
     position: relative;
 	color:#fff;	
@@ -2373,8 +2373,8 @@ input[type="checkbox"] {
 }
 /*...............................blog-single-post....................*/
 .blog-singlepost .blog-section p a {
-	color:#09b9e5;
-	border-bottom:1px solid #09b9e5;
+	color:#004480;
+	border-bottom:1px solid #004480;
 }
 .blog-singlepost .blog-section p {
 	margin:0;
@@ -2423,7 +2423,7 @@ input[type="checkbox"] {
 	float:right;
 }
 .author-detail .contact-me {
-	background-color:#09b9e5;
+	background-color:#004480;
 	transform: translateZ(0px);
     transition: all 0.4s ease 0s;
 }
@@ -2580,10 +2580,10 @@ contact-info-rightbar {
     border-bottom: 1px solid;
 }
 .contact-address .globe i{
-	color:#09b9e5;
+	color:#004480;
 }
 .contact-address .globe a {
-	color:#09b9e5;
+	color:#004480;
 }
 .contact-address .phone i{
 	color:#43d6d1;
@@ -2700,7 +2700,7 @@ contact-info-rightbar {
 }
 	
 .service-detail p a {
-	color:#09b9e5;
+	color:#004480;
 }
 .vacation-bg-2 {
 	/*background:url(../images/vacation-bg-2.jpg) no-repeat;*/
@@ -2730,7 +2730,7 @@ contact-info-rightbar {
 	box-shadow:none;
 }
 .panel-title a span {
-	color:#09b9e5;
+	color:#004480;
 	margin-right:15px;
 	font-size:16px;
 }
@@ -2791,7 +2791,7 @@ contact-info-rightbar {
 	transform: skew(-10deg);
 }
 .plan-title h4 {
-    background-color: #09b9e5;
+    background-color: #004480;
 	letter-spacing: 3px;
 	color:#fff;
 	padding:36px 34px;
@@ -2817,7 +2817,7 @@ contact-info-rightbar {
 }
 .order-btn a {
 	color:#fff;
-	background-color:#09b9e5;
+	background-color:#004480;
 	padding: 12px 40px 12px 22px;
 }
 .order-btn i {
@@ -2873,7 +2873,7 @@ contact-info-rightbar {
 	padding-right:16px;
 }
 .service-info.vac-booking a{
-	background-color:#09b9e5;
+	background-color:#004480;
 }
 .service-info.financial-guide a{
 	background-color:#43d6d1;
@@ -2887,7 +2887,7 @@ contact-info-rightbar {
 	padding-top:15px;
 }
 .clients-testimonial .rating span {
-	color:#09b9e5;
+	color:#004480;
 }
 .clients-testimonial .rating {
 		margin-top:6%;
@@ -2908,7 +2908,7 @@ contact-info-rightbar {
 	margin-right:20px;
 }
 .facility-box .service-text span {
-	color:#09b9e5;
+	color:#004480;
 }
 .facility-box .service-text p {
 	margin-top:12px;
@@ -2925,7 +2925,7 @@ contact-info-rightbar {
 	transition: all 0.3s ease-in-out 0s;
 }
 .list-item li a:hover {
-	color:#09b9e5;
+	color:#004480;
 }
 .arrow-icons {
 	float:left;
@@ -2940,7 +2940,7 @@ contact-info-rightbar {
 	transition: all 0.3s ease-in-out 0s;
 }
 .arrow-icons li a:hover {
-	color:#09b9e5;
+	color:#004480;
 }
 .drop-cap-text p {
 	line-height:25px;
@@ -2975,7 +2975,7 @@ contact-info-rightbar {
 	background-color:#9faab6;
 }
 .buttons .blue {
-	background-color:#09b9e5;
+	background-color:#004480;
 }
 .buttons .dark-blue {
 	background-color:#1078f9;

@@ -49,7 +49,7 @@ RE/MAX GALLERY DETAIL
     </div>
 </section>
 <section>
-    <div class="container-fluid">
+    <div>
         <div id="mygallery">
         @foreach ($detail['linked']['wbgaFileId'] as $value)
          <a href="https://www.remax.co.id/prodigy/papi/{{ $value['filePreview'] }}?size=600,300">

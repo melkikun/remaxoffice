@@ -120,7 +120,7 @@ class PropertyController extends Controller
                     $facility = "";
                 }
                 $filterPage = "&pageNumber=$currentPage";
-                $filterpageSize  = "&pageSize=2";
+                $filterpageSize  = "&pageSize=12";
                 $filterTotal = $filterId.$filterBed.$filterBath.$filterMin.$filterMax.$filterType.$filterSale.$filterKeyword.$filterLand.$filterBuilding.$filterLocation.$facility;
                 
                 $filterHalaman = $filterTotal.$filterPage.$filterpageSize;

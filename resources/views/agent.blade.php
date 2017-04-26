@@ -6,6 +6,39 @@
 	.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front{
 		border: none;
 	}
+	.alphabet {
+    list-style-type: none;
+    margin:20px auto 0;
+    padding:0;
+    cursor: pointer;
+    /*width:80%;*/
+    text-align:center;
+}
+
+.alphabet li {
+    float:left;
+    margin:0;
+    padding:0;
+    border-right:1px solid darkgrey;
+    font-size: 13px;
+    -moz-box-sizing:border-box;
+    color:black;
+    display:inline-block;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    width:3.7%;
+}
+
+.alphabet li:last-child {
+    border-right: none;
+}
+
+.alphabet li:hover {
+    color:green;
+    background-color: lightgrey;
+}
+
 </style>
 @stop
 
@@ -66,22 +99,29 @@ RE/MAX AGENT LIST
 		<div class="container" id="agent-list-page">
 			<div class="filter-type mrgb6x clearfix">
 				<div class="row">
-					<ul class="filter-values col-md-12 col-sm-3">
-						<li>
-							<div class="form-section col-md-12 col-sm-8">
-								<input class="form-control" name="nama" id="tags" placeholder="NAMA AGENT">
-							</div>
-						</li>
-					</ul>
+					<div class="input-group">
+						<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+						<span class="input-group-addon btn-danger" style="background-color: blue; border:none; cursor: pointer;">SEARCH!!</span>
+					</div>
+				</div>
+				<div class="row">
+					<ul class="alphabet">
+					<li><a href="{{ url('agents') }}/All">All</a></li>
+					@foreach (range('A', 'Z') as $char)
+						<li><a href="{{ url('agents') }}/{{$char}}">{{$char}}</a></li>
+					@endforeach
+                    </ul>
 				</div>
 			</div>
 			<div class="agents-list">
+			{{-- {{var_dump(json_encode($agent['data']))}} --}}
+			@if (count($agent['data']) > 0)
 				@foreach ($agent['data'] as $key => $value)
 				<div class="col-md-3 col-sm-4 mrgb10x animated out" data-delay="0" data-animation="fadeInUp">
 					<div class="agent-profile">
-						<div class="agent-img"><img src="images/agent-1.jpg" class="img-responsive" alt="#" />
+						<div class="agent-img"><img src="{{ asset('/') }}images/agent-1.jpg" class="img-responsive" alt="#" />
 							<div class="img-hover">
-								<a href="images/agent-1.jpg" class="plus-link"></a></div>
+								<a href="{{ asset('/') }}images/agent-1.jpg" class="plus-link"></a></div>
 							</div>
 							<div class="agent-detail">
 								<div class="agent-name">
@@ -109,6 +149,12 @@ RE/MAX AGENT LIST
 					</div>
 					@endforeach
 				</div>
+			@else
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+					DATA NOT FOUND
+				</div>
+			@endif
+				
 			</div>
 		{{-- <div class="agents-list">
 			<div class="numbering mrgb3x">
@@ -122,6 +168,6 @@ RE/MAX AGENT LIST
 			</div>
 		</div> --}}
 	</section>
-	</div>
+</div>
 
-		@stop
+@stop

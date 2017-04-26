@@ -23,12 +23,14 @@ class AgentController extends Controller {
         $idAgent = $this->findIdAgent($id, $param);
         if ($id != "" && $idAgent != "") {
             try {
-                $agentDetail = $this->client->get("membershipfranchise", ["query" => ['filter[msfcFrofId]' => "$id", 'filter[mmbsId]' => "'%$param%'"]]);
+                $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
+                $agentDetail = $this->client->get("membership", ["query" => ['filter[msfcFrofId]' => "$id", 'filter[mmbsId]' => "'%$param%'"]]);
                 $propertyApi = $this->client->get("listing", ["query"=>['filter[frofId]'=>"$id", 'filter[mmbsId]'=>$idAgent]]);
-                if ($agentDetail->getStatusCode() == 200 /* && $propertyApi->getStatusCode() == 200 */) {
+                if ($agentDetail->getStatusCode() == 200  && $propertyApi->getStatusCode() == 200 && $officeApi->getStatusCode() == 200) {
                     $detail = json_decode($agentDetail->getBody()->getContents(), true);
                     $property = json_decode($propertyApi ->getBody()->getContents(), true);
-                    return view("agent_detail", compact('id', 'detail', 'property'));
+                    $office = json_decode($officeApi ->getBody()->getContents(), true);
+                    return view("agent_detail", compact('id', 'office', 'property'));
                 } else {
                     echo "Not Found";
                 }
@@ -70,6 +72,31 @@ class AgentController extends Controller {
             echo "xxx";
         }
         return $idAgent;
+    }
+
+    function alphabethAgent($account, $param){
+       $id = $this->api->getOfficeInfo($account);
+       if($param == "All"){
+        $param = "%";
+       }
+        if ($id != "") {
+            try {
+                $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
+                $agentApi = $this->client->get("membership", ["query" => ['filter[msfcFrofId]' => "$id", 'filter[mmbsFirstName]' => "'$param%'"]]);
+                if ($officeApi->getStatusCode() == 200 && $agentApi->getStatusCode() == 200) {
+                    $office = json_decode($officeApi->getBody()->getContents(), true);
+                    $agent = json_decode($agentApi->getBody()->getContents(), true);
+                    return view("agent", compact('office', 'agent'));
+                } else {
+                    echo "Not Found";
+                }
+            } catch (RequestException $e) {
+                echo Psr7\str($e->getRequest());
+                if ($e->hasResponse()) {
+                    echo Psr7\str($e->getResponse());
+                }
+            }
+        }
     }
 
 }
