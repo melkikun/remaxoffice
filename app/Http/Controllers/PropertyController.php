@@ -26,7 +26,7 @@ class PropertyController extends Controller
         if ($id != "") {
             try {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
-                $propertyApi = $this->client->get("listing/$param");
+                $propertyApi = $this->client->get("listing", ["query" => ['filter[listUrl]' => "'$param'"]]);
                 if ($officeApi->getStatusCode() == 200 && $propertyApi->getStatusCode() == 200) {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $property = json_decode($propertyApi->getBody()->getContents(), true);

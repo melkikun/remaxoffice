@@ -1,225 +1,408 @@
 @extends('template')
 @section('css')
 <style type="text/css" media="screen">
+	div.gallery {
+		margin: 5px;
+		border: 1px solid #ccc;
+		float: left;
+		width: 200px;
+		height: 200px;
+	}
+
+	div.gallery:hover {
+		border: 1px solid #777;
+	}
+
+	div.gallery img {
+		width: 100%;
+		height: auto;
+	}
+
+	div.desc {
+		padding: 0px;
+		text-align: center;
+	}
+	.btn-facebook {
+		background: #3b5998;
+		border-radius: 3px;
+		color: #fff;
+		/*padding: 8px 16px;*/
+	}
+	.btn-facebook:link, .btn-facebook:visited {
+		color: #fff;
+	}
+	.btn-facebook:active, .btn-facebook:hover {
+		background: #30477a;
+		color: #fff;
+	}
+
 
 </style>
 @stop
 
 @section('javascript')
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7bSZjer84qHPkPDwMW_CFUHOjgluXak&callback=initMap"></script>
+<script>
+            /*
+             * declare map as a global variable
+             */
 
-@stop
+             function initMap(){
+             	var map;
 
-@section('js')
-<script type="text/javascript">
-	function syncPosition(el){
-		var current = this.currentItem;
-		$(".sync2")
-		.find(".owl-item")
-		.removeClass("synced")
-		.eq(current)
-		.addClass("synced")
-		if($(".sync2").data("owlCarousel") !== undefined){
-			center(current)
-		}
-	}
-	try {
-		//property carousel
-		var sync1 = $(".sync1");
-		var sync2 = $(".sync2");
+            /*
+             * use google maps api built-in mechanism to attach dom events
+             */
+             google.maps.event.addDomListener(window, "load", function () {
 
-		sync1.owlCarousel({
-			items: 1,
-			itemsCustom: [[1300,5], [768,3], [600,2],[480,2],[320,1]],
-			singleItem : true,
-			slideSpeed : 1000,
-			navigation: true,
-			pagination:false,
-			afterAction : syncPosition,
-			responsiveRefreshRate : 200,
-			scrollPerPage:1
-		});
+                /*
+                 * create map
+                 */
+                 var map = new google.maps.Map(document.getElementById("map_div"), {
+                 	center: new google.maps.LatLng(-6.225673, 106.808481),
+                 	zoom: 14,
+                 	mapTypeId: google.maps.MapTypeId.ROADMAP
+                 });
 
-		sync2.owlCarousel({
-			items : 1,
-			itemsCustom: [[1300,5], [768,2], [600,2],[480,2],[320,1]],
-			pagination:false,
-			responsiveRefreshRate : 100,
-			afterInit : function(el){
-				el.find(".owl-item").eq(0).addClass("synced");
-			},
-			scrollPerPage: 1
-		});
+                 map.set('styles', [
+                 {
+                 	"elementType": "geometry",
+                 	"stylers": [
+                 	{
+                 		"color": "#f5f5f5"
+                 	}
+                 	]
+                 },
+                 {
+                 	"elementType": "labels.icon",
+                 	"stylers": [
+                 	{
+                 		"visibility": "off"
+                 	}
+                 	]
+                 },
+                 {
+                 	"elementType": "labels.text.fill",
+                 	"stylers": [
+                 	{
+                 		"color": "#616161"
+                 	}
+                 	]
+                 },
+                 {
+                 	"elementType": "labels.text.stroke",
+                 	"stylers": [
+                 	{
+                 		"color": "#f5f5f5"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "administrative.land_parcel",
+                 	"elementType": "labels.text.fill",
+                 	"stylers": [
+                 	{
+                 		"color": "#bdbdbd"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "poi",
+                 	"elementType": "geometry",
+                 	"stylers": [
+                 	{
+                 		"color": "#eeeeee"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "poi",
+                 	"elementType": "labels.text.fill",
+                 	"stylers": [
+                 	{
+                 		"color": "#757575"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "poi.park",
+                 	"elementType": "geometry",
+                 	"stylers": [
+                 	{
+                 		"color": "#e5e5e5"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "poi.park",
+                 	"elementType": "labels.text.fill",
+                 	"stylers": [
+                 	{
+                 		"color": "#9e9e9e"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "road",
+                 	"elementType": "geometry",
+                 	"stylers": [
+                 	{
+                 		"color": "#ffffff"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "road.arterial",
+                 	"elementType": "labels.text.fill",
+                 	"stylers": [
+                 	{
+                 		"color": "#757575"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "road.highway",
+                 	"elementType": "geometry",
+                 	"stylers": [
+                 	{
+                 		"color": "#dadada"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "road.highway",
+                 	"elementType": "labels.text.fill",
+                 	"stylers": [
+                 	{
+                 		"color": "#616161"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "road.local",
+                 	"elementType": "labels.text.fill",
+                 	"stylers": [
+                 	{
+                 		"color": "#9e9e9e"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "transit.line",
+                 	"elementType": "geometry",
+                 	"stylers": [
+                 	{
+                 		"color": "#e5e5e5"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "transit.station",
+                 	"elementType": "geometry",
+                 	"stylers": [
+                 	{
+                 		"color": "#eeeeee"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "water",
+                 	"elementType": "geometry",
+                 	"stylers": [
+                 	{
+                 		"color": "#c9c9c9"
+                 	}
+                 	]
+                 },
+                 {
+                 	"featureType": "water",
+                 	"elementType": "labels.text.fill",
+                 	"stylers": [
+                 	{
+                 		"color": "#9e9e9e"
+                 	}
+                 	]
+                 }
+                 ]);
 
+                /*
+                 * create infowindow (which will be used by markers)
+                 */
+                 var infoWindow = new google.maps.InfoWindow();
 
+                /*
+                 * marker creater function (acts as a closure for html parameter)
+                 */
+                 function createMarker(options, html) {
+                 	var marker = new google.maps.Marker(options);
+                 	if (html) {
+                 		google.maps.event.addListener(marker, "click", function () {
+                 			infoWindow.setContent(html);
+                 			infoWindow.open(options.map, this);
+                 		});
+                 	}
+                 	return marker;
+                 }
 
-		$(".sync2").on("click", ".owl-item", function(e){
-			e.preventDefault();
-			var number = $(this).data("owlItem");
-			sync1.trigger("owl.goTo",number);
-		});
+                /*
+                 * add markers to map
+                 */
 
-		function center(number){
-			var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
-			var num = number;
-			var found = false;
-			for(var i in sync2visible){
-				if(num === sync2visible[i]){
-					var found = true;
-				}
-			}
+                 var image = {
+                    url: 'http://www.remaxbeachtown.com//images/balloon.png', // image is 512 x 512
+                    scaledSize: new google.maps.Size(50, 50),
+                };
+                var title = "{{$office['data'][0]['frofOfficeName']}} Remax";
+                //phone
+                @if($office['data'][0]['frofPhone1'] != null)
+                var phone ="<i class='fa fa-phone'></i>"+"&nbsp;&nbsp;&nbsp;"+"{{$office['data'][0]['frofPhone1']}}";
+                @else
+                var phone ="<i class='fa fa-phone'></i>"+"&nbsp;&nbsp;&nbsp;"+ "-";
+                @endif
+                //email
+                @if($office['data'][0]['frofEmail'] != null)
+                var email ="<i class='fa fa-envelope'></i>"+"&nbsp;&nbsp;&nbsp;"+"{{$office['data'][0]['frofEmail']}}";
+                @else
+                var email ="<i class='fa fa-envelope'></i>"+"&nbsp;&nbsp;&nbsp;"+ "-";
+                @endif
+                //fax
+                @if($office['data'][0]['frofFax'] != null)
+                var fax ="<i class='fa fa-fax'></i>"+"&nbsp;&nbsp;&nbsp;"+"{{$office['data'][0]['frofFax']}}";
+                @else
+                var fax ="<i class='fa fa-fax'></i>"+"&nbsp;&nbsp;&nbsp;"+ "-";
+                @endif
 
-			if(found===false){
-				if(num>sync2visible[sync2visible.length-1]){
-					sync2.trigger("owl.goTo", num - sync2visible.length+2)
-				}else{
-					if(num - 1 === -1){
-						num = 0;
-					}
-					sync2.trigger("owl.goTo", num);
-				}
-			} else if(num === sync2visible[sync2visible.length-1]){
-				sync2.trigger("owl.goTo", sync2visible[1])
-			} else if(num === sync2visible[0]){
-				sync2.trigger("owl.goTo", num-1)
-			}
-			
-		}
-	} catch(e) {
-		console.log( 'owl carousel custom script error '+e.message );
-	}	
-	function initMap() {
-		var obj= JSON.parse('{!!$property['data']['listCoordinat']!!}');
-		var latitude = obj.coordinate.latitude;
-		var longitude =  obj.coordinate.longitude;
-		var uluru = {lat: latitude, lng: longitude};
-		var map = new google.maps.Map(document.getElementById('map-street-2'), {
-			zoom: 14,
-			center: uluru
-		});
+                var content1 = "<div><h1>"+title+"</h1></div>";
+                var phone1 = "<div>"+phone+"</div>";
+                var fax1 = "<div>"+fax+"</div>";
+                var email1 = "<div>"+email+"</div>";
 
-		var contentString = 'RE/MAX INDONESIA';
+                var marker0 = createMarker({
+                	position: new google.maps.LatLng(-6.225673, 106.808481),
+                	map: map,
+                	icon: image
+                }, content1 + email1 + "<br>" + phone1+ "<br>" + fax1);
 
-		var infowindow = new google.maps.InfoWindow({
-			content: contentString
-		});
-
-		var marker = new google.maps.Marker({
-			position: uluru,
-			map: map,
-			title: 'Uluru (Ayers Rock)'
-		});
-		marker.addListener('click', function() {
-			infowindow.open(map, marker);
-		});
-	}
-</script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7bSZjer84qHPkPDwMW_CFUHOjgluXak&callback=initMap">
-</script>  	
+            });
+}
 </script>
 @stop
 
 @section('title')
 RE/MAX PROPERTY DETAIL
 @stop
+@if (count($property['data'])> 0)
 @section('content')
-<section class="border-top">
-	<div class="container">
-		<div class="page-title mrgb6x mrgt6x clearfix">
-			<h4 class="page-name">property single</h4>
-			<div class="tag-bar"> <a href="#"><span>choose your next vacation</span></a> </div>
-			<ul class="breadcrumb">
-				<li><a href="#">Pages</a></li>
-				<li class="active"><a href="#">Property Single</a></li>
-			</ul>
+<section id="content">
+	
+	@foreach ($property['data'] as $element)
+	<section class="border-top">
+		<div class="container-fluid">
+			<div class="page-title mrgb6x mrgt6x clearfix">
+				<h4 class="page-name">property single</h4>
+				<div class="tag-bar"> <a href="#"><span>choose your next vacation</span></a> </div>
+				<ul class="breadcrumb">
+					<li><a href="#">Pages</a></li>
+					<li class="active"><a href="#">Property Single</a></li>
+				</ul>
+			</div>
 		</div>
-	</div>
-</section>
-<section>
-	<div class="container">
-		<div class="property-single">
-			<div class="sync1 property-carousel owl-carousel">
-				@foreach ($property['linked']['listFile'] as $element)
-				<div class="item">
-					<div class="property-single-img"> <img src="https://www.remax.co.id/prodigy/papi/{{$element['filePreview']}}" alt="{{$element['id']}}" style="height: 447px; width: 1172px;" />
-						<div class="image-detail">
-							<h5 class="place-name">Bahli Beach Resort</h5>
-							<div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-							<div class="place-price"><span>$1350<sup>/week</sup></span></div>
+	</section>
+	<section>
+		<div class="container-fluid">
+			<div class="property-description mrgt5x animated in" data-delay="0" data-animation="fadeInUp">
+				<div class="property-heading">
+					<h4><span>PROPERTY DESCRIPTION</span></h4>
+				</div>
+				<ul class="description-content col-md-3">
+					<li><span class="description-title">Lokasi </span><span class="title-detail">{{$element['listStreetName']}}</span></li>
+					<li><span class="description-title">Kode Pos</span><span class="title-detail">{{$element['listPostalCode']}}</span></li>
+					<li><span class="description-title">Kota</span><span class="title-detail">{{$element['links']['listCityId']}}</span></li>
+					<li><span class="description-title">Provinsi </span><span class="title-detail">{{$element['links']['listProvinceId']}}</span></li>
+					<li><span class="description-title">Negara </span><span class="title-detail">{{$element['links']['listCountryId']}}m<sup>2</sup></span></li>
+					<li><span class="description-title">Luas Tanah </span><span class="title-detail">{{$element['listLandSize']}}m<sup>2</sup></span></li>
+					<li><span class="description-title">Luas Bangunan</span><span class="title-detail">{{$element['listBuildingSize']}}m<sup>2</sup></span></li>
+					<li><span class="description-title">Kamar Tidur </span><span class="title-detail">{{$element['listBedroom']}}+{{$element['listBedroom']}}</span></li>
+					<li><span class="description-title">Kamar Mandi </span><span class="title-detail">{{$element['listBathroom']}}</span></li>
+					<li><span class="description-title">Harga </span><span class="title-detail">
+						@if ($element['listListingPrice'] >= 100000000000)
+						Rp. {{$element['listListingPrice']/1000000000000}} T
+						@elseif($element['listListingPrice'] >= 1000000000)
+						Rp. {{$element['listListingPrice']/1000000000}} M
+						@else
+						Rp. {{$element['listListingPrice']/1000000}} JT
+						@endif
+					</span></li>
+				</ul>
+				<div class="description-text col-md-5">
+					<h5>Descriptipon</h5>
+					<p>{{$element['listDescription']}}</p>
+				</div>
+				<div class="description-text col-md-4">
+					<div class="gallery">
+						<a target="_blank" href="fjords.jpg">
+							<img src="http://remax.co.id:88/images/default.jpg" alt="Fjords" width="300" height="200">
+						</a>
+						@foreach ($property['linked']['listMmbsId'] as $element2)
+						@if ($element2['mmbsId'] == $element['links']['listMmbsId'])
+						<div class="desc">
+							<b>{{$element2['mmbsFirstName']}}</b>
+							<span class="team-color" style="color: rgb(66, 139, 202); font-weight: 600;">
+								<span class="remax-red">RE<span class="remax-blue">/</span>MAX</span> Premier
+							</span>
+						</div>
+						<div class="desc"  style="padding-top: 10px;">
+							<button class="btn btn-primary col-sm-12">Show Contact</button>
+						</div>
+						<div class="desc" style="padding-top: 10px; margin-top: 25px;">
+							<a href="https://www.facebook.com/sharer/sharer.php?u=" title="Share on Facebook" target="_blank" class="btn btn-facebook" style="width: 49%; display: inline-block;"><i class="fa fa-facebook"></i> Share</a>
+							<a href="https://twitter.com/share" class="btn btn-primary btn-twitter" style="width: 49%; display: inline-block;">
+								<i class="fa fa-twitter"></i> Share</i> </a>
+							</div>
+							@else
+							-
+							@endif
+							@endforeach
+
 						</div>
 					</div>
 				</div>
-				@endforeach
 			</div>
-			<div class="sync2 property-carousel owl-carousel">
-				@foreach ($property['linked']['listFile'] as $element)
-				<div class="item"> <img src="https://www.remax.co.id/prodigy/papi/{{$element['filePreview']}}" alt="#" style="height: 140px; width: 192px;" /> </div>
-				@endforeach
+		</section>
+		<section>
+			<div class="container-fluid">
+				<div class="property-features mrgt6x animated in" data-delay="0" data-animation="fadeInUp">
+					<div class="property-heading">
+						<h4><span>PROPERTY FEATURES</span></h4>
+					</div>
+					<ul class="features-name page-2 col-md-10">
+						@if (count($property['linked']['listFacility']) > 0)
+						@foreach ($property['linked']['listFacility'] as $element2)
+						<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>balcony</span></li>
+						@endforeach
+						@else
+						<li class="col-md-12 no-padding"><i class="fa fa-check"></i><span>No Facility</span></li>
+						@endif
+
+					</ul>
+				</div>
 			</div>
-		</div>
-	</div>
-	
-</section>
-<section>
-	<div class="container">
-		<div class="property-description mrgt5x animated out" data-delay="0" data-animation="fadeInUp">
-			<div class="property-heading">
-				<h4><span>PROPERTY DESCRIPTION</span></h4>
+		</section>
+		<section>
+			<div class="container-fluid">
+				<div class="property-features mrgt6x animated in" data-delay="0" data-animation="fadeInUp">
+					<div class="property-heading">
+						<h4><span>PROPERTY MAP</span></h4>
+					</div>
+					<div class="map">
+						<div id="map_div" style="height: 400px;"></div>
+					</div>
+				</div>
 			</div>
-			<ul class="description-content col-md-3">
-				<li><span class="description-title">Location </span><span class="title-detail">{{($property['data']['id'])}}</span></li>
-				<li><span class="description-title">Price</span><span class="title-detail">{{(number_format($property['data']['listListingPrice'],2))}}</span></li>
-				{{-- <li><span class="description-title">Type </span><span class="title-detail">{{$property['linked']['listCityId']['mctyDescription']}}</span></li> --}}
-				{{-- <li><span class="description-title">Type </span><span class="title-detail">{{$property['linked']['listProvinceId']['mctyDescription']}}</span></li> --}}
-				{{-- <li><span class="description-title">Type </span><span class="title-detail">{{$property['linked']['listCountryId']['mprvDescription']}}</span></li> --}}
-				<li><span class="description-title">Type </span><span class="title-detail">{{$property['linked']['listListingCategoryId']['lsclName']}}</span></li>
-				<li><span class="description-title">Type </span><span class="title-detail">{{$property['linked']['listPropertyTypeId']['prtlName']}}</span></li>
-				<li><span class="description-title">Type </span><span class="title-detail">{{$property['linked']['listMmbsId']['mmbsFirstName']}}</span></li>
-			</ul>
-			<div class="description-text col-md-12">
-				<h5>Descriptipon</h5>
-				<p>{{$property['data']['listDescription']}}ddasdsa</p>
-				<div class="booking-btn"> <a href="#" class="book-it"><i class="fa fa-angle-right"></i>BOOK IT NOW</a> </div>
-			</div>
-		</div>
-	</div>
-</section>
-<section>
-	<div class="container">
-		<div class="property-features mrgt6x animated out" data-delay="0" data-animation="fadeInUp">
-			<div class="property-heading">
-				<h4><span>PROPERTY FEATURES</span></h4>
-			</div>
-			<ul class="features-name page-2 col-md-10">
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>swimming pool</span></li>
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>garden</span></li>
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>playhouse</span></li>
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>beach house</span></li>
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>garage</span></li>
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>sauna in house</span></li>
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>beach side / view</span></li>
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>barbecue grill</span></li>
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>2 boats</span></li>
-				<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>balcony</span></li>
-			</ul>
-		</div>
-	</div>
-</section>
-<section>
-	<div class="container">
-		<div class="find-location mrgt6x animated out" data-delay="0" data-animation="fadeInUp">
-			<div class="property-heading mrgb4x">
-				<h4><span>FIND THE LOCATION</span></h4>
-			</div>
-			<div class="map">
-				<div id="map-street-2"></div>
-			</div>
-		</div>
-	</div>
-</section>
-<div class="clearfix"></div>
-<br>
-<br>
-<br>
-<br>
-@stop
+		</section>
+		@endforeach
+	</section>
+	@stop
+	@else
+	false expr
+	@endif

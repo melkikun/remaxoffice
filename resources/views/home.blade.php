@@ -72,7 +72,7 @@ RE/MAX HOME
 <section>
   <div class="container" id="search-group">
     <div id="search">
-      <div class="input-group">
+     {{--  <div class="input-group">
        @if ($office['data'][0]['links']['frofFileId'] != null)
        @foreach ($office['linked']['frofFileId'] as $element)
        @if ($element['fileId'] == $office['data'][0]['links']['frofFileId'])
@@ -84,8 +84,7 @@ RE/MAX HOME
          <img src="{{ asset('/') }}images/logo.png" alt="" style="width: 100px;">
        </li>
        @endif
-
-     </div>
+     </div> --}}
      <div class="input-group" style="width: 100%">
        <div class="col-sm-6" style="padding-left: 0px;">
          <a type="button" class="btn btn-danger" id="sell-btn" style="border-radius: 0px" href="/#sell" onclick="TypeJual('1');">SELL</a>
