@@ -1,5 +1,8 @@
 @extends('template')
 @section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.theme.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.transitions.css">
 <style type="text/css" media="screen">
 	div.gallery {
 		margin: 5px;
@@ -35,12 +38,28 @@
 		background: #30477a;
 		color: #fff;
 	}
-
-
+	#owl-demo .item{
+		margin: 3px;
+	}
+	#owl-demo .item img{
+		display: inline-block;
+		width: auto;
+		height: 350px;
+	}
+	.item{
+		text-align: center;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		/*filter: blur(20px);*/
+		height: 100%;
+		width: 100%;
+	}
 </style>
 @stop
 
 @section('javascript')
+<script type="text/javascript" src="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.carousel.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7bSZjer84qHPkPDwMW_CFUHOjgluXak&callback=initMap"></script>
 <script>
             /*
@@ -285,6 +304,24 @@
 
             });
 }
+jQuery(document).ready(function($) {
+	$("#owl-demo").owlCarousel({
+
+		nav: true,
+		navText: [
+		"<i class='icon-chevron-left icon-white'><</i>",
+		"<i class='icon-chevron-right icon-white'>></i>"
+		],
+		slideSpeed: 300,
+		paginationSpeed: 400,
+		singleItem: true,
+		pagination: false,
+		items: 1,
+		loop: true,
+		rewindSpeed: 500
+
+	});
+});
 </script>
 @stop
 
@@ -308,101 +345,115 @@ RE/MAX PROPERTY DETAIL
 			</div>
 		</div>
 	</section>
-	<section>
+	<section id="xx">
 		<div class="container-fluid">
-			<div class="property-description mrgt5x animated in" data-delay="0" data-animation="fadeInUp">
-				<div class="property-heading">
-					<h4><span>PROPERTY DESCRIPTION</span></h4>
+			<div id="owl-demo">
+				@foreach ($element['links']['listFile'] as $imgId)
+				@foreach ($property['linked']['listFile'] as $linkImg)
+				@if ($imgId == $linkImg['fileId'])
+				<div class="item"  style="background-image: url('https://www.remax.co.id/prodigy/papi/{{$linkImg["filePreview"]}}');">
+					<img src="https://www.remax.co.id/prodigy/papi/{{$linkImg['filePreview']}}" alt="Owl Image">
 				</div>
-				<ul class="description-content col-md-3">
-					<li><span class="description-title">Lokasi </span><span class="title-detail">{{$element['listStreetName']}}</span></li>
-					<li><span class="description-title">Kode Pos</span><span class="title-detail">{{$element['listPostalCode']}}</span></li>
-					<li><span class="description-title">Kota</span><span class="title-detail">{{$element['links']['listCityId']}}</span></li>
-					<li><span class="description-title">Provinsi </span><span class="title-detail">{{$element['links']['listProvinceId']}}</span></li>
-					<li><span class="description-title">Negara </span><span class="title-detail">{{$element['links']['listCountryId']}}m<sup>2</sup></span></li>
-					<li><span class="description-title">Luas Tanah </span><span class="title-detail">{{$element['listLandSize']}}m<sup>2</sup></span></li>
-					<li><span class="description-title">Luas Bangunan</span><span class="title-detail">{{$element['listBuildingSize']}}m<sup>2</sup></span></li>
-					<li><span class="description-title">Kamar Tidur </span><span class="title-detail">{{$element['listBedroom']}}+{{$element['listBedroom']}}</span></li>
-					<li><span class="description-title">Kamar Mandi </span><span class="title-detail">{{$element['listBathroom']}}</span></li>
-					<li><span class="description-title">Harga </span><span class="title-detail">
-						@if ($element['listListingPrice'] >= 100000000000)
-						Rp. {{$element['listListingPrice']/1000000000000}} T
-						@elseif($element['listListingPrice'] >= 1000000000)
-						Rp. {{$element['listListingPrice']/1000000000}} M
-						@else
-						Rp. {{$element['listListingPrice']/1000000}} JT
-						@endif
-					</span></li>
-				</ul>
-				<div class="description-text col-md-5">
-					<h5>Descriptipon</h5>
-					<p>{{$element['listDescription']}}</p>
-				</div>
-				<div class="description-text col-md-4">
-					<div class="gallery">
-						<a target="_blank" href="fjords.jpg">
-							<img src="http://remax.co.id:88/images/default.jpg" alt="Fjords" width="300" height="200">
-						</a>
-						@foreach ($property['linked']['listMmbsId'] as $element2)
-						@if ($element2['mmbsId'] == $element['links']['listMmbsId'])
-						<div class="desc">
-							<b>{{$element2['mmbsFirstName']}}</b>
-							<span class="team-color" style="color: rgb(66, 139, 202); font-weight: 600;">
-								<span class="remax-red">RE<span class="remax-blue">/</span>MAX</span> Premier
-							</span>
-						</div>
-						<div class="desc"  style="padding-top: 10px;">
-							<button class="btn btn-primary col-sm-12">Show Contact</button>
-						</div>
-						<div class="desc" style="padding-top: 10px; margin-top: 25px;">
-							<a href="https://www.facebook.com/sharer/sharer.php?u=" title="Share on Facebook" target="_blank" class="btn btn-facebook" style="width: 49%; display: inline-block;"><i class="fa fa-facebook"></i> Share</a>
-							<a href="https://twitter.com/share" class="btn btn-primary btn-twitter" style="width: 49%; display: inline-block;">
-								<i class="fa fa-twitter"></i> Share</i> </a>
-							</div>
+				@endif
+				@endforeach
+				@endforeach
+			</div>
+		</section>
+		<section>
+			<div class="container-fluid">
+				<div class="property-description mrgt5x animated in" data-delay="0" data-animation="fadeInUp">
+					<div class="property-heading">
+						<h4><span>PROPERTY DESCRIPTION</span></h4>
+					</div>
+					<ul class="description-content col-md-3">
+						<li><span class="description-title">Lokasi </span><span class="title-detail">{{$element['listStreetName']}}</span></li>
+						<li><span class="description-title">Kode Pos</span><span class="title-detail">{{$element['listPostalCode']}}</span></li>
+						<li><span class="description-title">Kota</span><span class="title-detail">{{$element['links']['listCityId']}}</span></li>
+						<li><span class="description-title">Provinsi </span><span class="title-detail">{{$element['links']['listProvinceId']}}</span></li>
+						<li><span class="description-title">Negara </span><span class="title-detail">{{$element['links']['listCountryId']}}m<sup>2</sup></span></li>
+						<li><span class="description-title">Luas Tanah </span><span class="title-detail">{{$element['listLandSize']}}m<sup>2</sup></span></li>
+						<li><span class="description-title">Luas Bangunan</span><span class="title-detail">{{$element['listBuildingSize']}}m<sup>2</sup></span></li>
+						<li><span class="description-title">Kamar Tidur </span><span class="title-detail">{{$element['listBedroom']}}+{{$element['listBedroom']}}</span></li>
+						<li><span class="description-title">Kamar Mandi </span><span class="title-detail">{{$element['listBathroom']}}</span></li>
+						<li><span class="description-title">Harga </span><span class="title-detail">
+							@if ($element['listListingPrice'] >= 100000000000)
+							Rp. {{$element['listListingPrice']/1000000000000}} T
+							@elseif($element['listListingPrice'] >= 1000000000)
+							Rp. {{$element['listListingPrice']/1000000000}} M
 							@else
-							-
+							Rp. {{$element['listListingPrice']/1000000}} JT
 							@endif
-							@endforeach
+						</span></li>
+					</ul>
+					<div class="description-text col-md-5">
+						<h5>Descriptipon</h5>
+						<p>{{$element['listDescription']}}</p>
+					</div>
+					<div class="description-text col-md-4">
+						<div class="gallery">
+							<a target="_blank" href="fjords.jpg">
+								<img src="http://remax.co.id:88/images/default.jpg" alt="Fjords" width="300" height="200">
+							</a>
+							@foreach ($property['linked']['listMmbsId'] as $element2)
+							@if ($element2['mmbsId'] == $element['links']['listMmbsId'])
+							<div class="desc">
+								<b>{{$element2['mmbsFirstName']}}</b>
+								<span class="team-color" style="color: rgb(66, 139, 202); font-weight: 600;">
+									<span class="remax-red">RE<span class="remax-blue">/</span>MAX</span> Premier
+								</span>
+							</div>
+							<div class="desc"  style="padding-top: 10px;">
+								<button class="btn btn-primary col-sm-12">Show Contact</button>
+							</div>
+							<div class="desc" style="padding-top: 10px; margin-top: 25px;">
+								<a href="https://www.facebook.com/sharer/sharer.php?u=" title="Share on Facebook" target="_blank" class="btn btn-facebook" style="width: 49%; display: inline-block;"><i class="fa fa-facebook"></i> Share</a>
+								<a href="https://twitter.com/share" class="btn btn-primary btn-twitter" style="width: 49%; display: inline-block;">
+									<i class="fa fa-twitter"></i> Share</i> </a>
+								</div>
+								@else
+								-
+								@endif
+								@endforeach
 
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<section>
-			<div class="container-fluid">
-				<div class="property-features mrgt6x animated in" data-delay="0" data-animation="fadeInUp">
-					<div class="property-heading">
-						<h4><span>PROPERTY FEATURES</span></h4>
-					</div>
-					<ul class="features-name page-2 col-md-10">
-						@if (count($property['linked']['listFacility']) > 0)
-						@foreach ($property['linked']['listFacility'] as $element2)
-						<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>balcony</span></li>
-						@endforeach
-						@else
-						<li class="col-md-12 no-padding"><i class="fa fa-check"></i><span>No Facility</span></li>
-						@endif
+			</section>
+			<section>
+				<div class="container-fluid">
+					<div class="property-features mrgt6x animated in" data-delay="0" data-animation="fadeInUp">
+						<div class="property-heading">
+							<h4><span>PROPERTY FEATURES</span></h4>
+						</div>
+						<ul class="features-name page-2 col-md-10">
+							@if (count($property['linked']['listFacility']) > 0)
+							@foreach ($property['linked']['listFacility'] as $element2)
+							<li class="col-md-2 no-padding"><i class="fa fa-check"></i><span>balcony</span></li>
+							@endforeach
+							@else
+							<li class="col-md-12 no-padding"><i class="fa fa-check"></i><span>No Facility</span></li>
+							@endif
 
-					</ul>
-				</div>
-			</div>
-		</section>
-		<section>
-			<div class="container-fluid">
-				<div class="property-features mrgt6x animated in" data-delay="0" data-animation="fadeInUp">
-					<div class="property-heading">
-						<h4><span>PROPERTY MAP</span></h4>
-					</div>
-					<div class="map">
-						<div id="map_div" style="height: 400px;"></div>
+						</ul>
 					</div>
 				</div>
-			</div>
+			</section>
+			<section>
+				<div class="container-fluid">
+					<div class="property-features mrgt6x animated in" data-delay="0" data-animation="fadeInUp">
+						<div class="property-heading">
+							<h4><span>PROPERTY MAP</span></h4>
+						</div>
+						<div class="map">
+							<div id="map_div" style="height: 400px;"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+			@endforeach
 		</section>
-		@endforeach
-	</section>
-	@stop
-	@else
-	false expr
-	@endif
+		@stop
+		@else
+		false expr
+		@endif
