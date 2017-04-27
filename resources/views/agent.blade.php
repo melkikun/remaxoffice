@@ -7,37 +7,37 @@
 		border: none;
 	}
 	.alphabet {
-    list-style-type: none;
-    margin:20px auto 0;
-    padding:0;
-    cursor: pointer;
-    /*width:80%;*/
-    text-align:center;
-}
+		list-style-type: none;
+		margin:20px auto 0;
+		padding:0;
+		cursor: pointer;
+		/*width:80%;*/
+		text-align:center;
+	}
 
-.alphabet li {
-    float:left;
-    margin:0;
-    padding:0;
-    border-right:1px solid darkgrey;
-    font-size: 13px;
-    -moz-box-sizing:border-box;
-    color:black;
-    display:inline-block;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    box-sizing:border-box;
-    width:3.7%;
-}
+	.alphabet li {
+		float:left;
+		margin:0;
+		padding:0;
+		border-right:1px solid darkgrey;
+		font-size: 13px;
+		-moz-box-sizing:border-box;
+		color:black;
+		display:inline-block;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+		width:3.7%;
+	}
 
-.alphabet li:last-child {
-    border-right: none;
-}
+	.alphabet li:last-child {
+		border-right: none;
+	}
 
-.alphabet li:hover {
-    color:green;
-    background-color: lightgrey;
-}
+	.alphabet li:hover {
+		color:green;
+		background-color: lightgrey;
+	}
 
 </style>
 @stop
@@ -83,15 +83,18 @@ RE/MAX AGENT LIST
 
 @section('content')
 <div style='background: url("{{ asset('/') }}images/remax_agent_bg.jpg");''>
+	<section>
+		{{-- <div class="container-fluid"> --}}
+		<div class="image">
+			<img src="https://www.remax.co.id//assets/images/agent_top_banner.jpg" style="width: 100%;">
+		</div>
+		{{-- </div> --}}
+	</section>
 	<section class="border-top">
 		<div class="container">
 			<div class="page-title mrgt6x mrgb6x clearfix">
 				<h4 class="page-name">agent lists</h4>
 				<div class="tag-bar"> <a href="#"><span>see all our agents</span></a> </div>
-				<ul class="breadcrumb">
-					<li><a href="#">Pages</a></li>
-					<li class="active"><a href="#">Agent list</a></li>
-				</ul>
 			</div>
 		</div>
 	</section>
@@ -99,23 +102,18 @@ RE/MAX AGENT LIST
 		<div class="container" id="agent-list-page">
 			<div class="filter-type mrgb6x clearfix">
 				<div class="row">
+					{!! Form::open(["url"=>"agents/search", "method"=>"get"]) !!}
 					<div class="input-group">
-						<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-						<span class="input-group-addon btn-danger" style="background-color: blue; border:none; cursor: pointer;">SEARCH!!</span>
+						<input type="text" class="form-control" name="agents">
+						<span class="input-group-addon btn-danger" style="background-color: blue; border:none; cursor: pointer;">
+							Search!!
+						</span>
 					</div>
-				</div>
-				<div class="row">
-					<ul class="alphabet">
-					<li><a href="{{ url('agents') }}/All">All</a></li>
-					@foreach (range('A', 'Z') as $char)
-						<li><a href="{{ url('agents') }}/{{$char}}">{{$char}}</a></li>
-					@endforeach
-                    </ul>
+					{!! Form::close() !!}
 				</div>
 			</div>
 			<div class="agents-list">
-			{{-- {{var_dump(json_encode($agent['data']))}} --}}
-			@if (count($agent['data']) > 0)
+				@if (count($agent['data']) > 0)
 				@foreach ($agent['data'] as $key => $value)
 				<div class="col-md-3 col-sm-4 mrgb10x animated out" data-delay="0" data-animation="fadeInUp">
 					<div class="agent-profile">
@@ -149,12 +147,11 @@ RE/MAX AGENT LIST
 					</div>
 					@endforeach
 				</div>
-			@else
+				@else
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 					DATA NOT FOUND
 				</div>
-			@endif
-				
+				@endif
 			</div>
 		{{-- <div class="agents-list">
 			<div class="numbering mrgb3x">
@@ -167,6 +164,26 @@ RE/MAX AGENT LIST
 				</ul>
 			</div>
 		</div> --}}
+	</section>
+	<section>
+		<div class="wrapper-main-agent">
+			<div class="content-main-agent">
+				<div class="container" style="text-align: center;">
+					<h2 style="font-size:25px;">
+						<strong style="color:black;">Want to develop a career in the industry of real estate broker and enjoy unlimited earnings?
+						</strong>
+					</h2>
+					<h2 style="font-size:18px;">
+						RE / MAX, the global name and has won the trust of millions of families around the world, comes to realize your big dreams. Be Marketing Associate RE / MAX, by having competitive advantage.
+					</h2>
+				</div>
+
+				<div style="text-align: center; padding-bottom: 20px;">
+					<button class="btn btn-danger" type="button" data-toggle="modal" data-target="#modal-inquiry">CLICK HERE TO JOIN US</button>
+				</div>
+			</div>            
+		</div>
+
 	</section>
 </div>
 

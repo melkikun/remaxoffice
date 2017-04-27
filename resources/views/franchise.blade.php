@@ -13,6 +13,14 @@
 	#agentTopBanner {
     height: 286px;
     width: 100%;
+    .franchise-content .caption-link a.cl-franchise {
+    color: #0071c1;
+}
+.franchise-content .caption-link {
+    font-size: 20px;
+    font-weight: 400;
+    padding-bottom: 20px;
+}
 }
 </style>
 @stop

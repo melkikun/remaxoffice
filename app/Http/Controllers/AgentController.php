@@ -13,7 +13,8 @@ class AgentController extends Controller {
     private $client;
     private $api;
 
-    function __construct(Api $api) {
+    function __construct(Api $api, Request $request) {
+        $this->request = $request;
         $this->api = $api;
         $this->client = new GuzzleHttpClient(['base_uri' => $this->api->getBaseUri(), 'verify' => false]);
     }
@@ -74,7 +75,8 @@ class AgentController extends Controller {
         return $idAgent;
     }
 
-    function alphabethAgent($account, $param){
+    function alphabethAgent($account){
+        $param = $this->request->input('agents');
        $id = $this->api->getOfficeInfo($account);
        if($param == "All"){
         $param = "%";

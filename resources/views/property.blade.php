@@ -47,7 +47,7 @@
         margin-bottom:10px;
     }
     .search-form label{
-        margin-bottom: 5px;
+        margin-bottom: 0px;
     }
     .property-text > a{
         color: black;
@@ -211,7 +211,7 @@ RE/MAX PROPERTY
                     <ul class="filter-list">
                         @if (count($property['data'])> 0)
                         @foreach ($property['data'] as $element)
-                        <li class="col-md-2 mrgb5x col-sm-4" style="cursor: pointer;">
+                        <li class="col-md-2 mrgb5x col-sm-4" style="cursor: pointer; padding-right: 0px;">
                             <div class="property-box">
                             <a href="{{ url('property') }}/{{$element['listUrl']}}">
                                 <div class="appartment-img">

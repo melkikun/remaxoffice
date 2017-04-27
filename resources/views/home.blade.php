@@ -42,7 +42,7 @@
   padding: 4px 8px;
   position: absolute;
   right: 0;
-  top: 50%;
+  top: 150%;
   transform: translateY(-50%);
 }
 </style>
@@ -87,7 +87,7 @@ RE/MAX HOME
      </div> --}}
      <div class="input-group" style="width: 100%">
        <div class="col-sm-6" style="padding-left: 0px;">
-         <a type="button" class="btn btn-danger" id="sell-btn" style="border-radius: 0px" href="/#sell" onclick="TypeJual('1');">SELL</a>
+         <a type="button" class="btn btn-danger" id="sell-btn" style="border-radius: 0px; background-color:  red; margin-right: -4px;" href="/#sell" onclick="TypeJual('1');">SELL</a>
          <a type="button" class="btn btn-primary" id="rent-btn" style="border-radius: 0px" href="/#rent" onclick="TypeJual('2');">RENT</a>
        </div>
        <div class="col-sm-6">
