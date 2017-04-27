@@ -43,4 +43,9 @@
     .navigation {
         margin: 0px;
     }
+    /*.logo {
+    float: left;
+    position: absolute;
+    z-index: 999999999;
+}*/
 </style>
