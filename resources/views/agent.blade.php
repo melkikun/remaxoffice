@@ -105,10 +105,22 @@ RE/MAX AGENT LIST
 				<div class="col-md-3 col-sm-4 mrgb10x animated out" data-delay="0" data-animation="fadeInUp">
 					<div class="agent-profile">
 						<div class="agent-img">
+							@if ($value['links']['mmbsFile'] != null)
+							@foreach ($value['links']['mmbsFile'] as $element)
+							@foreach ($agent['linked']['mmbsFile'] as $element2)
+							@if ($element2['fileId'] == $element)
 							<img src="https://www.remax.co.id/prodigy/papi/Membership/crud/2/links/MembershipFile/126" class="img-responsive" alt="#" />
-							<div class="img-hover">
-								<a href="https://www.remax.co.id/prodigy/papi/Membership/crud/2/links/MembershipFile/126" class="plus-link"></a>
-							</div>
+							@break
+							@else
+							<img src="https://www.remax.co.id/prodigy/papi/Membership/crud/2/links/MembershipFile/126" class="img-responsive" alt="#" />
+							@break
+							@endif
+							@break
+							@endforeach
+							@endforeach	
+							@else
+							<img src="https://www.remax.co.id/prodigy/papi/Membership/crud/2/links/MembershipFile/126" class="img-responsive" alt="#" />
+							@endif
 						</div>
 						<div class="agent-detail">
 							<div class="agent-name">
