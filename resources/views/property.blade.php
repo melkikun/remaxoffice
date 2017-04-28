@@ -249,7 +249,7 @@ RE/MAX PROPERTY
                                             @else
                                             {{ "-" }}
                                             @endif
-                                        </span>&nbsp;&nbsp;
+                                        </span>&nbsp;&nbsp;&nbsp;
                                         <i class="fa fa-shower"></i>
                                         <span>
                                            @if ($element['listBathroom'] != null)
@@ -257,13 +257,14 @@ RE/MAX PROPERTY
                                            @else
                                            {{ "-" }}
                                            @endif
-                                       </span>&nbsp;&nbsp;
+                                       </span>&nbsp;&nbsp;&nbsp;
                                        <i class="fa fa fa-area-chart"></i>
                                        @if ($element['listLandSize'] != null)
                                        {{ $element['listLandSize'] }}m<sup>2</sup>
                                        @else
                                        {{ "-" }}m<sup>2</sup>
-                                       @endif&nbsp;&nbsp;
+                                       @endif&nbsp;&nbsp;&nbsp;
+                                       <br>
                                        <i class="fa fa fa-building"></i>
                                        @if ($element['listBuildingSize'] != null)
                                        {{ $element['listBuildingSize'] }}m<sup>2</sup>
