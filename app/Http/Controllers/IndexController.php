@@ -7,6 +7,7 @@ use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
 use App\Http\Helpers\Api;
+use Session;
 
 class IndexController extends Controller {
 
@@ -21,6 +22,7 @@ class IndexController extends Controller {
     }
 
     function index($account) {
+        $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {
             try {
@@ -43,6 +45,7 @@ class IndexController extends Controller {
     }
 
     public function about($account) {
+        $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {
             try {
@@ -65,11 +68,12 @@ class IndexController extends Controller {
     }
 
     public function agent($account) {
+        $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {
             try {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
-                $agentApi = $this->client->get("membership", ["query" => ['filter[msfcFrofId]' => "$id"]]);
+                $agentApi = $this->client->get("membership"/*, ["query" => ['filter[msfcFrofId]' => "$id"]]*/);
                 if ($officeApi->getStatusCode() == 200 && $agentApi->getStatusCode() == 200) {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $agent = json_decode($agentApi->getBody()->getContents(), true);
@@ -87,6 +91,7 @@ class IndexController extends Controller {
     }
 
     public function franchise($account) {
+        $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {
             try {
@@ -109,6 +114,7 @@ class IndexController extends Controller {
     }
 
     public function gallery($account) {
+        $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {
             try {
@@ -131,6 +137,7 @@ class IndexController extends Controller {
     }
 
     public function news($account) {
+        $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {
             try {
@@ -153,6 +160,7 @@ class IndexController extends Controller {
     }
 
     public function property($account) {
+        $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {
             try {
@@ -181,6 +189,7 @@ class IndexController extends Controller {
     }
 
     public function contact($account) {
+        $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {
             try {
@@ -199,6 +208,19 @@ class IndexController extends Controller {
                 }
             }
         }
+    }
+
+    public function cekLang($input){
+        if ($input == "") {
+            if($this->request->session()->has('lang')){
+                $this->request->session()->put('lang', Session::get("lang"));
+            }else{
+                Session::put("lang", "id");
+            }
+        }else{
+            Session::put("lang", $input);
+        }
+        return $this->request->session()->get("lang");
     }
 
 }

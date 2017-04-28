@@ -13,7 +13,7 @@
 Route::group(['domain' => '{account}.localhost'], function () {
 
 	/*route menu utama*/
-	Route::get('/', 'IndexController@index')->name("homepage");
+	Route::get('', 'IndexController@index')->name("homepage");
 	Route::get('/about', 'IndexController@about')->name("about");
 	Route::get('/franchise', 'IndexController@franchise')->name("agent.list");
 	Route::get('/agents', 'IndexController@agent')->name("agent");

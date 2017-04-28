@@ -9,6 +9,7 @@
     position: fixed;
     right: 0;
     top: 55px;
+    z-index: 10;
 }
 .crsl {
     background-color: white !important;
@@ -70,7 +71,7 @@
 }
 .adv-search{
     display: inline-block;
-    right: 2^;
+    right: 2%;
     position: fixed;
 
 }

@@ -31,10 +31,9 @@ RE/MAX GALLERY
 <section class="border-top">
     <div class="container-fluid">
         <div class="page-title mrgb6x mrgt6x clearfix">
-            <h4 class="page-name">gallery page</h4>
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active"><a href="#">Gallery Page</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li class="active"><a href="{{ url('albums') }}">Albums</a></li>
             </ul>
         </div>
     </div>
@@ -63,8 +62,3 @@ RE/MAX GALLERY
     </div>
 </section>	
 @stop
-
-
-@foreach ($gallery['linked']['wbgyFileId'] as $value)
-    
-@endforeach

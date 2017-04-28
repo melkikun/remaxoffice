@@ -10,7 +10,7 @@
 @stop
 
 @section('title')
-RE/MAX NEWS
+RE/MAX NEWS {{Session::get("lang")}}
 @stop
 
 @section('javascript')

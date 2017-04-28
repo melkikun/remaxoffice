@@ -1,45 +1,19 @@
 @extends('template')
 @section('css')
-<style type="text/css" media="screen">
-    .img-responsive.photo-ceo{
-        position: absolute;
-        right: 0px;
-    }
-    .service-detail {
-        text-align: justify;
-    }
-    .row.postres {
-        margin-top: -27px;
-    }
-    .service-detail {
-        margin-top: -16px;
-    }
-    .tab-section .nav-stacked li.active a span{
-        background-color: #1274bd !important;
-    }
-    .tab-section .nav-stacked li span::after{
-        background: #1274bd none repeat scroll 0 0 !important;
-    }
-    .tab-section .nav-stacked li.active a span::before{
-        border-left:22px solid #1274bd !important;
-    }
-    tab-section .nav-stacked li span::before {
-        border-left: 22px solid #1274bd;
-    }
-    .tab-section .nav-stacked li span:hover::before{
-        border-left: 22px solid #1274bd;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/mycss/about.css">
 @stop
 
 @section('title')
-RE/MAX ABOUT
+RE/MAX ABOUT {{Session::get("lang")}}
 @stop
 @section('content')
 <section class="border-top">
     <div class="container-fluid">
-        <div class="page-title mrgb5x mrgt6x clearfix">
-            <h4 class="page-name">About Us</h4>
+        <div class="page-title mrgb6x mrgt6x clearfix">
+            <ul class="breadcrumb">
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li class="active"><a href="{{ url('about') }}">About</a></li>
+            </ul>
         </div>
     </div>
 </section>

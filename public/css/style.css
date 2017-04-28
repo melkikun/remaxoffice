@@ -300,8 +300,8 @@ span{
 	background-color: #91b7cd;
 }
 /*................................header..........................*/
-.navigation {
-	/*margin:44px 0;*/
+/*.navigation {
+	margin:44px 0;
 }
 .logo{
 	float:left;
@@ -356,9 +356,9 @@ span{
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
 	border:none;
-}
+}*/
 /*............................sub-menu...................*/
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+/*.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 	background-color:#fff;
 	color:#004480;
 }
@@ -385,7 +385,7 @@ span{
 }
 .navbar-nav li.active ul li a {
     border-bottom: medium none;
-}
+}*/
 	
 /*..............................revolution-slider.......................*/
 .fullscreenbanner li{
@@ -3130,11 +3130,14 @@ contact-info-rightbar {
 		width: 100%;
 }*/
 	
-
-
-	
-
-
+/*navbar*/
+.navbar-default{
+    background-color:white;
+    border-color: white;;
+}
+.navbar{
+	margin-bottom: 5px;
+}
 
 
 	

@@ -10,7 +10,7 @@
 <script src="{{ asset('/') }}assets/myjs/home.js"></script>
 @stop
 @section('title')
-RE/MAX HOME
+RE/MAX HOME {{Session::get("lang")}}
 @stop
 @section('content')
 <div class="home-section">
