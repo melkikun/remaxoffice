@@ -51,11 +51,20 @@
     </div><!-- /.container-fluid -->
 </nav>
 <style type="text/css">
-    .nav.navbar-nav.navbar-right {
+@if(Request::path() == '/')
+     .nav.navbar-nav.navbar-right {
     background-color: white;
     position: relative;
     z-index: 99999;
     height: auto;
 }
-
+@else{
+     .nav.navbar-nav.navbar-right {
+    background-color: white;
+    /*position: relative;*/
+    /*z-index: 99999;*/
+    height: auto;
+}
+}
+@endif
 </style>

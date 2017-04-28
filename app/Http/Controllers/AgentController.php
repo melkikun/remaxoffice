@@ -85,10 +85,12 @@ class AgentController extends Controller {
             try {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
                 $agentApi = $this->client->get("membership", ["query" => ['filter[msfcFrofId]' => "$id", 'filter[mmbsFirstName]' => "'$param%'"]]);
+                $agentInfoApi = $this->client->get("webagentinformation", ["query" => ['wbinFrofId' => "$id"]]);
                 if ($officeApi->getStatusCode() == 200 && $agentApi->getStatusCode() == 200) {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $agent = json_decode($agentApi->getBody()->getContents(), true);
-                    return view("agent", compact('office', 'agent'));
+                    $agentInfo = json_decode($agentInfoApi->getBody()->getContents(), true);
+                    return view("agent", compact('office', 'agent', 'agentInfo'));
                 } else {
                     echo "Not Found";
                 }
