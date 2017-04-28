@@ -539,6 +539,147 @@
         margin-bottom:20px;
     }
 }
+@media (min-width:600px) and (max-width:767px){
+    .navbar-toggle {
+        background-color:#09b9e5;
+    }
+    .navbar-header span {
+        background-color: #fff;
+    }
+    .nvabar-nav {
+        display:block;
+    }
+    #navbar {
+        width:100%;
+    }
+    .navbar-header .navbar-toggle {
+        display:inline-block;
+    }
+    .navbar-nav > li {
+        display: block;
+        text-align:center;
+        padding:12px 20px;
+    }
+    .menu {
+        float:none;
+    }
+    .nav-tabs {
+        margin-top: -10%;
+    }
+    .appartment-img img {
+        width: 100%;
+    }
+    .slider-text {
+        padding:0 36px 44px;
+    }
+    .property-text {
+        padding: 34px 38px 30px;
+    }
+    .property-price h1::before {
+        width:50%;
+        left:-8.2%;
+    }
+    .property-price h1::after {
+        right:-8.2%;
+    }
+    .appartment-detail > li {
+        padding:0 6%;
+    }
+    .place-img:hover .place-text h2 {
+        padding-top: 22%;
+    }
+    .place-img img {
+        width: 100%;
+    }
+    .partner-carousel .owl-controls .owl-prev {
+        left: 38%;
+    }
+    .img-hover {
+        right: 43%;
+    }
+    .agent-img {
+        margin-left:30%;
+    }
+    .agent-profile {
+        margin-bottom:50px;
+    }
+    .border-top {
+        border-top:none;
+    }
+    .page-title {
+        margin-top:0px;
+    }
+    .get-start {
+        margin-top:8px;
+    }
+    .filter-bar li a {
+        padding: 12px 68.6px;
+    }
+    .filter-bar,
+    .filter-form {
+        margin-bottom:20px
+    }
+    .filter-form,
+    .filter-form .select-box {
+        padding:0;
+    }
+    .property-filter .appartment-detail > li {
+        padding:0 9%;
+    }
+    .filter-list .property-text {
+        padding:30px 19px;
+    }
+    .property-filter .property-price h1::before {
+        left:-3.8%;
+    }
+    .property-filter .property-price h1::after {
+        right:-3.8%;
+    }
+    .properties-list-2 .property-box .home2.appartment-detail {
+        padding:20px 16%;
+    }
+    .home2.appartment-detail > li {
+        padding:0 6%;
+    }
+    .property-info {
+        padding-left:0;
+        margin-top:20px;
+    }
+    .property-carousel .owl-buttons {
+        display:none;
+    }
+    .sync2 .owl-wrapper-outer {
+        margin-left:0;
+    }
+    .tab-section {
+        padding-right: 30%;
+    }
+    .service-image {
+        margin-bottom:20px;
+    }
+    .service-info {
+        right:31.3%;
+    }
+    .alert-boxes .col-md-6 {
+        padding:0;
+    }
+    .vacation-bg.shortcode .get-start, 
+    .vacation-bg-3.shortcode .get-start {
+        margin-bottom: 7px;
+    }
+    .action-btn a {
+        margin-top:8px;
+    }
+    .filter-form .select-box::before {
+        right:0;
+    }
+    .filter-form .form-section {
+        display:inline-block;
+    }
+    .filter-values .form-section {
+        padding: 0;
+    }
+}
 @media (min-width:600px) and (max-width:650px){
     .navbar-toggle {
         background-color:#09b9e5;
@@ -680,7 +821,7 @@
         padding: 0;
     }
 }
-@media (min-width:320px) and (max-width:500px){
+@media (min-width:320px) and (max-width:599px){
     .social-media li {
         border-bottom: 1px solid #d5d5d5;
     }
