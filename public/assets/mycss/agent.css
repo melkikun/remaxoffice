@@ -105,3 +105,6 @@ p{
 .full-profile-btn {
     margin-top: 10px;
 }
+img#agentTopBanner{
+	display: none !important;
+}

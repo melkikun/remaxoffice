@@ -128,11 +128,17 @@ class PropertyController extends Controller
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
                 $propertyTotalApi = $this->client->get("listing?".$filterTotal);
                 $propertyApi = $this->client->get("listing?".$filterHalaman);
+                $facilityApi = $this->client->get("facility");
+                $listingcategoryApi = $this->client->get("listingcategory");
+                $propertytypeApi = $this->client->get("propertytype");
                 if ($officeApi->getStatusCode() == 200 && $propertyApi->getStatusCode() == 200 && $propertyTotalApi->getStatusCode() == 200  && $currentPage != "") {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $propertyTotal = json_decode($propertyTotalApi->getBody()->getContents(), true);
                     $property = json_decode($propertyApi->getBody()->getContents(), true);
-                    return view("property_search", compact('office', 'property','propertyTotal', 'currentPage'));
+                    $facility = json_decode($facilityApi->getBody()->getContents(), true);
+                    $propertytype = json_decode($propertytypeApi->getBody()->getContents(), true);
+                    $listingcategory = json_decode($listingcategoryApi->getBody()->getContents(), true);
+                    return view("property_search", compact('office', 'property','propertyTotal', 'currentPage', 'facility', 'listingcategory', 'propertytype'));
                 } else {
                     echo "Not Found";
                 }

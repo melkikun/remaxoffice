@@ -23,7 +23,6 @@ RE/MAX NEWS {{Session::get("lang")}}
 <section class="border-top">
     <div class="container-fluid">
         <div class="page-title mrgb6x mrgt6x clearfix">
-            <div class="tag-bar"> <a href="#"><span></span></a> </div>
             <ul class="breadcrumb">
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active"><a href="{{ url('news') }}">News</a></li>
@@ -32,19 +31,27 @@ RE/MAX NEWS {{Session::get("lang")}}
     </div>
 </section>
 <section>
+    @if ($news['data'] != null)
     <div class="container-fluid">
         <div class="row">
             <div class="faq">
                 <div class="col-md-9">
                     <div class="panel-group" id="accordion">
+
                         @foreach ($news['data'] as $key => $value)
                         <div class="panel panel-default animated out" data-delay="0" data-animation="fadeInUp">
                             <div class="panel-heading">
                                 <h4 class="panel-title"> 
                                     @if ($key == 0)
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key}}" aria-expanded="true"> <span>0{{$key+1}}</span> {{$value['wbnlTitle']}}</a> 
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key}}" aria-expanded="true"> 
+                                        <span>0{{$key+1}}</span> 
+                                        {{$value['wbnlTitle']}}
+                                    </a> 
                                     @else
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key}}" aria-expanded="false"> <span>0{{$key+1}}</span>{{$value['wbnlTitle']}}</a> 
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key}}" aria-expanded="false"> 
+                                        <span>0{{$key+1}}</span>
+                                        {{$value['wbnlTitle']}}
+                                    </a> 
                                     @endif
 
                                 </h4>
@@ -102,15 +109,20 @@ RE/MAX NEWS {{Session::get("lang")}}
                             <div class="post-area">
                                 <a href="{{ url("news/$value[id]") }}">
                                     <h4>{{$value['wbnlTitle']}}</h4>
-                                    <div class="date-post">Posted On {{date('D, d F Y',strtotime($value['wbnlCreatedTime']))}}</div>
-                                    <div class="user-post">By :  {{$value['wbnlCreatedUserId']}}</div> 
+                                    <div class="date-post">
+                                        Posted On {{date('D, d F Y',strtotime($value['wbnlCreatedTime']))}}
+                                    </div>
+                                    <div class="user-post">
+                                    By :  {{$value['wbnlCreatedUserId']}}
+                                    </div> 
+                                     </a>
                                 </div>
-                            </a>
                             @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endif
     </section>
     @stop

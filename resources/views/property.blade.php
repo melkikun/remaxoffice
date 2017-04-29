@@ -4,68 +4,6 @@
 @stop
 @section('javascript')
 <script src="{{ asset('/') }}assets/bower_components/jquery_lazyload/jquery.lazyload.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $("img").lazyload();
-        jQuery.ajax({
-          url: 'https://www.remax.co.id/prodigy/papi/facility',
-          type: 'GET',
-          dataType: 'json',
-          // data: {param1: 'value1'},
-          complete: function(xhr, textStatus) {
-            //called when complete
-          },
-          success: function(response, textStatus, xhr) {
-            var option = "";
-            $.each(response.data, function(index, val) {
-                option += "<option value='"+val.id+"'>"+val.fctlName+"</option>"
-            });
-            $('#facility').append(option);
-          },
-          error: function(xhr, textStatus, errorThrown) {
-            //called when there is an error
-          }
-        });
-        jQuery.ajax({
-          url: 'https://www.remax.co.id/prodigy/papi/propertytype',
-          type: 'GET',
-          dataType: 'json',
-          // data: {param1: 'value1'},
-          complete: function(xhr, textStatus) {
-            //called when complete
-          },
-          success: function(response, textStatus, xhr) {
-            var option = "";
-            $.each(response.data, function(index, val) {
-                option += "<option value='"+val.id+"'>"+val.prtlName+"</option>"
-            });
-            $('#type').append(option);
-          },
-          error: function(xhr, textStatus, errorThrown) {
-            //called when there is an error
-          }
-        });
-        jQuery.ajax({
-          url: 'https://www.remax.co.id/prodigy/papi/listingcategory',
-          type: 'GET',
-          dataType: 'json',
-          // data: {param1: 'value1'},
-          complete: function(xhr, textStatus) {
-            //called when complete
-          },
-          success: function(response, textStatus, xhr) {
-            var option = "";
-            $.each(response.data, function(index, val) {
-                option += "<option value='"+val.id+"'>"+val.lsclName+"</option>"
-            });
-            $('#sale').append(option);
-          },
-          error: function(xhr, textStatus, errorThrown) {
-            //called when there is an error
-          }
-        });
-    });
-</script>
 @stop
 @section('title')
 RE/MAX PROPERTY
@@ -105,11 +43,11 @@ RE/MAX PROPERTY
                                         <div class="select-box">
                                             <select class="form-control" name="type" id="type">
                                                 <option value="">All</option>
-                                                    {{-- @if (count($propertytype['data'] > 0))
+                                                    @if (count($propertytype['data'] > 0))
                                                     @foreach ($propertytype['data'] as $element)
                                                     <option value="{{$element['id']}}">{{$element['prtlName']}}</option>
                                                     @endforeach
-                                                    @endif --}}
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -118,11 +56,11 @@ RE/MAX PROPERTY
                                             <div class="select-box">
                                                 <select class="form-control" name="sale" id="sale">
                                                     <option value="">All</option>
-                                                    {{-- @if (count($listingcategory['data'] > 0))
+                                                    @if (count($listingcategory['data'] > 0))
                                                     @foreach ($listingcategory['data'] as $element)
                                                     <option value="{{$element['id']}}">{{$element['lsclName']}}</option>
                                                     @endforeach
-                                                    @endif --}}
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -169,11 +107,11 @@ RE/MAX PROPERTY
                                         <div class="select-box">
                                             <select class="form-control" name="facility" id="facility">
                                                 <option value="">All</option>
-                                                    {{-- @if (count($facility['data'] > 0))
+                                                    @if (count($facility['data'] > 0))
                                                     @foreach ($facility['data'] as $element)
                                                     <option value="{{$element['id']}}">{{$element['fctlName']}}</option>
                                                     @endforeach
-                                                    @endif --}}
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
