@@ -174,6 +174,9 @@ class IndexController extends Controller {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
                 $propertyTotalApi = $this->client->get("listing", ["query" => ['filter[frofId]' => "$id"]]);
                 $propertyApi = $this->client->get("listing", ["query" => ['filter[frofId]' => "$id", 'pageNumber'=>"$currentPage", 'pageSize'=>'12']]);
+                $propertytype = $this->client->get("listing", ["query" => ['filter[frofId]' => "$id", 'pageNumber'=>"$currentPage", 'pageSize'=>'12']]);
+                $listingcategory = $this->client->get("listing", ["query" => ['filter[frofId]' => "$id", 'pageNumber'=>"$currentPage", 'pageSize'=>'12']]);
+                $listingcategory = $this->client->get("listing", ["query" => ['filter[frofId]' => "$id", 'pageNumber'=>"$currentPage", 'pageSize'=>'12']]);
                 if ($officeApi->getStatusCode() == 200 && $propertyApi->getStatusCode() == 200 && $propertyTotalApi->getStatusCode() == 200  && $currentPage != "") {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $propertyTotal = json_decode($propertyTotalApi->getBody()->getContents(), true);

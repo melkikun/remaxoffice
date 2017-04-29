@@ -112,11 +112,6 @@ RE/MAX AGENT LIST
 		</div>
 	</section>
 	<section>
-		<div class="container-fluid">
-			<div class="row text-center">
-				<p class="header-agent-title">Want to develop a career in the industry of real estate broker and enjoy unlimited earnings?</p>
-			</div>
-		</div>
 		@foreach ($agentInfo['data'] as $element)
 		{!! str_replace('<div class="container">', '<div class="container-fluid">', $element['wbilContent']) !!}
 		@endforeach
@@ -154,7 +149,7 @@ RE/MAX AGENT LIST
 								<label for="pwd">Message:</label>
 								<textarea  class="form-control" id="message" name="message" placeholder="Enter Message"></textarea>
 							</div>
-							<button type="button" class="btn btn-success col-sm-12">Submit</button>
+							<button type="button" class="btn btn-danger col-sm-12">Submit</button>
 						</form>
 					</div>
 					<div class="modal-footer">
