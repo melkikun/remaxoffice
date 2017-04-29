@@ -1,0 +1,105 @@
+#agentTopBanner{
+        width: 100%;
+    }
+    .franchise-content .caption-link {
+        font-size: 20px;
+        font-weight: 400;
+        padding-bottom: 20px;
+    }
+    .franchise-content p {
+        text-align: justify;
+    }
+    .franchise-content .caption-red {
+        color: #c10000;
+        font-weight: 700;
+    }
+    .franchise-content {
+        background-image: url("../../assets/images/franchise_content_bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 15px;
+    }
+    .franchise-bottom {
+        background-image: url("../../assets/images/home_ceo.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-bottom: 1px solid #ececec;
+        border-top: 1px solid #b9cedc;
+        font-family: GothamRoundedMedium;
+    }
+    .franchise-bottom .caption {
+        border-bottom: 1px solid #999;
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding: 30px 0 10px;
+    }
+    ul, ol {
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+    .franchise-bottom ul {
+        list-style: outside none none;
+        padding-left: 0;
+    }
+    ul ul, ol ul, ul ol, ol ol {
+        margin-bottom: 20px;
+    }
+    .franchise-bottom ol li ul li.ol-caption {
+        color: #0071c1;
+        font-weight: 700;
+        text-align: justify;
+    }   
+    .franchise-bottom ul li {
+        text-align: justify;
+    }
+    p{
+        font-family: GothamRoundedMedium;
+    }
+    .how-help {
+        background-image: url("../../assets/images/aboutus_bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-bottom: 1px solid #0071c1;
+        border-top: 1px solid #0071c1;
+        margin: 0 0 20px;
+        padding: 20px 0;
+    }
+    .postres {
+        bottom: 0;
+        left: 0;
+        position: relative;
+        right: 0;
+        top: 0;
+    }
+    .how-help h1 {
+        color: #0071c1;
+        font-weight: 400;
+        margin: 0;
+    }
+    .how-help .title h1 span.text-red {
+        font-size: 42px;
+        font-weight: bolder;
+    }
+    .text-red {
+        color: #e11b22;
+    }
+    .how-help .title h1 span.text-red {
+        font-size: 42px;
+        font-weight: bolder;
+    }
+    .text-black {
+       font-size: 42px;
+       font-weight: bolder;
+       color: #000;
+   }
+   .how-help img.baloon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+}
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}

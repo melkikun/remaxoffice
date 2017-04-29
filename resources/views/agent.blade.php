@@ -2,96 +2,12 @@
 
 @section('css')
 <link href="{{ asset('/') }}assets/bower_components/jquery-ui/jquery-ui.min.js" rel="Stylesheet"></link>
-<style type="text/css">
-	.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front{
-		border: none;
-	}
-	.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img{
-		display: inline !important;
-	}
-	.agent-img {
-		margin: auto;
-		position: relative;
-		text-align: center;
-	}
-	.img-hover {
-		background: rgba(9, 185, 229, 0.85) none repeat scroll 0 0;
-		bottom: 0;
-		left: 0;
-		opacity: 0;
-		position: absolute;
-		right: 0;
-		text-align: center;
-		top: 0;
-		transform: scale(0, 0);
-		transition: all 0.4s ease 0s;
-	}
-	.aTop.remaxBlueColor {
-		text-align: center;
-		font-size: 20px;
-	}
-	.centerAlign {
-		text-align: center;
-	}
-	.row.agentHightlight.m-t.m-b {
-		text-align: center;
-	}
-	.highlightIcon {
-		width: 110px;
-		height: 140px;
-		margin: 0 auto;
-		background-image: url({{ asset('/') }}assets/images/agent_highlight_icons.jpg);
-	}
-	.highlightIcon.col2 {
-		background-position: -110px 0;
-	}
-	.highlightIcon.col3 {
-		background-position: -220px 0;
-	}
-	.highlightIcon.col4 {
-		background-position: -330px 0;
-	}
-	.header-agent-title{
-		font-weight: bolder;
-		font-size: 20px;
-		text-align: center;
-	}
-</style>
+<link href="{{ asset('/') }}assets/mycss/agent.css" rel="Stylesheet"></link>
 @stop
 
 @section('javascript')
 <script src="{{ asset('/') }}assets/bower_components/jquery-ui/jquery-ui.min.js" ></script>
-<script type="text/javascript">
-	// $(function () {
-	// 	var availableTags = [
-	// 	"ActionScript",
-	// 	"AppleScript",
-	// 	"Asp",
-	// 	"BASIC",
-	// 	"C",
-	// 	"C++",
-	// 	"Clojure",
-	// 	"COBOL",
-	// 	"ColdFusion",
-	// 	"Erlang",
-	// 	"Fortran",
-	// 	"Groovy",
-	// 	"Haskell",
-	// 	"Java",
-	// 	"JavaScript",
-	// 	"Lisp",
-	// 	"Perl",
-	// 	"PHP",
-	// 	"Python",
-	// 	"Ruby",
-	// 	"Scala",
-	// 	"Scheme"
-	// 	];
-	// 	$("#tags").autocomplete({
-	// 		source: availableTags
-	// 	});
-	// });
-</script>
+<script src="{{ asset('/') }}assets/myjs/agent.js" ></script>
 @stop
 
 @section('title')
@@ -121,7 +37,7 @@ RE/MAX AGENT LIST
 				<div class="row">
 					{!! Form::open(["url"=>"agents/search", "method"=>"get"]) !!}
 					<div class="input-group">
-						<input type="text" class="form-control" name="agents">
+						<input type="text" class="form-control" name="agents" id="agents" placeholder="Find Agents Name Here">
 						<span class="input-group-btn">
 							<button class="btn btn-danger btn-lg" type="submit" style="font-size: 16.5px;">Search!!</button>
 						</span>
@@ -131,7 +47,7 @@ RE/MAX AGENT LIST
 			</div>
 			@if (isset($first))
 			@else
-				<div class="agents-list">
+			<div class="agents-list">
 				@if (count($agent['data']) > 0)
 				@foreach ($agent['data'] as $key => $value)
 				<div class="col-md-3 col-sm-4 mrgb10x animated out" data-delay="0" data-animation="fadeInUp">
@@ -171,7 +87,7 @@ RE/MAX AGENT LIST
 								<li><span>E-mail</span></li>
 								<li class="contact-info"><a href="#">{{ $value['mmbsEmail'] }}</a></li>
 							</ul>
-							<ul class="agent-contact">
+							<ul class="agent-mail">
 								<li><i class="fa fa-phone"></i></li>
 								<li><span>Mobile</span></li>
 								<li class="contact-info"><a href="#">{{ $value['mmbsCellPhone1'] }}</a></li>
@@ -184,7 +100,11 @@ RE/MAX AGENT LIST
 			</div>
 			@else
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-				DATA NOT FOUND
+				<div class="row">
+					<div class="container-fluid">
+							<div class="agents-not-found">SORRY!!, DATA NOT FOUND</div>
+					</div>
+				</div>
 			</div>
 			@endif
 			@endif
@@ -192,18 +112,56 @@ RE/MAX AGENT LIST
 		</div>
 	</section>
 	<section>
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row text-center">
 				<p class="header-agent-title">Want to develop a career in the industry of real estate broker and enjoy unlimited earnings?</p>
 			</div>
 		</div>
 		@foreach ($agentInfo['data'] as $element)
-		{!! $element['wbilContent'] !!}
+		{!! str_replace('<div class="container">', '<div class="container-fluid">', $element['wbilContent']) !!}
 		@endforeach
-		<div class="container" style="padding-bottom: 10px;">
-		<div class="row text-center">
-			<button type="button" class="btn btn-danger" style="padding: 10px 20px;">CLICK HERE TO JOIN US</button>
+		<div class="container-fluid" style="padding-bottom: 10px;">
+			<div class="row text-center">
+				<button type="button" class="button-agents" style="padding: 10px 20px;" id="button-agents">CLICK HERE TO JOIN US</button>
+			</div>
 		</div>
+	</section>
+	<section>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title text-center"><b>Become a Proud RE/MAX AGENT</b></h4>
+					</div>
+					<div class="modal-body">
+						<form action="#">
+							<div class="form-group">
+								<label for="email">Name:</label>
+								<input type="email" class="form-control" id="email" placeholder="Enter Name" name="aname">
+							</div>
+							<div class="form-group">
+								<label for="pwd">Email:</label>
+								<input type="password" class="form-control" id="email" placeholder="Enter Email" name="email">
+							</div>
+							<div class="form-group">
+								<label for="pwd">Phone:</label>
+								<input type="password" class="form-control" id="phone" placeholder="Enter phone" name="phone">
+							</div>
+							<div class="form-group">
+								<label for="pwd">Message:</label>
+								<textarea  class="form-control" id="message" name="message" placeholder="Enter Message"></textarea>
+							</div>
+							<button type="button" class="btn btn-success col-sm-12">Submit</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</section>
 </div>

@@ -1,40 +1,32 @@
 @extends('template')
-
 @section('css')
 <style type="text/css">
-
     .panel-body{
         text-align:justify;
     }
+    .date-post {
+        color: red;
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .user-post {
+        color: #004480;
+        font-size: 10px;
+        font-weight: bold;
+    }
 </style>
 @stop
-
 @section('title')
 RE/MAX NEWS {{Session::get("lang")}}
-@stop
-
-@section('javascript')
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-
-    });
-</script>
-@stop
-
-@section('js')
-<script type="text/javascript">
-
-</script>
 @stop
 @section('content')
 <section class="border-top">
     <div class="container-fluid">
         <div class="page-title mrgb6x mrgt6x clearfix">
-            <h4 class="page-name">NEWS PAGE</h4>
             <div class="tag-bar"> <a href="#"><span></span></a> </div>
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active"><a href="#">News</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li class="active"><a href="{{ url('news') }}">News</a></li>
             </ul>
         </div>
     </div>
@@ -69,14 +61,12 @@ RE/MAX NEWS {{Session::get("lang")}}
                                             <img src="https://www.remax.co.id/prodigy/papi/{{$element['filePreview']}}" style="width: 100%; height: 200px">
                                             @endif
                                             @endforeach
-                                            
                                         </div>
                                         <div class="col-sm-9">
                                             <div class="panel-body">
                                                 <?php
                                                 $content = preg_replace('#<[^>]+>#', '', $value['wbnlContent']);
                                                 $split = explode(" ", $content);
-                                                // echo count($split);
                                                 if(count($split) > 80){
                                                     for($i = 0; $i < 80 ; $i++){
                                                         echo $split[$i]." ";
@@ -90,9 +80,11 @@ RE/MAX NEWS {{Session::get("lang")}}
                                     </div>
                                     <div class="clearfix"></div>
                                     <div class="row">
-                                    <div class="col-sm-12 text-right">
-                                    <a href="{{ url("news/$value[id]") }}" class="btn btn-danger btn-outline" id="detail{{$key}}"  style="margin-bottom: 20px; margin-right: 20px;">Read More</a>
-                                    </div>
+                                        <div class="col-sm-12 text-right">
+                                            <a href="{{ url("news/$value[id]") }}" class="btn btn-danger btn-outline" id="detail{{$key}}"  style="margin-bottom: 20px; margin-right: 20px;">
+                                                Read More
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,11 +95,17 @@ RE/MAX NEWS {{Session::get("lang")}}
                 <div class="col-md-3">
                     <div class="right-side-bar mrgb5x">
                         <div class="blog-post mrgt3x animated out" data-delay="0" data-animation="fadeInUp">
+                            <div class="rightbar-heading mrgb3x">
+                                <h4>LATEST POST</h4>
+                            </div>
                             @foreach ($news['data'] as $key => $value)
                             <div class="post-area">
-                            <h4>{{$value['wbnlTitle']}}</h4>
-                                <span class="best-place">POSTED ON {{$value['wbnlCreatedTime']}}</span> 
-                            </div>
+                                <a href="{{ url("news/$value[id]") }}">
+                                    <h4>{{$value['wbnlTitle']}}</h4>
+                                    <div class="date-post">Posted On {{date('D, d F Y',strtotime($value['wbnlCreatedTime']))}}</div>
+                                    <div class="user-post">By :  {{$value['wbnlCreatedUserId']}}</div> 
+                                </div>
+                            </a>
                             @endforeach
                         </div>
                     </div>

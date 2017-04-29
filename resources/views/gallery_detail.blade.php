@@ -2,8 +2,14 @@
 @section('javascript')
 {{-- light gallery  --}}
 <script src="{{ asset('/') }}assets/bower_components/lightgallery/dist/js/lightgallery.min.js"></script>
-<script src="{{ asset('/') }}assets/bower_components/lg-thumbnail/dist/lg-thumbnail.min.js"></script>
+<script src="{{ asset('/') }}assets/bower_components/lg-autoplay/dist/lg-autoplay.min.js"></script>
 <script src="{{ asset('/') }}assets/bower_components/lg-fullscreen/dist/lg-fullscreen.min.js"></script>
+<script src="{{ asset('/') }}assets/bower_components/lg-hash/dist/lg-hash.min.js"></script>
+<script src="{{ asset('/') }}assets/bower_components/lg-pager/dist/lg-pager.min.js"></script>
+<script src="{{ asset('/') }}assets/bower_components/lg-share/dist/lg-share.min.js"></script>
+<script src="{{ asset('/') }}assets/bower_components/lg-thumbnail/dist/lg-thumbnail.min.js"></script>
+<script src="{{ asset('/') }}assets/bower_components/lg-video/dist/lg-video.min.js"></script>
+<script src="{{ asset('/') }}assets/bower_components/lg-zoom/dist/lg-zoom.min.js"></script>
 {{-- justified gallery --}}
 <script src="{{ asset('/') }}assets/bower_components/justifiedGallery/dist/js/jquery.justifiedGallery.min.js"></script>
 {{-- lazy load --}}
@@ -13,7 +19,8 @@
       $("img.lazy").lazyload();
       $('#mygallery').lightGallery({
         mode: 'lg-fade',
-        thumbnail: true
+        thumbnail: true,
+        share:true
     });
        $("#mygallery").justifiedGallery({
        rowHeight: 250,
@@ -39,11 +46,10 @@ RE/MAX GALLERY DETAIL
 <section class="border-top">
     <div class="container-fluid">
         <div class="page-title mrgb6x mrgt6x clearfix">
-            <h4 class="page-name">gallery detail</h4>
-            {{-- <div class="tag-bar"> <a href="#"><span>what we do for you</span></a> </div> --}}
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active"><a href="#">Gallery Detail</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li><a href="{{ url('albums') }}">Albums</a></li>
+                <li class="active"><a href="#">Albums Detail</a></li>
             </ul>
         </div>
     </div>

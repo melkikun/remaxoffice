@@ -28,9 +28,14 @@ RE/MAX GALLERY
 @stop
 
 @section('content')
+<section>
+        <div class="image">
+            <img src="{{ asset('/') }}assets/images/GALLERY_HEADER.jpg" style="width: 100%;">
+        </div>
+    </section>
 <section class="border-top">
     <div class="container-fluid">
-        <div class="page-title mrgb6x mrgt6x clearfix">
+        <div class="page-title clearfix">
             <ul class="breadcrumb">
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active"><a href="{{ url('albums') }}">Albums</a></li>

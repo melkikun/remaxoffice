@@ -1,5 +1,4 @@
 @extends('template')
-
 @section('css')
 <style type="text/css" media="screen">
     .appartment-img .detail-btn {
@@ -54,7 +53,6 @@
     }
 </style>
 @stop
-
 @section('javascript')
 <script src="{{ asset('/') }}assets/bower_components/jquery_lazyload/jquery.lazyload.js"></script>
 <script type="text/javascript">
@@ -63,11 +61,9 @@
     });
 </script>
 @stop
-
 @section('title')
 RE/MAX PROPERTY
 @stop
-
 @section('content')
 <section class="border-top">
     <div class="container-fluid">
