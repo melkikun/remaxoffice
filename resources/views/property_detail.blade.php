@@ -3,338 +3,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.transitions.css">
-<style type="text/css" media="screen">
-    
-    .btn-facebook:active, .btn-facebook:hover {
-        background: #30477a none repeat scroll 0 0;
-        color: #fff;
-    }
-    #owl-demo .item img {
-        bottom: 0;
-        display: inline-block;
-        height: auto;
-        left: 0;
-        margin: auto;
-        position: fixed;
-        right: 0;
-        top: 0;
-        height: 350px;
-    }
-    .item {
-        background-color: black;
-    }
-    /*ribborn*/
-    .ribbon {
-      position: absolute;
-      left: -5px; top: -5px;
-      z-index: 1;
-      overflow: hidden;
-      width: 75px; height: 75px;
-      text-align: right;
-  }
-  .ribbon span {
-      font-size: 10px;
-      font-weight: bold;
-      color: #FFF;
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 20px;
-      transform: rotate(-45deg);
-      -webkit-transform: rotate(-45deg);
-      width: 100px;
-      display: block;
-      background: #79A70A;
-      background: linear-gradient(#9BC90D 0%, #79A70A 100%);
-      box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
-      position: absolute;
-      top: 19px; left: -21px;
-  }
-  .ribbon span::before {
-      content: "";
-      position: absolute; left: 0px; top: 100%;
-      z-index: -1;
-      border-left: 3px solid #79A70A;
-      border-right: 3px solid transparent;
-      border-bottom: 3px solid transparent;
-      border-top: 3px solid #79A70A;
-  }
-  .ribbon span::after {
-      content: "";
-      position: absolute; right: 0px; top: 100%;
-      z-index: -1;
-      border-left: 3px solid transparent;
-      border-right: 3px solid #79A70A;
-      border-bottom: 3px solid transparent;
-      border-top: 3px solid #79A70A;
-  }
-</style>
-@stop
-
-@section('javascript')
-<script type="text/javascript" src="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.carousel.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7bSZjer84qHPkPDwMW_CFUHOjgluXak&callback=initMap"></script>
-<script>
-            /*
-             * declare map as a global variable
-             */
-
-             function initMap(){
-             	var map;
-
-            /*
-             * use google maps api built-in mechanism to attach dom events
-             */
-             google.maps.event.addDomListener(window, "load", function () {
-
-                /*
-                 * create map
-                 */
-                 var map = new google.maps.Map(document.getElementById("map_div"), {
-                 	center: new google.maps.LatLng(-6.225673, 106.808481),
-                 	zoom: 14,
-                 	mapTypeId: google.maps.MapTypeId.ROADMAP
-                 });
-
-                 map.set('styles', [
-                 {
-                 	"elementType": "geometry",
-                 	"stylers": [
-                 	{
-                 		"color": "#f5f5f5"
-                 	}
-                 	]
-                 },
-                 {
-                 	"elementType": "labels.icon",
-                 	"stylers": [
-                 	{
-                 		"visibility": "off"
-                 	}
-                 	]
-                 },
-                 {
-                 	"elementType": "labels.text.fill",
-                 	"stylers": [
-                 	{
-                 		"color": "#616161"
-                 	}
-                 	]
-                 },
-                 {
-                 	"elementType": "labels.text.stroke",
-                 	"stylers": [
-                 	{
-                 		"color": "#f5f5f5"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "administrative.land_parcel",
-                 	"elementType": "labels.text.fill",
-                 	"stylers": [
-                 	{
-                 		"color": "#bdbdbd"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "poi",
-                 	"elementType": "geometry",
-                 	"stylers": [
-                 	{
-                 		"color": "#eeeeee"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "poi",
-                 	"elementType": "labels.text.fill",
-                 	"stylers": [
-                 	{
-                 		"color": "#757575"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "poi.park",
-                 	"elementType": "geometry",
-                 	"stylers": [
-                 	{
-                 		"color": "#e5e5e5"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "poi.park",
-                 	"elementType": "labels.text.fill",
-                 	"stylers": [
-                 	{
-                 		"color": "#9e9e9e"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "road",
-                 	"elementType": "geometry",
-                 	"stylers": [
-                 	{
-                 		"color": "#ffffff"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "road.arterial",
-                 	"elementType": "labels.text.fill",
-                 	"stylers": [
-                 	{
-                 		"color": "#757575"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "road.highway",
-                 	"elementType": "geometry",
-                 	"stylers": [
-                 	{
-                 		"color": "#dadada"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "road.highway",
-                 	"elementType": "labels.text.fill",
-                 	"stylers": [
-                 	{
-                 		"color": "#616161"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "road.local",
-                 	"elementType": "labels.text.fill",
-                 	"stylers": [
-                 	{
-                 		"color": "#9e9e9e"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "transit.line",
-                 	"elementType": "geometry",
-                 	"stylers": [
-                 	{
-                 		"color": "#e5e5e5"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "transit.station",
-                 	"elementType": "geometry",
-                 	"stylers": [
-                 	{
-                 		"color": "#eeeeee"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "water",
-                 	"elementType": "geometry",
-                 	"stylers": [
-                 	{
-                 		"color": "#c9c9c9"
-                 	}
-                 	]
-                 },
-                 {
-                 	"featureType": "water",
-                 	"elementType": "labels.text.fill",
-                 	"stylers": [
-                 	{
-                 		"color": "#9e9e9e"
-                 	}
-                 	]
-                 }
-                 ]);
-
-                /*
-                 * create infowindow (which will be used by markers)
-                 */
-                 var infoWindow = new google.maps.InfoWindow();
-
-                /*
-                 * marker creater function (acts as a closure for html parameter)
-                 */
-                 function createMarker(options, html) {
-                 	var marker = new google.maps.Marker(options);
-                 	if (html) {
-                 		google.maps.event.addListener(marker, "click", function () {
-                 			infoWindow.setContent(html);
-                 			infoWindow.open(options.map, this);
-                 		});
-                 	}
-                 	return marker;
-                 }
-
-                /*
-                 * add markers to map
-                 */
-
-                 var image = {
-                    url: 'http://www.remaxbeachtown.com//images/balloon.png', // image is 512 x 512
-                    scaledSize: new google.maps.Size(50, 50),
-                };
-                var title = "{{$office['data'][0]['frofOfficeName']}} Remax";
-                //phone
-                @if($office['data'][0]['frofPhone1'] != null)
-                var phone ="<i class='fa fa-phone'></i>"+"&nbsp;&nbsp;&nbsp;"+"{{$office['data'][0]['frofPhone1']}}";
-                @else
-                var phone ="<i class='fa fa-phone'></i>"+"&nbsp;&nbsp;&nbsp;"+ "-";
-                @endif
-                //email
-                @if($office['data'][0]['frofEmail'] != null)
-                var email ="<i class='fa fa-envelope'></i>"+"&nbsp;&nbsp;&nbsp;"+"{{$office['data'][0]['frofEmail']}}";
-                @else
-                var email ="<i class='fa fa-envelope'></i>"+"&nbsp;&nbsp;&nbsp;"+ "-";
-                @endif
-                //fax
-                @if($office['data'][0]['frofFax'] != null)
-                var fax ="<i class='fa fa-fax'></i>"+"&nbsp;&nbsp;&nbsp;"+"{{$office['data'][0]['frofFax']}}";
-                @else
-                var fax ="<i class='fa fa-fax'></i>"+"&nbsp;&nbsp;&nbsp;"+ "-";
-                @endif
-
-                var content1 = "<div><h1>"+title+"</h1></div>";
-                var phone1 = "<div>"+phone+"</div>";
-                var fax1 = "<div>"+fax+"</div>";
-                var email1 = "<div>"+email+"</div>";
-
-                var marker0 = createMarker({
-                	position: new google.maps.LatLng(-6.225673, 106.808481),
-                	map: map,
-                	icon: image
-                }, content1 + email1 + "<br>" + phone1+ "<br>" + fax1);
-
-            });
-}
-jQuery(document).ready(function($) {
-	$("#owl-demo").owlCarousel({
-
-		nav: true,
-		navText: [
-		"<i class='icon-chevron-left icon-white'><</i>",
-		"<i class='icon-chevron-right icon-white'>></i>"
-		],
-		slideSpeed: 300,
-		paginationSpeed: 400,
-		singleItem: true,
-		pagination: false,
-		items: 1,
-		loop: true,
-		rewindSpeed: 500
-
-	});
-});
-</script>
+<link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/bower_components/bootstrap-social-gh-pages/bootstrap-social.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/mycss/property_detail.css">
 @stop
 
 @section('title')
@@ -379,7 +49,7 @@ RE/MAX PROPERTY DETAIL
              <div class="property-heading">
               <h4><span>PROPERTY DESCRIPTION</span></h4>
           </div>
-          <ul class="description-content col-md-3">
+          <ul class="description-content col-md-3" id="property-list-detail">
               <li><span class="description-title">Lokasi </span><span class="title-detail">{{$element['listStreetName']}}</span></li>
               <li><span class="description-title">Kode Pos</span><span class="title-detail">{{$element['listPostalCode']}}</span></li>
               <li><span class="description-title">Kota</span><span class="title-detail">{{$element['links']['listCityId']}}</span></li>
@@ -399,24 +69,49 @@ RE/MAX PROPERTY DETAIL
                @endif
            </span></li>
        </ul>
-       <div class="description-text col-md-3">
+       <div class="description-text col-md-3" id="property-list-description">
           <h5>Descriptipon</h5>
           <p>{{$element['listDescription']}}</p>
       </div>
-      <div class="description-text col-md-3">
+      <div class="description-text col-md-2" id="property-list-agent">
           <div class="gallery">
             @foreach ($property['linked']['listMmbsId'] as $element2)
             @if ($element2['mmbsId'] == $element['links']['listMmbsId'])
-            a
+            <img src = "{{ asset('/') }}assets/images/noPhotoAvailable.jpg" class = "img-thumbnail">
             @else
-            -
+            <img src = "{{ asset('/') }}assets/images/noPhotoAvailable.jpg" class = "img-thumbnail">
             @endif
             @endforeach
         </div>
+        <a class="btn btn-block btn-social btn-yahoo">
+            <span class="fa fa-info"></span>Show Contact
+        </a>
+        <a class="btn btn-block btn-social btn-twitter">
+            <span class="fa fa-twitter"></span> Share on Twitter
+        </a>
+        <a class="btn btn-block btn-social btn-facebook">
+            <span class="fa fa-facebook"></span> Share on Facebook
+        </a>
+        <a class="btn btn-block btn-social btn-linkedin">
+            <span class="fa fa-linkedin"></span> Share on LinkedIn
+        </a>
     </div>
-     <div class="description-text col-md-3">
-         dropdown proprety
-     </div>
+    <div class="description-text col-md-4" id="property-list-suggest">
+        @for ($i = 0; $i < 10; $i++)
+        <div class="property-block-small">
+         <a href="#">
+             <div class="property-image-small" style="background-image: url(&quot;https://www.remax.co.id/prodigy/papi/Listing/crud/28/links/ListingFile/115&quot;);">
+             </div>
+             <div class="detail">
+              <p>Rumah Design Minimalis</p> 
+              <p class="team-color">Harapan Indah</p> 
+              <p>Rp. 1.5 M</p>
+          </div> 
+      </a> 
+      <hr>
+  </div>
+  @endfor
+</div>
 </div>
 </div>
 </section>
@@ -450,9 +145,113 @@ RE/MAX PROPERTY DETAIL
 </div>
 </div>
 </section>
+<section>
+    <div class="container-fluid">
+        <div class="post-review mrgt7x animated fadeInUp in" data-delay="0" data-animation="fadeInUp">
+            <div class="property-heading">
+                <h4><span>POST A REVIEW</span></h4>
+            </div>
+            <div class="col-md-9 no-padding">
+                <div class="post-guide mrgt3x mrgb4x">
+                    <p>Fill out all required fields to send a message. You have to login to your wordpress account to post any comment. Please don´t spam, thank you!</p>
+                </div>
+            </div>
+            <div class="post-form clearfix">
+                <form id="review-form" method="post" name="postreview">
+                    <div class="col-md-4 no-padding">
+                        <div class="form-group">
+                            <label>NAME</label>
+                            <input class="form-control" placeholder="enter a name">
+                        </div>
+                        <div class="form-group">
+                            <label>EMAIL</label>
+                            <input class="form-control" placeholder="enter a email">
+                        </div>
+                        <div class="form-group">
+                            <label>SUBJECT</label>
+                            <input class="form-control" placeholder="enter a subject">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>MESSAGE</label>
+                            <textarea class="form-control" placeholder="type in a message" rows="11"></textarea>
+                        </div>
+                        <div class="send-msg"> <a href="#" class="post-msg">SEND MESSAGE<i class="fa fa-angle-right"></i></a></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 @endforeach
 </section>
 @stop
 @else
 false expr
 @endif
+@section('javascript')
+<script type="text/javascript" src="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.carousel.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7bSZjer84qHPkPDwMW_CFUHOjgluXak&callback=initMap"></script>
+<script type="text/javascript" src="{{ asset('/') }}assets/myjs/property_detail.js"></script>
+<script>
+ function initMap(){
+    var map;
+    google.maps.event.addDomListener(window, "load", function () {
+     var map = new google.maps.Map(document.getElementById("map_div"), {
+        center: new google.maps.LatLng(-6.225673, 106.808481),
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+     mapStyle(map)
+     var infoWindow = new google.maps.InfoWindow();
+     function createMarker(options, html) {
+        var marker = new google.maps.Marker(options);
+        if (html) {
+            google.maps.event.addListener(marker, "click", function () {
+                infoWindow.setContent(html);
+                infoWindow.open(options.map, this);
+            });
+        }
+        return marker;
+    }
+    var image = 
+    {
+                    url: 'http://www.remaxbeachtown.com//images/balloon.png', // image is 512 x 512
+                    scaledSize: new google.maps.Size(50, 50),
+                };
+                var title = "{{$office['data'][0]['frofOfficeName']}} Remax";
+                //phone
+                @if($office['data'][0]['frofPhone1'] != null)
+                var phone ="<i class='fa fa-phone'></i>"+"&nbsp;&nbsp;&nbsp;"+"{{$office['data'][0]['frofPhone1']}}";
+                @else
+                var phone ="<i class='fa fa-phone'></i>"+"&nbsp;&nbsp;&nbsp;"+ "-";
+                @endif
+                //email
+                @if($office['data'][0]['frofEmail'] != null)
+                var email ="<i class='fa fa-envelope'></i>"+"&nbsp;&nbsp;&nbsp;"+"{{$office['data'][0]['frofEmail']}}";
+                @else
+                var email ="<i class='fa fa-envelope'></i>"+"&nbsp;&nbsp;&nbsp;"+ "-";
+                @endif
+                //fax
+                @if($office['data'][0]['frofFax'] != null)
+                var fax ="<i class='fa fa-fax'></i>"+"&nbsp;&nbsp;&nbsp;"+"{{$office['data'][0]['frofFax']}}";
+                @else
+                var fax ="<i class='fa fa-fax'></i>"+"&nbsp;&nbsp;&nbsp;"+ "-";
+                @endif
+
+                var content1 = "<div><h1>"+title+"</h1></div>";
+                var phone1 = "<div>"+phone+"</div>";
+                var fax1 = "<div>"+fax+"</div>";
+                var email1 = "<div>"+email+"</div>";
+
+                var marker0 = createMarker({
+                    position: new google.maps.LatLng(-6.225673, 106.808481),
+                    map: map,
+                    icon: image
+                }, content1 + email1 + "<br>" + phone1+ "<br>" + fax1);
+
+            });
+}
+</script>
+@stop

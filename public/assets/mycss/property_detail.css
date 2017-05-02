@@ -1,0 +1,83 @@
+.btn-facebook:active, .btn-facebook:hover {
+  background: #30477a none repeat scroll 0 0;
+  color: #fff;
+}
+#owl-demo .item img {
+  bottom: 0;
+  display: inline-block;
+  height: auto;
+  left: 0;
+  margin: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 350px;
+}
+.item {
+  background-color: black;
+}
+/*ribborn*/
+.ribbon {
+  position: absolute;
+  left: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; left: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #79A70A;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #79A70A;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #79A70A;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #79A70A;
+}
+.property-image-small {
+ background-position: center top;
+ background-size: cover;
+ float: left;
+ height: 100px;
+ margin-right: 15px;
+ width: 90px;
+}
+
+#property-list-agent,
+#property-list-detail,
+#property-list-description{
+  max-height: 550px;
+}
+#property-list-suggest{
+  max-height: 550px;
+  overflow-y: scroll;
+}
+#property-list-agent {
+  text-align: center;
+}
