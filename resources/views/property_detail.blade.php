@@ -351,7 +351,8 @@ RE/MAX PROPERTY DETAIL
 				@foreach ($element['links']['listFile'] as $imgId)
 				@foreach ($property['linked']['listFile'] as $linkImg)
 				@if ($imgId == $linkImg['fileId'])
-				<div class="item"  style="background-image: url('https://www.remax.co.id/prodigy/papi/{{$linkImg["filePreview"]}}');">
+				<div class="item">
+                    <div style="background-image: url('https://www.remax.co.id/prodigy/papi/Listing/crud/28/links/ListingFile/115');height: 350px;filter: blur(5px);position: center;width: 100%;background-size: 100%;"></div>
 					<img src="https://www.remax.co.id/prodigy/papi/{{$linkImg['filePreview']}}" alt="Owl Image">
 				</div>
 				@endif
