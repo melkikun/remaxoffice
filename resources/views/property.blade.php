@@ -186,7 +186,6 @@ RE/MAX PROPERTY
                                                 </select>
                                             </div>
                                         </div>
-
                                         <div class="form-section col-md-2">
                                             <label>&nbsp;</label>
                                             <input class="form-control btn btn-danger" id="search" name="search" type="submit" value="Search Property" style="background-color: #e11b22;">
@@ -228,10 +227,8 @@ RE/MAX PROPERTY
                                                 </a> 
                                             </div>
                                             @endif
-
                                             @endif
                                             @endforeach
-
                                         </div>
                                     </a>
                                     <a href="{{ url('property') }}/{{$element['listUrl']}}" class="a-link">
@@ -251,37 +248,39 @@ RE/MAX PROPERTY
                                                     {{$element['listDescription']}}
                                                 </p>
                                             </div>
-                                            <div>
+                                            <div class="facility">
                                                 <i class="fa fa-bed"></i>
-                                                <span>
+                                                <span class="text-facility">
                                                     @if ($element['listBedroom'] != null)
                                                     {{ $element['listBedroom'] }}
                                                     @else
                                                     {{ "-" }}
                                                     @endif
-                                                </span>&nbsp;&nbsp;&nbsp;
+                                                </span>&nbsp;&nbsp;
                                                 <i class="fa fa-shower"></i>
-                                                <span>
+                                                <span class="text-facility">
                                                     @if ($element['listBathroom'] != null)
                                                     {{ $element['listBathroom'] }}
                                                     @else
                                                     {{ "-" }}
                                                     @endif
-                                                </span>&nbsp;&nbsp;&nbsp;
+                                                </span>&nbsp;&nbsp;
                                                 <i class="fa fa fa-area-chart"></i>
-                                                @if ($element['listLandSize'] != null)
-                                                {{ $element['listLandSize'] }}m<sup>2</sup>
-                                                @else
-                                                {{ "-" }}m<sup>2</sup>
-                                                @endif&nbsp;&nbsp;&nbsp;
-                                                <br>
+                                                <span class="text-facility">
+                                                    @if ($element['listLandSize'] != null)
+                                                    {{ $element['listLandSize'] }}m<sup>2</sup>
+                                                    @else
+                                                    {{ "-" }}m<sup>2</sup>
+                                                    @endif
+                                                </span>&nbsp;&nbsp;
                                                 <i class="fa fa fa-building"></i>
-                                                @if ($element['listBuildingSize'] != null)
-                                                {{ $element['listBuildingSize'] }}m<sup>2</sup>
-                                                @else
-                                                {{ "-" }}m<sup>2</sup>
-                                                @endif
-
+                                                <span class="text-facility">
+                                                    @if ($element['listBuildingSize'] != null)
+                                                    {{ $element['listBuildingSize'] }}m<sup>2</sup>
+                                                    @else
+                                                    {{ "-" }}m<sup>2</sup>
+                                                    @endif
+                                                </span>&nbsp;&nbsp;
                                             </div>
                                             <div class="clearfix">
                                                 <hr style="border-color: black;">
@@ -289,12 +288,20 @@ RE/MAX PROPERTY
                                             <div>
                                                 <i class="fa fa-map-marker fa-lg"></i>&nbsp;&nbsp;
                                                 <span style="font-size: 18px; font-weight: bolder;">
-                                                    {{ $property['linked']['listCityId'][0]['mctyDescription'] }}
+                                                @foreach ($property['linked']['listCityId'] as $kab)
+                                                    @if ($kab['mctyId'] == $element['links']['listCityId'])
+                                                        {{ $kab['mctyDescription'] }}
+                                                    @endif
+                                                @endforeach
                                                 </span>
                                                 <br>
                                                 <i class="fa fa-map-marker fa-lg" style="color: transparent;"></i>&nbsp;&nbsp;
                                                 <span style="color: #aaa">
-                                                    {{ $property['linked']['listProvinceId'][0]['mprvDescription'] }}
+                                                @foreach ($property['linked']['listProvinceId'] as $prov)
+                                                    @if ($prov['mprvId'] == $element['links']['listProvinceId'])
+                                                        {{ $prov['mprvDescription'] }}
+                                                    @endif
+                                                @endforeach
                                                 </span>
                                             </div>
                                         </div>
