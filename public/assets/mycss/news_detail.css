@@ -1,0 +1,28 @@
+
+.blog-text {
+    padding-left: 15px;
+    text-align: justify;
+}
+.content-article {
+    text-align: justify;
+}
+
+.sidebar-social-media > li > a > img {
+    width: 40px !important;
+}
+.sidebar-social-media li {
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: 0;
+    min-width: 50px;
+    padding: 0 10px;
+    text-align: center;
+    transform: translateZ(0px);
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+}
+.mrgb3x {
+    margin-bottom: 0;
+}

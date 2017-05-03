@@ -1,27 +1,6 @@
 @extends('template')
 @section('css')
-<style type="text/css">
-    .panel-body{
-        text-align:justify;
-    }
-    .date-post {
-        color: red;
-        font-size: 10px;
-        font-weight: bold;
-    }
-    .user-post {
-        color: #004480;
-        font-size: 10px;
-        font-weight: bold;
-    }
-    .transparent {
-      color: transparent !important;
-  }
-  .info-release{
-    font-size: 10px !important;
-    color: red !important;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/mycss/news.css">
 @stop
 @section('title')
 RE/MAX NEWS {{Session::get("lang")}}

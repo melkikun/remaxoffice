@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-            <a href="{{ url('/') }}">
+                <a href="{{ url('/') }}">
                     @if ($office['data'][0]['links']['frofFileId'] != null)
                     @foreach ($office['linked']['frofFileId'] as $element)
                     @if ($element['fileId'] == $office['data'][0]['links']['frofFileId'])
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a style="padding-left: 10px;padding-right: 10px;" href="?language=id">
+                    <a style="padding-left: 10px;padding-right: 10px;" href="?language=id_ID">
                         <img style="width: 30px; height: 15px;" src="https://www.remax.co.id/prodigy/papi/Language/crud/2/links/langFileId/113?size=30,30" alt="#">
                     </a>
                 </li>
@@ -51,20 +51,20 @@
     </div><!-- /.container-fluid -->
 </nav>
 <style type="text/css">
-@if(Request::path() == '/')
-     .nav.navbar-nav.navbar-right {
-    background-color: white;
-    position: relative;
-    z-index: 99999;
-    height: auto;
-}
-@else{
-     .nav.navbar-nav.navbar-right {
-    background-color: white;
-    /*position: relative;*/
-    /*z-index: 99999;*/
-    height: auto;
-}
+    @if(Request::path() == '/')
+    .nav.navbar-nav.navbar-right {
+        background-color: white;
+        position: relative;
+        z-index: 99999;
+        height: auto;
+    }
+    @else{
+       .nav.navbar-nav.navbar-right {
+        background-color: white;
+        /*position: relative;*/
+        /*z-index: 99999;*/
+        height: auto;
+    }
 }
 @endif
 </style>

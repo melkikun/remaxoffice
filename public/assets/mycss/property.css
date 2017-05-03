@@ -1,64 +1,67 @@
 .appartment-img .detail-btn {
-        bottom: 85%;
-        position: absolute;
-        left: 0;
-        z-index: 2;
-    }
-    .property-box .detail-btn .sale {
-        background-color: #e11b22;
-        padding: 10px 20px;
-        transition: all 0.8s ease 0s;
-    }
-    .property-box .detail-btn .rent {
-        background-color: #004480;
-        padding: 10px 20px;
-        transition: all 0.8s ease 0s;
-    }
-    .property-box .detail-btn .rent:hover, .property-box .detail-btn .sale:hover, .property-box.rent-2 .detail-btn .rent:hover, .property-box.sale-2 .detail-btn .sale:hover{
-        background-color: orange;
-    }
-    .filter-list .property-box .appartment-img::after{
-        border-bottom: 2px solid black;
-    }
-    .properties-list .property-text {
-        padding: 15px 5px 15px;
-    }
-    .one-line{
-        text-overflow: ellipsis; 
-        overflow: hidden; 
-        white-space: nowrap;
-    }
-    .appartment-name{
-        height: 120px;
-        margin-bottom: 10px;
-    }
-    .price{
-        color:#e21a22;
-        font-size: 24px;
-        font-weight: 900;
-        margin-bottom: 10px;    
-    }
-    .mrgb4x{
-        margin-bottom:0px;
-    }
-    .appartment-img{
-        height: 250px;
-    }
-    .search-form .form-section{
-        margin-bottom:10px;
-    }
-    .search-form label{
-        margin-bottom: 0px;
-    }
-    .property-text > a{
-        color: black;
-    }
-    .a-link{
-        color: black;
-    }
-    .facility{
-        font-size: 11px;
-    }
-    .text-facility{
-        font-size: 12px;
-    }
+    bottom: 85%;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+}
+.property-box .detail-btn .sale {
+    background-color: #e11b22;
+    padding: 10px 20px;
+    transition: all 0.8s ease 0s;
+}
+.property-box .detail-btn .rent {
+    background-color: #004480;
+    padding: 10px 20px;
+    transition: all 0.8s ease 0s;
+}
+.property-box .detail-btn .rent:hover, .property-box .detail-btn .sale:hover, .property-box.rent-2 .detail-btn .rent:hover, .property-box.sale-2 .detail-btn .sale:hover{
+    background-color: orange;
+}
+.filter-list .property-box .appartment-img::after{
+    border-bottom: 2px solid black;
+}
+.properties-list .property-text {
+    /*padding: 15px 5px 15px;*/
+}
+.one-line{
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap;
+}
+.appartment-name{
+    height: 120px;
+    margin-bottom: 10px;
+}
+.price{
+    color:#e21a22;
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 10px;    
+}
+.mrgb4x{
+    margin-bottom:0px;
+}
+.appartment-img{
+    height: 250px;
+}
+.search-form .form-section{
+    margin-bottom:10px;
+}
+.search-form label{
+    margin-bottom: 0px;
+}
+.property-text > a{
+    color: black;
+}
+.a-link{
+    color: black;
+}
+.facility{
+    font-size: 11px;
+}
+.text-facility{
+    font-size: 12px;
+}
+.properties-list .property-text {
+    padding: 10px 15px 30px;
+}

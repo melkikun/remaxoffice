@@ -21,7 +21,7 @@ class IndexController extends Controller {
         $this->request = $request;
     }
 
-    function index($account) {
+    public function index($account) {
         $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {

@@ -85,3 +85,9 @@
     color: gray;
     font-size: 10px;
 }
+.post-form .form-group label{
+  margin-bottom: 0px;
+}
+.btn.btn-social-icon{
+  margin: 10px;
+}

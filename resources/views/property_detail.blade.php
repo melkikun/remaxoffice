@@ -10,7 +10,6 @@
 @section('title')
 RE/MAX PROPERTY DETAIL
 @stop
-
 @section('content')
 <section class="border-top">
   <div class="container-fluid">
@@ -22,22 +21,28 @@ RE/MAX PROPERTY DETAIL
     </div>
   </div>
 </section>
+@php
+$imgx = array();
+@endphp
 @if (count($property['data'])> 0)
 <section id="content">
-	@foreach ($property['data'] as $element)
-	<section>
-		<div class="container-fluid">
-			<div id="owl-demo">
-				@foreach ($element['links']['listFile'] as $imgId)
-				@foreach ($property['linked']['listFile'] as $linkImg)
-				@if ($imgId == $linkImg['fileId'])
-				<div class="item">
+  @foreach ($property['data'] as $element)
+  <section>
+    <div class="container-fluid">
+      <div id="owl-demo">
+        @foreach ($element['links']['listFile'] as $imgId)
+        @foreach ($property['linked']['listFile'] as $linkImg)
+        @if ($imgId == $linkImg['fileId'])
+        <div class="item">
           <div class="box">
            <div class="ribbon"><span>POPULAR</span></div>
          </div>
          <div style="background-image: url('https://www.remax.co.id/prodigy/papi/{{$linkImg['filePreview']}}');height: 350px;filter: blur(25px);position: center;width: 100%;"></div>
          <img src="https://www.remax.co.id/prodigy/papi/{{$linkImg['filePreview']}}" alt="Owl Image">
        </div>
+       @php
+       array_push($imgx, "https://www.remax.co.id/prodigy/papi/".$linkImg['filePreview'])
+       @endphp
        @endif
        @endforeach
        @endforeach
@@ -163,37 +168,41 @@ RE/MAX PROPERTY DETAIL
         @endif
         @endforeach
       </div>
-      <a class="btn btn-block btn-social btn-yahoo">
+      <a class="btn btn-social btn-yahoo" style="width:100%">
         <span class="fa fa-info"></span>Show Contact
       </a>
-      <a class="btn btn-block btn-social btn-twitter">
-        <span class="fa fa-twitter"></span> Share on Twitter
+      <br/>
+      <a class="btn btn-social-icon btn-twitter" href="https://twitter.com/share?url={{ url('property') }}/{{$property['data'][0]['listUrl']}};text={{$element['listDescription']}};hashtags={{$element['listDescription']}}" target="_blank">
+        <span class="fa fa-twitter"></span>
       </a>
-      <a class="btn btn-block btn-social btn-facebook">
-        <span class="fa fa-facebook"></span> Share on Facebook
-      </a>
-      <a class="btn btn-block btn-social btn-linkedin">
-        <span class="fa fa-linkedin"></span> Share on LinkedIn
-      </a>
+      <a class="btn btn-social-icon btn-facebook"  href="https://www.facebook.com/sharer/sharer.php?u={{ url('property') }}/{{$property['data'][0]['listUrl']}}" target="_blank">
+        <span class="fa fa-facebook"></span
+        </a>
+        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ url('property') }}/{{$property['data'][0]['listUrl']}}" target="_blank">
+          <span class="fa fa-linkedin"></span
+          </a>
+          <a class="btn btn-social-icon btn-google" href="https://plus.google.com/share?url={{ url('property') }}/{{$property['data'][0]['listUrl']}}" target="_blank">
+            <span class="fa fa-google"></span>
+          </a>
+        </div>
+        <div class="description-text col-md-4" id="property-list-suggest">
+          @for ($i = 0; $i < 10; $i++)
+          <div class="property-block-small">
+           <a href="#">
+             <div class="property-image-small" style="background-image: url(&quot;https://www.remax.co.id/prodigy/papi/Listing/crud/28/links/ListingFile/115&quot;);">
+             </div>
+             <div class="detail">
+              <p class="detail-p">Rumah Design Minimalis</p> 
+              <p class="team-color detail-p">Harapan Indah</p> 
+              <p class="detail-p">Rp. 1.5 M</p>
+            </div> 
+          </a> 
+          <hr>
+        </div>
+        @endfor
+      </div>
     </div>
-    <div class="description-text col-md-4" id="property-list-suggest">
-      @for ($i = 0; $i < 10; $i++)
-      <div class="property-block-small">
-       <a href="#">
-         <div class="property-image-small" style="background-image: url(&quot;https://www.remax.co.id/prodigy/papi/Listing/crud/28/links/ListingFile/115&quot;);">
-         </div>
-         <div class="detail">
-          <p class="detail-p">Rumah Design Minimalis</p> 
-          <p class="team-color detail-p">Harapan Indah</p> 
-          <p class="detail-p">Rp. 1.5 M</p>
-        </div> 
-      </a> 
-      <hr>
-    </div>
-    @endfor
   </div>
-</div>
-</div>
 </section>
 <section>
   <div class="container-fluid">
@@ -233,7 +242,7 @@ RE/MAX PROPERTY DETAIL
       </div>
       <div class="col-md-9 no-padding">
         <div class="post-guide mrgt3x mrgb4x">
-          <p>Fill out all required fields to send a message. You have to login to your wordpress account to post any comment. Please don´t spam, thank you!</p>
+          <p>Fill out all required fields to send a message. You have to login to your wordpress account to post any comment. Please donÂ´t spam, thank you!</p>
         </div>
       </div>
       <div class="post-form clearfix">
@@ -251,15 +260,11 @@ RE/MAX PROPERTY DETAIL
               <label>EMAIL</label>
               <input class="form-control" placeholder="enter a subject">
             </div>
-            <div class="form-group">
-              <label>PHONE NUMBER</label>
-              <input class="form-control" placeholder="enter a subject">
-            </div>
           </div>
           <div class="col-md-8">
             <div class="form-group">
               <label>MESSAGE</label>
-              <textarea class="form-control" placeholder="type in a message" rows="11"></textarea>
+              <textarea class="form-control" placeholder="type in a message" rows="9"></textarea>
             </div>
             <div class="send-msg"> <a href="#" class="post-msg">SEND MESSAGE<i class="fa fa-angle-right"></i></a></div>
           </div>
@@ -271,10 +276,10 @@ RE/MAX PROPERTY DETAIL
 <hr/>
 @endforeach
 </section>
-@stop
 @else
 false expr
 @endif
+@stop
 @section('javascript')
 <script type="text/javascript" src="{{ asset('/') }}assets/bower_components/owl-carousel/owl-carousel/owl.carousel.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7bSZjer84qHPkPDwMW_CFUHOjgluXak&callback=initMap"></script>
@@ -303,8 +308,7 @@ false expr
       }
       return marker;
     }
-    var image = 
-    {
+    var image = {
                     url: 'http://www.remaxbeachtown.com//images/balloon.png', // image is 512 x 512
                     scaledSize: new google.maps.Size(50, 50),
                   };
@@ -331,4 +335,14 @@ false expr
                 });
  }
 </script>
+@stop
+@section('og')
+<meta property="fb:app_id" content="816068768546426" /> 
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{ url('property') }}/{{$property['data'][0]['listUrl']}}" />
+<meta property="og:title" content="{{$property['data'][0]['listTitle']}}" />
+<meta property="og:image" content="{{$imgx[0]}}?size=600,600" />
+<meta property="og:image:width" content="700" />
+<meta property="og:image:height" content="700" />
+<meta property="og:description" content="{{$property['data'][0]['listDescription']}}" />
 @stop

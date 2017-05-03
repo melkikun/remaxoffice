@@ -41,8 +41,15 @@
 RE/MAX GALLERY DETAIL
 @stop
 
-@section('content')
+@section('og')
+<meta property="og:url"           content="http://premier.digikomdev.com/albums/2" />
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="Testing Remax" />
+<meta property="og:description"   content="Ini berkaitan dengan testing remax" />
+<meta property="og:image"         content="http://premier.digikomdev.com/assets/images/franchise_top_banner.jpg" />
+@stop
 
+@section('content')
 <section class="border-top">
     <div class="container-fluid">
         <div class="page-title mrgb6x mrgt6x clearfix">

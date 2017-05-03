@@ -7,18 +7,22 @@ use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
 use App\Http\Helpers\Api;
+use Session;
 
 class NewsController extends Controller
 {
    private $client;
     private $api;
+    private $request;
 
-    function __construct(Api $api) {
+    function __construct(Api $api, Request $request){
         $this->api = $api;
         $this->client = new GuzzleHttpClient(['base_uri' =>$this->api->getBaseUri(), 'verify' => false]);
+        $this->request = $request;
     }
 
     function listNews($account, $param){
+        $lang = $this->cekLang($this->request->input("language"));
         $id = $this->api->getOfficeInfo($account);
         if($id != ""){
              try {
@@ -40,5 +44,18 @@ class NewsController extends Controller
             }
         }
         }
+    }
+
+    public function cekLang($input){
+        if ($input == "") {
+            if($this->request->session()->has('lang')){
+                $this->request->session()->put('lang', Session::get("lang"));
+            }else{
+                Session::put("lang", "id");
+            }
+        }else{
+            Session::put("lang", $input);
+        }
+        return $this->request->session()->get("lang");
     }
 }
