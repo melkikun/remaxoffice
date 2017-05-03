@@ -72,10 +72,10 @@
 #property-list-agent,
 #property-list-detail,
 #property-list-description{
-  max-height: 425px;
+  max-height: 550px;;
 }
 #property-list-suggest{
-  max-height: 425px;
+  max-height: 550px;
   overflow-y: scroll;
 }
 #property-list-agent {

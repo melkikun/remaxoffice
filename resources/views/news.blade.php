@@ -14,6 +14,13 @@
         font-size: 10px;
         font-weight: bold;
     }
+    .transparent {
+      color: transparent !important;
+  }
+  .info-release{
+    font-size: 10px !important;
+    color: red !important;
+}
 </style>
 @stop
 @section('title')
@@ -46,6 +53,9 @@ RE/MAX NEWS {{Session::get("lang")}}
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key}}" aria-expanded="true"> 
                                         <span>0{{$key+1}}</span> 
                                         {{$value['wbnlTitle']}}
+                                        <br>
+                                        <span class="transparent">0{{$key+1}}</span> 
+                                        <span class="info-release">{{date('D, d F Y',strtotime($value['wbnlCreatedTime']))}}</span>
                                     </a> 
                                     @else
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key}}" aria-expanded="false"> 
@@ -113,10 +123,10 @@ RE/MAX NEWS {{Session::get("lang")}}
                                         Posted On {{date('D, d F Y',strtotime($value['wbnlCreatedTime']))}}
                                     </div>
                                     <div class="user-post">
-                                    By :  {{$value['wbnlCreatedUserId']}}
+                                        By :  {{$value['wbnlCreatedUserId']}}
                                     </div> 
-                                     </a>
-                                </div>
+                                </a>
+                            </div>
                             @endforeach
                         </div>
                     </div>
