@@ -224,7 +224,7 @@ class IndexController extends Controller {
             if($this->request->session()->has('lang')){
                 $this->request->session()->put('lang', Session::get("lang"));
             }else{
-                Session::put("lang", "id");
+                Session::put("lang", "id_ID");
             }
         }else{
             Session::put("lang", $input);
