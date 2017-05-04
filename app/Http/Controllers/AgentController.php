@@ -36,9 +36,8 @@ class AgentController extends Controller {
                     echo "Not Found";
                 }
             } catch (RequestException $e) {
-                echo Psr7\str($e->getRequest());
-                if ($e->hasResponse()) {
-                    echo Psr7\str($e->getResponse());
+                if ($e->getResponse()->getStatusCode() != '200') {
+                    return redirect('/');
                 }
             }
         }
@@ -62,11 +61,8 @@ class AgentController extends Controller {
                     $idAgent = "";
                 }
             } catch (RequestException $e) {
-                echo Psr7\str($e->getRequest());
-                $idAgent = "";
-                if ($e->hasResponse()) {
-                    echo Psr7\str($e->getResponse());
-                    $idAgent = "";
+               if ($e->getResponse()->getStatusCode() != '200') {
+                    return redirect('/');
                 }
             }
         }else{
@@ -76,11 +72,11 @@ class AgentController extends Controller {
     }
 
     function alphabethAgent($account){
-        $param = $this->request->input('agents');
-       $id = $this->api->getOfficeInfo($account);
-       if($param == "All"){
-        $param = "%";
-       }
+        $param = addslashes($this->request->input('agents'));
+        $id = $this->api->getOfficeInfo($account);
+        if($param == "All"){
+            $param = "%";
+        }
         if ($id != "") {
             try {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
@@ -95,9 +91,8 @@ class AgentController extends Controller {
                     echo "Not Found";
                 }
             } catch (RequestException $e) {
-                // echo Psr7\str($e->getRequest());
-                if ($e->hasResponse()) {
-                    echo Psr7\str($e->getResponse()->getBody());
+                if ($e->getResponse()->getStatusCode() != '200') {
+                    return view('errors.404');
                 }
             }
         }

@@ -38,10 +38,9 @@ class NewsController extends Controller
                 echo "Not Found";
             }
         }catch (RequestException $e){
-            echo Psr7\str($e->getRequest());
-            if($e->hasResponse()){
-                echo Psr7\str($e->getResponse());
-            }
+           if ($e->getResponse()->getStatusCode() != '200') {
+                    abort("404");
+                }
         }
         }
     }

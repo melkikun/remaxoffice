@@ -78,7 +78,7 @@ RE/MAX PROPERTY
                                             <label>Bathrooms</label>
                                             <div class="select-box">
                                                 <select class="form-control" name="bath" id="bath">
-                                                <option value="" @if (Request::input('bath') <1 ) selected @endif>All</option>
+                                                    <option value="" @if (Request::input('bath') <1 ) selected @endif>All</option>
                                                     @for ($i = 1; $i < 7; $i++)
                                                     @if (Request::input('bath') == $i)
                                                     <option value="{{$i}}" selected="">{{$i}}</option>
@@ -121,11 +121,11 @@ RE/MAX PROPERTY
                                                 <option value="">All</option>
                                                 @if (($facility['data'] != null))
                                                 @foreach ($facility['data'] as $element)
-                                                 @if (Request::input('facility') == $element['id'])
-                                                    <option value="{{$element['id']}}" selected="">{{$element['fctlName']}}</option>
-                                                    @else
-                                                    <option value="{{$element['id']}}">{{$element['fctlName']}}</option>
-                                                    @endif
+                                                @if (Request::input('facility') == $element['id'])
+                                                <option value="{{$element['id']}}" selected="">{{$element['fctlName']}}</option>
+                                                @else
+                                                <option value="{{$element['id']}}">{{$element['fctlName']}}</option>
+                                                @endif
                                                 @endforeach
                                                 @endif
                                             </select>
@@ -264,16 +264,16 @@ RE/MAX PROPERTY
                         @endforeach
                         @else
                         <div class="row">
-                             <div class="col-sm-12 text-center" id="property-empty">
+                           <div class="col-sm-12 text-center" id="property-empty">
                             <div id="text-nf">Opsss!! Data Not Found</div>
                         </div>
-                        </div>
-                        @endif
-                    </ul>
-                </div>
+                    </div>
+                    @endif
+                </ul>
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="clearfix"></div>
 <div class="numbering">

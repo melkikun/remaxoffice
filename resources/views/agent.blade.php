@@ -4,7 +4,6 @@
 <link href="{{ asset('/') }}assets/bower_components/jquery-ui/jquery-ui.min.js" rel="Stylesheet"></link>
 <link href="{{ asset('/') }}assets/mycss/agent.css" rel="Stylesheet"></link>
 @stop
-
 @section('javascript')
 <script src="{{ asset('/') }}assets/bower_components/jquery-ui/jquery-ui.min.js" ></script>
 <script src="{{ asset('/') }}assets/myjs/agent.js" ></script>

@@ -8,7 +8,7 @@ Franchise
 @section('content')
 <section class="border-top">
     <div class="container-fluid">
-        <div class="page-title clearfix">
+        <div class="page-title  mrgb6x mrgt6x clearfix">
             <ul class="breadcrumb">
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active"><a href="{{ url('franchise') }}">Franchise</a></li>

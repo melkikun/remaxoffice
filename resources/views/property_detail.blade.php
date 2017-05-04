@@ -338,7 +338,7 @@ false expr
 @stop
 @section('og')
 <meta property="fb:app_id" content="816068768546426" /> 
-<meta property="og:type" content="article" />
+<meta property="og:type" content="website" />
 <meta property="og:url" content="{{ url('property') }}/{{$property['data'][0]['listUrl']}}" />
 <meta property="og:title" content="{{$property['data'][0]['listTitle']}}" />
 <meta property="og:image" content="{{$imgx[0]}}?size=600,600" />

@@ -16,16 +16,16 @@
 <script src="{{ asset('/') }}assets/bower_components/jquery_lazyload/jquery.lazyload.js"></script>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-      $("img.lazy").lazyload();
-      $('#mygallery').lightGallery({
-        mode: 'lg-fade',
-        thumbnail: true,
-        share:true
+    $("img.lazy").lazyload();
+    $('#mygallery').lightGallery({
+      mode: 'lg-fade',
+      thumbnail: true,
+      share:true
     });
-       $("#mygallery").justifiedGallery({
-       rowHeight: 250,
-       margins : 1,
-       waitThumbnailsLoad :false
+    $("#mygallery").justifiedGallery({
+     rowHeight: 250,
+     margins : 1,
+     waitThumbnailsLoad :false
    });
   });
 </script>
@@ -42,34 +42,46 @@ RE/MAX GALLERY DETAIL
 @stop
 
 @section('og')
-<meta property="og:url"           content="http://premier.digikomdev.com/albums/2" />
+@if ($detail['data'] != null)
+<meta property="fb:app_id"        content="816068768546426" /> 
+<meta property="og:url"           content="{{ url('albums') }}/{{$detail['linked']['wbgaWbgyId'][0]['wbgyId']}}" />
 <meta property="og:type"          content="website" />
-<meta property="og:title"         content="Testing Remax" />
-<meta property="og:description"   content="Ini berkaitan dengan testing remax" />
-<meta property="og:image"         content="http://premier.digikomdev.com/assets/images/franchise_top_banner.jpg" />
+<meta property="og:title"         content="{{$detail['linked']['wbgaWbgyId'][0]['wbgyTitle']}}" />
+<meta property="og:description"   content="{{$detail['linked']['wbgaWbgyId'][0]['wbgyTitle']}}" />
+<meta property="og:image"         content="https://www.remax.co.id/prodigy/papi/{{$detail['linked']['wbgaFileId'][0]['filePreview']}}?size=400,400" />
+@endif
 @stop
 
 @section('content')
 <section class="border-top">
-    <div class="container-fluid">
-        <div class="page-title mrgb6x mrgt6x clearfix">
-            <ul class="breadcrumb">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="{{ url('albums') }}">Albums</a></li>
-                <li class="active"><a href="#">Albums Detail</a></li>
-            </ul>
-        </div>
+  <div class="container-fluid">
+    <div class="page-title mrgb6x mrgt6x clearfix">
+      <ul class="breadcrumb">
+        <li><a href="{{ url('/') }}">Home</a></li>
+        <li><a href="{{ url('albums') }}">Albums</a></li>
+        <li class="active"><a href="#">Albums Detail</a></li>
+      </ul>
     </div>
+  </div>
 </section>
 <section>
-    <div>
-        <div id="mygallery">
-        @foreach ($detail['linked']['wbgaFileId'] as $value)
-         <a href="https://www.remax.co.id/prodigy/papi/{{ $value['filePreview'] }}?size=600,300">
-            <img src="https://www.remax.co.id/prodigy/papi/{{ $value['filePreview'] }}?size=600,300" class="lazy"/>
-        </a>  
-        @endforeach
-       </div>
+  @if ($detail['data'] != null)
+  <div>
+    <div id="mygallery">
+      @foreach ($detail['linked']['wbgaFileId'] as $value)
+      <a href="https://www.remax.co.id/prodigy/papi/{{ $value['filePreview'] }}?size=600,300">
+        <img src="https://www.remax.co.id/prodigy/papi/{{ $value['filePreview'] }}?size=600,300" class="lazy"/>
+      </a>  
+      @endforeach
     </div>
-    @stop
+  </div>
+  @else
+  <div class="row">
+   <div class="col-sm-12 text-center" id="property-empty">
+    <div id="text-nf">Opsss!! Data Not Found</div>
+  </div>
+</div>
+@endif
+
+@stop
 </section>
