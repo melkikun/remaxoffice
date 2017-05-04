@@ -24,7 +24,7 @@
         float: none !important;
         height: auto;
         margin-top: -3px;
-        overflow-y: scroll;
+        /*overflow-y: scroll;*/
     }
     .navbar-nav>li {
         float: none;

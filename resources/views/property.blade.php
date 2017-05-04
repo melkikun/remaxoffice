@@ -43,7 +43,7 @@ RE/MAX PROPERTY
                                             <div class="select-box">
                                                 <select class="form-control" name="type" id="type">
                                                     <option value="">All</option>
-                                                    @if (count($propertytype['data'] > 0))
+                                                    @if (count($propertytype['data'] != null))
                                                     @foreach ($propertytype['data'] as $element)
                                                     <option value="{{$element['id']}}">{{$element['prtlName']}}</option>
                                                     @endforeach
@@ -56,7 +56,7 @@ RE/MAX PROPERTY
                                             <div class="select-box">
                                                 <select class="form-control" name="sale" id="sale">
                                                     <option value="">All</option>
-                                                    @if (count($listingcategory['data'] > 0))
+                                                    @if (count($listingcategory['data'] != null))
                                                     @foreach ($listingcategory['data'] as $element)
                                                     <option value="{{$element['id']}}">{{$element['lsclName']}}</option>
                                                     @endforeach
@@ -107,7 +107,7 @@ RE/MAX PROPERTY
                                             <div class="select-box">
                                                 <select class="form-control" name="facility" id="facility">
                                                     <option value="">All</option>
-                                                    @if (count($facility['data'] > 0))
+                                                    @if (count($facility['data'] != null))
                                                     @foreach ($facility['data'] as $element)
                                                     <option value="{{$element['id']}}">{{$element['fctlName']}}</option>
                                                     @endforeach
@@ -200,7 +200,7 @@ RE/MAX PROPERTY
                 <div class="row">
                     <div class="properties-list">
                         <ul class="filter-list">
-                            @if (count($property['data'])> 0)
+                            @if (count($property['data'])!= null)
                             @foreach ($property['data'] as $element)
                             <li class="col-md-2 mrgb5x col-sm-4" style="cursor: pointer; padding-right: 0px;">
                                 <div class="property-box">
@@ -287,7 +287,7 @@ RE/MAX PROPERTY
                                             </div>
                                             <div>
                                                 <i class="fa fa-map-marker fa-lg"></i>&nbsp;&nbsp;
-                                                <span style="font-size: 18px; font-weight: bolder;">
+                                                <span style="font-size: 14px; font-weight: bolder;">
                                                 @foreach ($property['linked']['listCityId'] as $kab)
                                                     @if ($kab['mctyId'] == $element['links']['listCityId'])
                                                         {{ $kab['mctyDescription'] }}

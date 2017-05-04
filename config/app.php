@@ -169,7 +169,6 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         App\Providers\ViewComposerProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Chencha\Share\ShareServiceProvider::class,
 
                         // TwigBridge\gupnp_service_notify(service, name, type, value)ceProvider::class,
 
@@ -236,7 +235,6 @@ return [
         // 'Twig' => TwigBridge\Facade\Twig::class,
     'Form' => Collective\Html\FormFacade::class,
     'Html' => Collective\Html\HtmlFacade::class,
-    'Share' => Chencha\Share\ShareFacade::class,
 
     ],
 

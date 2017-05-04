@@ -23,6 +23,7 @@ RE/MAX ABOUT {{Session::get("lang")}}
             <div class="col-md-3 no-padding col-sm-5 animated out" data-delay="0" data-animation="fadeInUp">
                 <div class="tab-section">
                     <ul class="nav nav-stacked">
+                        @if ($about['data'] != null)
                         @foreach ($about['data'] as $key => $value)
                         @if ($key == 0)
                         <li class="active">
@@ -42,6 +43,12 @@ RE/MAX ABOUT {{Session::get("lang")}}
                         </li>
                         @endif
                         @endforeach
+                        @else
+                        <div class="row">
+                         <div class="col-sm-12 text-center" id="property-empty">
+                            <div id="text-nf">Opsss!! Data Not Found</div>
+                        </div>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -49,19 +56,26 @@ RE/MAX ABOUT {{Session::get("lang")}}
 
         <div class="col-md-9 col-sm-7">
             <div class="tab-content mrgb7x animated out" data-delay="0" data-animation="fadeInUp">
-                @foreach ($about['data'] as $key => $value)
-                @if ($key == 0)
-                <div id="link{{$key}}" class="tab-pane fade in active">
-                    {!!$value['wbalContent']!!}
-                </div>
-                @else
-                <div id="link{{$key}}" class="tab-pane fade">
-                    {!!$value['wbalContent']!!}
-                </div>
-                @endif
-                @endforeach
+             @if ($about['data'] != null)
+             @foreach ($about['data'] as $key => $value)
+             @if ($key == 0)
+             <div id="link{{$key}}" class="tab-pane fade in active">
+                {!!$value['wbalContent']!!}
             </div>
+            @else
+            <div id="link{{$key}}" class="tab-pane fade">
+                {!!$value['wbalContent']!!}
+            </div>
+            @endif
+            @endforeach
+            @else
+            <div class="row">
+             <div class="col-sm-12 text-center" id="property-empty">
+                <div id="text-nf">Opsss!! Data Not Found</div>
+            </div>
+            @endif
         </div>
     </div>
+</div>
 </section>
 @stop

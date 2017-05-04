@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/mycss/news.css">
 @stop
 @section('title')
-RE/MAX NEWS {{Session::get("lang")}}
+RE/MAX NEWS 
 @stop
 @section('content')
 <section class="border-top">
@@ -35,6 +35,7 @@ RE/MAX NEWS {{Session::get("lang")}}
                                         <br>
                                         <span class="transparent">0{{$key+1}}</span> 
                                         <span class="info-release">{{date('D, d F Y',strtotime($value['wbnlCreatedTime']))}}</span>
+                                        <span class="info-date"> / {{$value['wbnlCreatedUserId']}}</span>
                                     </a> 
                                     @else
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key}}" aria-expanded="false"> 

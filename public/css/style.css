@@ -3136,10 +3136,20 @@ contact-info-rightbar {
     border-color: white;;
 }
 .navbar{
-	margin-bottom: 5px;
+	/*margin-bottom: 5px;*/
 }
 
-
+#property-empty {
+    border: 2px dotted black;
+    height: 100px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+#property-empty > div {
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle !important;
+}
 	
 
 	

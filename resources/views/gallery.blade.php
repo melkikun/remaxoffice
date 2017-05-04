@@ -2,24 +2,24 @@
 @section('javascript')
 <script src="{{ asset('/') }}assets/bower_components/jquery_lazyload/jquery.lazyload.js"></script>
 <script>
-jQuery(document).ready(function($) {
-     $(".img-responsive").lazyload();
-});
+    jQuery(document).ready(function($) {
+       $(".img-responsive").lazyload();
+   });
 </script>
 @stop
 
 @section('css')
 <style type="text/css" media="screen">
     .service-info.title2 {
-    background-color: red !important;
-    bottom: 100px;
-    padding: 7px;
-}
-.service-info.title1 {
-    background-color: blue !important;
-    bottom: 50px;
-    padding: 7px;
-}
+        background-color: red !important;
+        bottom: 100px;
+        padding: 7px;
+    }
+    .service-info.title1 {
+        background-color: blue !important;
+        bottom: 50px;
+        padding: 7px;
+    }
 </style>
 @stop
 
@@ -29,10 +29,10 @@ RE/MAX GALLERY
 
 @section('content')
 <section>
-        <div class="image">
-            <img src="{{ asset('/') }}assets/images/GALLERY_HEADER.jpg" style="width: 100%;">
-        </div>
-    </section>
+    <div class="image">
+        <img src="{{ asset('/') }}assets/images/GALLERY_HEADER.jpg" style="width: 100%;">
+    </div>
+</section>
 <section class="border-top">
     <div class="container-fluid">
         <div class="page-title clearfix">
@@ -46,24 +46,31 @@ RE/MAX GALLERY
 <section>
     <div class="container-fluid">
         <div class="row services mrgb6x clearfix">
-        @foreach ($gallery['data'] as $key => $value)
+            @if ($gallery['data'] != null)
+            @foreach ($gallery['data'] as $key => $value)
             <div class="col-md-3 col-sm-6 animated in" data-delay="0" data-animation="fadeInUp">
-            <a href="{{ url("albums/$value[id]") }}">
-                <div class="service-image"> 
-                @foreach ($gallery['linked']['wbgyFileId'] as $key1 => $value1)
-                @if($value['links']['wbgyFileId'] == $value1['id'])
-                    <img src="https://www.remax.co.id/prodigy/papi/{{ $value1['filePreview'] }}?size=600,300" class="img-responsive" alt="#" />
-                    @endif
-                @endforeach
-                    <div class="service-info title1">
-                        <a href="">{{ $value['wbgyTitle'] }}</a>
+                <a href="{{ url("albums/$value[id]") }}">
+                    <div class="service-image"> 
+                        @foreach ($gallery['linked']['wbgyFileId'] as $key1 => $value1)
+                        @if($value['links']['wbgyFileId'] == $value1['id'])
+                        <img src="https://www.remax.co.id/prodigy/papi/{{ $value1['filePreview'] }}?size=600,300" class="img-responsive" alt="#" />
+                        @endif
+                        @endforeach
+                        <div class="service-info title1">
+                            <a href="">{{ $value['wbgyTitle'] }}</a>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
             </div>
             @endforeach
+            @else
+            <div class="row">
+               <div class="col-sm-12 text-center" id="property-empty">
+                <div id="text-nf">Opsss!! Data Not Found</div>
+            </div>
         </div>
-        
+        @endif
     </div>
+</div>
 </section>	
 @stop

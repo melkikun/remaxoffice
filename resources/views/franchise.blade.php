@@ -3,7 +3,7 @@
 Franchise
 @stop
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/mycss/franchise.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/mycss/franchise.css">
 @stop
 @section('content')
 <section class="border-top">
@@ -18,10 +18,18 @@ Franchise
 </section>
 <section>
     <div class="franchise">
+        @if ($franchisex['data'] != null)
         @foreach ($franchisex['data'] as $element)
         {!!$element['wbflDescription']!!}
         @endforeach
+        @else
+        <div class="row">
+           <div class="col-sm-12 text-center" id="property-empty">
+            <div id="text-nf">Opsss!! Data Not Found</div>
+        </div>
+        @endif
     </div>
+     @if ($franchisex['data'] != null)
     <div class="how-help ng-scope">
         <div class="container">
             <div class="row">
@@ -54,7 +62,7 @@ Franchise
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
-                            <button type="submit" class="btn btn-primary">Send Message</button>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
                             </div>
                         </div>
                     </form>
@@ -62,5 +70,6 @@ Franchise
             </div>
         </div>
     </div>
+     @endif
 </section>
 @stop

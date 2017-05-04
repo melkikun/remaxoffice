@@ -44,18 +44,18 @@ class PropertyController extends Controller
     }
 
     function search($account){
-        $keyword = $this->request->input("keyword");
-        $location = $this->request->input("location");
-        $type = $this->request->input("type");
-        $sale = $this->request->input("sale");
-        $min = $this->request->input("min");
-        $max = $this->request->input("max");
-        $bed = $this->request->input("bed");
-        $bath = $this->request->input("bath");
-        $land = $this->request->input("land");
-        $building = $this->request->input("building");
-        $facility = $this->request->input("facility");
-        $currentPage =  $this->request->input('page');
+        $keyword = addslashes($this->request->input("keyword"));
+        $location = addslashes($this->request->input("location"));
+        $type = addslashes($this->request->input("type"));
+        $sale = addslashes($this->request->input("sale"));
+        $min = addslashes(str_replace('.', '', $this->request->input("min")));
+        $max = addslashes(str_replace('.', '', $this->request->input("max")));
+        $bed = addslashes($this->request->input("bed"));
+        $bath = addslashes($this->request->input("bath"));
+        $land = addslashes($this->request->input("land"));
+        $building = addslashes($this->request->input("building"));
+        $facility = addslashes($this->request->input("facility"));
+        $currentPage =  addslashes($this->request->input('page'));
         if($currentPage == ""){
             $currentPage = 1;
         }
@@ -85,12 +85,12 @@ class PropertyController extends Controller
                     $filterMax="";
                 }
                 if($type != ""){
-                    $filterType = "&filter[listListingCategoryId]=$type";
+                    $filterType = "&filter[listPropertyTypeId]=$type";
                 }else{
                     $filterType = "";
                 }
                 if($sale != ""){
-                    $filterSale = "&filter[listPropertyTypeId]=$sale";
+                    $filterSale = "&filter[listListingCategoryId]=$sale";
                 }else{
                     $filterSale = "";
                 }
@@ -124,7 +124,7 @@ class PropertyController extends Controller
                 $filterTotal = $filterId.$filterBed.$filterBath.$filterMin.$filterMax.$filterType.$filterSale.$filterKeyword.$filterLand.$filterBuilding.$filterLocation.$facility;
                 
                 $filterHalaman = $filterTotal.$filterPage.$filterpageSize;
-
+                // echo $filterHalaman;
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
                 $propertyTotalApi = $this->client->get("listing?".$filterTotal);
                 $propertyApi = $this->client->get("listing?".$filterHalaman);

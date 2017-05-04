@@ -59,7 +59,7 @@
         height: auto;
     }
     @else{
-       .nav.navbar-nav.navbar-right {
+     .nav.navbar-nav.navbar-right {
         background-color: white;
         /*position: relative;*/
         /*z-index: 99999;*/

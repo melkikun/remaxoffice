@@ -17,6 +17,12 @@
 .info-release{
     font-size: 10px !important;
     color: red !important;
+    margin-right: 0px !important;
+}
+.info-date{
+    font-size: 10px !important;
+    color: red !important;
+    color: #004480 !important;
 }
 .mrgt3x{
     margin-top: 0px !important;

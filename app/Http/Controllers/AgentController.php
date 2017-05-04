@@ -95,9 +95,9 @@ class AgentController extends Controller {
                     echo "Not Found";
                 }
             } catch (RequestException $e) {
-                echo Psr7\str($e->getRequest());
+                // echo Psr7\str($e->getRequest());
                 if ($e->hasResponse()) {
-                    echo Psr7\str($e->getResponse());
+                    echo Psr7\str($e->getResponse()->getBody());
                 }
             }
         }
