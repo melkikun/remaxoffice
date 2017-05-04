@@ -48,7 +48,9 @@ RE/MAX GALLERY DETAIL
 <meta property="og:type"          content="website" />
 <meta property="og:title"         content="{{$detail['linked']['wbgaWbgyId'][0]['wbgyTitle']}}" />
 <meta property="og:description"   content="{{$detail['linked']['wbgaWbgyId'][0]['wbgyTitle']}}" />
-<meta property="og:image"         content="https://www.remax.co.id/prodigy/papi/{{$detail['linked']['wbgaFileId'][0]['filePreview']}}?size=400,400" />
+@foreach ($detail['linked']['wbgaFileId'] as $value)
+<meta property="og:image"         content="https://www.remax.co.id/prodigy/papi/{{ $value['filePreview'] }}?size=500,500" />
+ @endforeach
 @endif
 @stop
 
