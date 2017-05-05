@@ -36,7 +36,11 @@ $imgx = array();
           <div class="box">
             <div class="ribbon">
               <span>
-                POPULAR
+              @foreach ($property['linked']['listListingCategoryId'] as $sale)
+              @if ($sale['mlscId'] == $element['links']['listListingCategoryId'])
+                {{$sale['lsclName']}}
+              @endif
+              @endforeach
               </span>
             </div>
           </div>
@@ -325,22 +329,14 @@ $imgx = array();
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7bSZjer84qHPkPDwMW_CFUHOjgluXak&callback=initMap"></script>
   <script type="text/javascript" src="{{ asset('/') }}assets/myjs/property_detail.js"></script>
   <script>
-  var latitude = (JSON.parse({!!json_encode($property['data'][0]['listCoordinat'])!!}).coordinate.latitude)
-  var longitude = (JSON.parse({!!json_encode($property['data'][0]['listCoordinat'])!!}).coordinate.longitude)
-  var harga = "";
-@if ($property['data'][0]['listListingPrice'] >= 100000000000)
-harga = "Rp. {{$property['data'][0]['listListingPrice']/1000000000000}} T";
-@elseif($property['data'][0]['listListingPrice'] >= 1000000000)
-harga = "Rp.  {{$property['data'][0]['listListingPrice']/1000000000}} M";
-@else
-harga = "Rp. {{$property['data'][0]['listListingPrice']/1000000}} JT";
-@endif
+    var latitude = (JSON.parse({!!json_encode($property['data'][0]['listCoordinat'])!!}).coordinate.latitude)
+    var longitude = (JSON.parse({!!json_encode($property['data'][0]['listCoordinat'])!!}).coordinate.longitude)
     function initMap(){
       var map;
       google.maps.event.addDomListener(window, "load", function () {
         var map = new google.maps.Map(document.getElementById("map_div"), {
           center: new google.maps.LatLng(latitude, longitude),
-          zoom: 14,
+          zoom: 16,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
         // mapStyle(map);
@@ -359,7 +355,14 @@ harga = "Rp. {{$property['data'][0]['listListingPrice']/1000000}} JT";
 url: 'http://www.remaxbeachtown.com//images/balloon.png', // image is 512 x 512
 scaledSize: new google.maps.Size(50, 50),
 };
-
+var harga = "";
+@if ($property['data'][0]['listListingPrice'] >= 100000000000)
+harga = "Rp. {{$property['data'][0]['listListingPrice']/1000000000000}} T";
+@elseif($property['data'][0]['listListingPrice'] >= 1000000000)
+harga = "Rp.  {{$property['data'][0]['listListingPrice']/1000000000}} M";
+@else
+harga = "Rp. {{$property['data'][0]['listListingPrice']/1000000}} JT";
+@endif
 
 var title = "{{ $property['data'][0]['listTitle'] }}";
 var content1 = "<div><h4>" + title + "</h4></div>";
