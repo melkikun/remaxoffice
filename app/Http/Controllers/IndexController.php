@@ -28,16 +28,20 @@ class IndexController extends Controller {
             try {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
                 $bankApi = $this->client->get("bank");
-                if ($bankApi->getStatusCode() == 200  && $officeApi->getStatusCode() == 200) {
+                if ($bankApi->getStatusCode() == 200 && $officeApi->getStatusCode() == 200) {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $bank = json_decode($bankApi->getBody()->getContents(), true);
                     return view("home", compact('office', 'bank'));
                 } else {
-                    echo "Not Found";
+                    abort("404");
                 }
             } catch (RequestException $e) {
                 if ($e->getResponse()->getStatusCode() != '200') {
-                    abort("404");
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }
@@ -49,17 +53,21 @@ class IndexController extends Controller {
         if ($id != "") {
             try {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
-                $aboutApi = $this->client->get("webabout");
+                $aboutApi = $this->client->get("webabout", ["query" => ['language' => $lang]]);
                 if ($officeApi->getStatusCode() == 200 && $aboutApi->getStatusCode() == 200) {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $about = json_decode($aboutApi->getBody()->getContents(), true);
                     return view("about", compact('office', 'about'));
                 } else {
-                    echo "Not Found";
+                    abort("404");
                 }
             } catch (RequestException $e) {
                 if ($e->getResponse()->getStatusCode() != '200') {
-                    abort("404");
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }
@@ -80,11 +88,15 @@ class IndexController extends Controller {
                     $agentInfo = json_decode($agentInfoApi->getBody()->getContents(), true);
                     return view("agent", compact('office', 'agent', 'agentInfo', 'first'));
                 } else {
-                    echo "Not Found";
+                    abort("404");
                 }
             } catch (RequestException $e) {
                 if ($e->getResponse()->getStatusCode() != '200') {
-                    abort("404");
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }
@@ -96,17 +108,21 @@ class IndexController extends Controller {
         if ($id != "") {
             try {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
-                $franchiseApi = $this->client->get("webfranchise");
+                $franchiseApi = $this->client->get("webfranchise", ["query" => ['language' => $lang]]);
                 if ($officeApi->getStatusCode() == 200 && $franchiseApi->getStatusCode() == 200) {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $franchisex = json_decode($franchiseApi->getBody()->getContents(), true);
                     return view("franchise", compact('office', 'franchisex'));
                 } else {
-                    echo "Not Found";
+                    abort("404");
                 }
             } catch (RequestException $e) {
                 if ($e->getResponse()->getStatusCode() != '200') {
-                    abort("404");
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }
@@ -124,11 +140,15 @@ class IndexController extends Controller {
                     $gallery = json_decode($galleryApi->getBody()->getContents(), true);
                     return view("gallery", compact('office', 'gallery'));
                 } else {
-                    echo "Not Found";
+                    abort("404");
                 }
             } catch (RequestException $e) {
                 if ($e->getResponse()->getStatusCode() != '200') {
-                    abort("404");
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }
@@ -140,17 +160,19 @@ class IndexController extends Controller {
         if ($id != "") {
             try {
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
-                $newsApi = $this->client->get("webnews");
+                $newsApi = $this->client->get("webnews", ["query" => ['language' => $lang]]);
                 if ($officeApi->getStatusCode() == 200 && $newsApi->getStatusCode() == 200) {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $news = json_decode($newsApi->getBody()->getContents(), true);
                     return view("news", compact('office', 'news'));
                 } else {
-                    echo "Not Found";
+                    abort("404");
                 }
             } catch (RequestException $e) {
-               if ($e->getResponse()->getStatusCode() != '200') {
+                if ($e->hasResponse()) {
                     abort("404");
+                } else {
+                    echo Psr7\str($e->getRequest());
                 }
             }
         }
@@ -161,30 +183,34 @@ class IndexController extends Controller {
         $id = $this->api->getOfficeInfo($account);
         if ($id != "") {
             try {
-                $currentPage =  $this->request->input('page');
-                if($currentPage == ""){
+                $currentPage = $this->request->input('page');
+                if ($currentPage == "") {
                     $currentPage = 1;
                 }
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
                 $propertyTotalApi = $this->client->get("listing", ["query" => ['filter[frofId]' => "$id"]]);
-                $propertyApi = $this->client->get("listing", ["query" => ['filter[frofId]' => "$id", 'pageNumber'=>"$currentPage", 'pageSize'=>'12']]);
+                $propertyApi = $this->client->get("listing", ["query" => ['filter[frofId]' => "$id", 'pageNumber' => "$currentPage", 'pageSize' => '12']]);
                 $facilityApi = $this->client->get("facility");
                 $listingcategoryApi = $this->client->get("listingcategory");
                 $propertytypeApi = $this->client->get("propertytype");
-                if ($officeApi->getStatusCode() == 200 && $propertyApi->getStatusCode() == 200 && $propertyTotalApi->getStatusCode() == 200  && $currentPage != "" && $facilityApi->getStatusCode() == 200 && $listingcategoryApi->getStatusCode() == 200) {
+                if ($officeApi->getStatusCode() == 200 && $propertyApi->getStatusCode() == 200 && $propertyTotalApi->getStatusCode() == 200 && $currentPage != "" && $facilityApi->getStatusCode() == 200 && $listingcategoryApi->getStatusCode() == 200) {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     $propertyTotal = json_decode($propertyTotalApi->getBody()->getContents(), true);
                     $property = json_decode($propertyApi->getBody()->getContents(), true);
                     $facility = json_decode($facilityApi->getBody()->getContents(), true);
                     $propertytype = json_decode($propertytypeApi->getBody()->getContents(), true);
                     $listingcategory = json_decode($listingcategoryApi->getBody()->getContents(), true);
-                    return view("property", compact('office', 'property','propertyTotal', 'currentPage', 'facility', 'listingcategory', 'propertytype'));
+                    return view("property", compact('office', 'property', 'propertyTotal', 'currentPage', 'facility', 'listingcategory', 'propertytype'));
                 } else {
-                    echo "Not Found";
+                    abort("404");
                 }
             } catch (RequestException $e) {
                 if ($e->getResponse()->getStatusCode() != '200') {
-                   abort("404");
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }
@@ -201,24 +227,28 @@ class IndexController extends Controller {
                     $office = json_decode($officeApi->getBody()->getContents(), true);
                     return view("contact", compact('office'));
                 } else {
-                    echo "Not Found";
+                    abort("404");
                 }
             } catch (RequestException $e) {
-               if ($e->getResponse()->getStatusCode() != '200') {
-                    abort("404");
+                if ($e->getResponse()->getStatusCode() != '200') {
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }
     }
 
-    public function cekLang($input){
+    public function cekLang($input) {
         if ($input == "") {
-            if($this->request->session()->has('lang')){
+            if ($this->request->session()->has('lang')) {
                 $this->request->session()->put('lang', Session::get("lang"));
-            }else{
+            } else {
                 Session::put("lang", "id_ID");
             }
-        }else{
+        } else {
             Session::put("lang", $input);
         }
         return $this->request->session()->get("lang");

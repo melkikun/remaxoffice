@@ -10,21 +10,20 @@
             </button>
             <a class="navbar-brand" href="#">
                 <a href="{{ url('/') }}">
-                    @if ($office['data'][0]['links']['frofFileId'] != null)
-                    @foreach ($office['linked']['frofFileId'] as $element)
-                    @if ($element['fileId'] == $office['data'][0]['links']['frofFileId'])
+                @if ($office['data'] != null)
+                 @foreach ($office['linked']['frofFileId'] as $element)
                     <img src="https://www.remax.co.id/prodigy/papi/{{ $element['filePreview'] }}" alt="#" style="height: 55px; right: 1%;">
-                    @endif
                     @endforeach
-                    @else
-                    <img src="{{ asset('/') }}images/logo.png" alt="#" style="height: 55px;" />
-                    @endif
+                @else
+                <img src="{{ asset('/') }}images/logo.png" alt="#" style="height: 55px;" />
+                @endif
                 </a>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                @if ($header['data'] != null)
                 @foreach ($header['data'] as $key => $value)
                 @if (Request::segment(1) == $value['wbmnAPI'])
                 <li class="active">
@@ -36,6 +35,7 @@
                 </li>
                 @endif
                 @endforeach
+                @endif
                 <li>
                     <a style="padding-left: 10px;padding-right: 10px;" href="?language=en">
                         <img style="width: 30px; height: 15px;" src="https://www.remax.co.id/prodigy/papi/Language/crud/1/links/langFileId/112?size=30,30" alt=#"">
@@ -59,7 +59,7 @@
         height: auto;
     }
     @else{
-     .nav.navbar-nav.navbar-right {
+       .nav.navbar-nav.navbar-right {
         background-color: white;
         /*position: relative;*/
         /*z-index: 99999;*/

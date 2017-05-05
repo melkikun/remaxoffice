@@ -107,6 +107,9 @@ RE/MAX NEWS
                                     </div> 
                                 </a>
                             </div>
+                            @if ($key == 5)
+                                @break
+                            @endif
                             @endforeach
                         </div>
                     </div>

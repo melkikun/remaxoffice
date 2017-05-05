@@ -82,12 +82,12 @@ RE/MAX AGENT LIST
 						</ul>
 						<ul class="agent-mail">
 							<li><i class="icon-email4"></i></li>
-							<li><span></span></li>
+							<li><span>E-mail</span></li>
 							<li class="contact-info"><a href="#">{{ $value['mmbsEmail'] }}</a></li>
 						</ul>
 						<ul class="agent-mail">
 							<li><i class="fa fa-phone"></i></li>
-							<li><span></span></li>
+							<li><span>Mobile</span></li>
 							<li class="contact-info"><a href="#">{{ $value['mmbsCellPhone1'] }}</a></li>
 						</ul>
 						<div class="full-profile-btn"> <a href="{{ url("$value[mmbsUrl]") }}" class="see-more">see full profile</a> </div>

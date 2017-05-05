@@ -91,3 +91,12 @@
 .btn.btn-social-icon{
   margin: 10px;
 }
+.detail p {
+    line-height: 20px !important;
+}
+#price-js{
+  color: red;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}

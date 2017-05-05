@@ -29,11 +29,15 @@ class GalleryController extends Controller {
                     $detail = json_decode($galleryDetailApi->getBody()->getContents(), true);
                     return view("gallery_detail", compact('id', 'detail', 'office'));
                 } else {
-                    echo "Not Found";
+                    abort("404");
                 }
             } catch (RequestException $e) {
                 if ($e->getResponse()->getStatusCode() != '200') {
-                    return redirect('/');
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }

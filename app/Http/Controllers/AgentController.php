@@ -33,11 +33,15 @@ class AgentController extends Controller {
                     $office = json_decode($officeApi ->getBody()->getContents(), true);
                     return view("agent_detail", compact('id', 'office', 'property'));
                 } else {
-                    echo "Not Found";
+                    return view('agent_not_found');
                 }
             } catch (RequestException $e) {
                 if ($e->getResponse()->getStatusCode() != '200') {
-                    return redirect('/');
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }
@@ -62,11 +66,15 @@ class AgentController extends Controller {
                 }
             } catch (RequestException $e) {
                if ($e->getResponse()->getStatusCode() != '200') {
-                    return redirect('/');
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }else{
-            echo "xxx";
+           abort("404");
         }
         return $idAgent;
     }
@@ -88,11 +96,15 @@ class AgentController extends Controller {
                     $agentInfo = json_decode($agentInfoApi->getBody()->getContents(), true);
                     return view("agent", compact('office', 'agent', 'agentInfo'));
                 } else {
-                    echo "Not Found";
+                    return view('agent_not_found');
                 }
             } catch (RequestException $e) {
                 if ($e->getResponse()->getStatusCode() != '200') {
-                    return view('errors.404');
+                    if ($e->hasResponse()) {
+                        abort("404");
+                    } else {
+                        echo Psr7\str($e->getRequest());
+                    }
                 }
             }
         }
