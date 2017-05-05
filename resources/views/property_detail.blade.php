@@ -327,6 +327,14 @@ $imgx = array();
   <script>
   var latitude = (JSON.parse({!!json_encode($property['data'][0]['listCoordinat'])!!}).coordinate.latitude)
   var longitude = (JSON.parse({!!json_encode($property['data'][0]['listCoordinat'])!!}).coordinate.longitude)
+  var harga = "";
+@if ($property['data'][0]['listListingPrice'] >= 100000000000)
+harga = "Rp. {{$property['data'][0]['listListingPrice']/1000000000000}} T";
+@elseif($property['data'][0]['listListingPrice'] >= 1000000000)
+harga = "Rp.  {{$property['data'][0]['listListingPrice']/1000000000}} M";
+@else
+harga = "Rp. {{$property['data'][0]['listListingPrice']/1000000}} JT";
+@endif
     function initMap(){
       var map;
       google.maps.event.addDomListener(window, "load", function () {
@@ -351,20 +359,13 @@ $imgx = array();
 url: 'http://www.remaxbeachtown.com//images/balloon.png', // image is 512 x 512
 scaledSize: new google.maps.Size(50, 50),
 };
-var harga = "";
-@if ($property['data'][0]['listListingPrice'] >= 100000000000)
-harga = "Rp. {{$property['data'][0]['listListingPrice']/1000000000000}} T";
-@elseif($property['data'][0]['listListingPrice'] >= 1000000000)
-harga = "Rp.  {{$property['data'][0]['listListingPrice']/1000000000}} M";
-@else
-harga = "Rp. {{$property['data'][0]['listListingPrice']/1000000}} JT";
-@endif
+
 
 var title = "{{ $property['data'][0]['listTitle'] }}";
 var content1 = "<div><h4>" + title + "</h4></div>";
 var harga = "<div id='price-js'>" + harga + "</div>";
 var marker0 = createMarker({
-  position: new google.maps.LatLng( - 6.225673, 106.808481),
+  position: new google.maps.LatLng(latitude, longitude),
   map: map,
   icon: image
 }, content1 + harga);
