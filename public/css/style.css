@@ -3141,12 +3141,12 @@ contact-info-rightbar {
 
 #property-empty {
     border: 2px dotted black;
-    height: 100px;
+    height: 450px;
     font-size: 20px;
     font-weight: bolder;
 }
 #property-empty > div {
-    line-height: 100px;
+    line-height: 450px;
     text-align: center;
     vertical-align: middle !important;
 }

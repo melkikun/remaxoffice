@@ -1,32 +1,14 @@
 @extends('template')
 @section('javascript')
 <script src="{{ asset('/') }}assets/bower_components/jquery_lazyload/jquery.lazyload.js"></script>
-<script>
-    jQuery(document).ready(function($) {
-       $(".img-responsive").lazyload();
-   });
-</script>
+<script src="{{ asset('/') }}assets/myjs/gallery.js"></script>
 @stop
-
 @section('css')
-<style type="text/css" media="screen">
-    .service-info.title2 {
-        background-color: red !important;
-        bottom: 100px;
-        padding: 7px;
-    }
-    .service-info.title1 {
-        background-color: blue !important;
-        bottom: 50px;
-        padding: 7px;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ asset('/') }}assets/mycss/gallery.css">
 @stop
-
 @section('title')
 RE/MAX GALLERY
 @stop
-
 @section('content')
 <section>
     <div class="image">
@@ -37,8 +19,12 @@ RE/MAX GALLERY
     <div class="container-fluid">
         <div class="page-title clearfix">
             <ul class="breadcrumb">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li class="active"><a href="{{ url('albums') }}">Albums</a></li>
+                <li>
+                    <a href="{{ url('/') }}">Home</a>
+                </li>
+                <li class="active">
+                    <a href="{{ url('albums') }}">Albums</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -65,12 +51,12 @@ RE/MAX GALLERY
             @endforeach
             @else
             <div class="row">
-               <div class="col-sm-12 text-center" id="property-empty">
-                <div id="text-nf">Opsss!! Data Not Found</div>
+                <div class="col-sm-12 text-center" id="property-empty">
+                    <div id="text-nf">Opsss!! Data Not Found</div>
+                </div>
             </div>
+            @endif
         </div>
-        @endif
     </div>
-</div>
-</section>	
+</section>  
 @stop

@@ -1,0 +1,10 @@
+ .service-info.title2 {
+        background-color: red !important;
+        bottom: 100px;
+        padding: 7px;
+    }
+    .service-info.title1 {
+        background-color: blue !important;
+        bottom: 50px;
+        padding: 7px;
+    }
