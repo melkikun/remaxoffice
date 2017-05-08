@@ -406,7 +406,7 @@ Agent Page
 			@for ($i = 1; $i <= ceil($propertyTotal['status']['totalRecords']/12); $i++)
 			@if ($currentPage == $i)
 			<li class="active">
-				<a href="{{ url('properties') }}?page={{$i}}">
+				<a href="{{ url('/') }}/{{$detail['data'][0]['mmbsUrl']}}?page={{$i}}">
 					@if ($i < 10)
 					0{{$i}}
 					@else
@@ -416,7 +416,7 @@ Agent Page
 			</li>
 			@else
 			<li>
-				<a href="{{ url(' ') }}?page={{$i}}">
+				<a href="{{ url('/') }}/{{$detail['data'][0]['mmbsUrl']}}?page={{$i}}">
 					@if ($i < 10)
 					0{{$i}}
 					@else
