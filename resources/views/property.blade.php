@@ -288,20 +288,20 @@ RE/MAX PROPERTY
                                             <div>
                                                 <i class="fa fa-map-marker fa-lg"></i>&nbsp;&nbsp;
                                                 <span style="font-size: 14px; font-weight: bolder;">
-                                                @foreach ($property['linked']['listCityId'] as $kab)
+                                                    @foreach ($property['linked']['listCityId'] as $kab)
                                                     @if ($kab['mctyId'] == $element['links']['listCityId'])
-                                                        {{ $kab['mctyDescription'] }}
+                                                    {{ $kab['mctyDescription'] }}
                                                     @endif
-                                                @endforeach
+                                                    @endforeach
                                                 </span>
                                                 <br>
                                                 <i class="fa fa-map-marker fa-lg" style="color: transparent;"></i>&nbsp;&nbsp;
                                                 <span style="color: #aaa">
-                                                @foreach ($property['linked']['listProvinceId'] as $prov)
+                                                    @foreach ($property['linked']['listProvinceId'] as $prov)
                                                     @if ($prov['mprvId'] == $element['links']['listProvinceId'])
-                                                        {{ $prov['mprvDescription'] }}
+                                                    {{ $prov['mprvDescription'] }}
                                                     @endif
-                                                @endforeach
+                                                    @endforeach
                                                 </span>
                                             </div>
                                         </div>
@@ -323,6 +323,7 @@ RE/MAX PROPERTY
             @if ($currentPage == $i)
             <li class="active">
                 <a href="{{ url('properties') }}?page={{$i}}">
+                {{-- jika numbering < 10 dikasih 0 di depan 01, 02, ... --}}
                     @if ($i < 10)
                     0{{$i}}
                     @else
@@ -333,6 +334,7 @@ RE/MAX PROPERTY
             @else
             <li>
                 <a href="{{ url('properties') }}?page={{$i}}">
+                {{-- jika numbering < 10 dikasih 0 di depan 01, 02, ... --}}
                     @if ($i < 10)
                     0{{$i}}
                     @else
@@ -344,6 +346,5 @@ RE/MAX PROPERTY
             @endfor
         </ul>
     </div>
-</div>
 </section>
 @stop

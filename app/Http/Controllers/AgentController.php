@@ -24,14 +24,20 @@ class AgentController extends Controller {
         $idAgent = $this->findIdAgent($id, $param);
         if ($id != "" && $idAgent != "") {
             try {
+                $currentPage = $this->request->input('page');
+                if ($currentPage == "") {
+                    $currentPage = 1;
+                }
                 $officeApi = $this->client->get("franchise", ["query" => ['filter[frofId]' => "$id"]]);
-                $agentDetail = $this->client->get("membership", ["query" => ['filter[msfcFrofId]' => "$id", 'filter[mmbsId]' => "'%$param%'"]]);
-                $propertyApi = $this->client->get("listing", ["query"=>['filter[frofId]'=>"$id", 'filter[mmbsId]'=>$idAgent]]);
+                $agentDetail = $this->client->get("membership", ["query" => [/*'filter[msfcFrofId]' => "$id",*/ 'filter[mmbsId]' => "'%$idAgent%'"]]);
+                $propertyApi = $this->client->get("listing", ["query"=>[/*'filter[frofId]'=>"$id", */'filter[mmbsId]'=>$idAgent, 'pageNumber' => "$currentPage", 'pageSize' => '12']]);
+                $propertyTotalApi = $this->client->get("listing", ["query" => ['filter[mmbsId]'=>$idAgent]]);
                 if ($agentDetail->getStatusCode() == 200  && $propertyApi->getStatusCode() == 200 && $officeApi->getStatusCode() == 200) {
                     $detail = json_decode($agentDetail->getBody()->getContents(), true);
                     $property = json_decode($propertyApi ->getBody()->getContents(), true);
                     $office = json_decode($officeApi ->getBody()->getContents(), true);
-                    return view("agent_detail", compact('id', 'office', 'property'));
+                    $propertyTotal = json_decode($propertyTotalApi->getBody()->getContents(), true);
+                    return view("agent_detail", compact('id', 'office', 'property', 'propertyTotal', 'currentPage', 'detail'));
                 } else {
                     return view('agent_not_found');
                 }
